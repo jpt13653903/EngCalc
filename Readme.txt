@@ -29,12 +29,5 @@ Changes From Version 1.0
 - Many more conversions come as standard
 - Some minor code changes to Calculator.cpp 
 
-Source 
------- 
-
-1. Download EngCalc - 1.4 - Source.zip 
-2. Unzip the archive to your favourite folder 
-3. Open EngCalc.cbp in Code::Blocks 
-
 See the Wiki for more information.
 

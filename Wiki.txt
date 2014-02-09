@@ -128,7 +128,7 @@ All constants are in SI units.
 Constant  | Meaning
 ----------|--------
 e         |  Natural base
-pi        |  pi
+pi        |  π
 \\c       |  Speed of light
 \\G       |  Gravitational constant
 \\g       |  Gravitational acceleration of the earth
@@ -144,8 +144,8 @@ pi        |  pi
 \\Phi     |  Fluxon
 \\NA      |  Avogadro's number
 \\R       |  Gas constant
-\\rhoAl   |  resistivity of aluminium
-\\rhoCu   |  resistivity of copper
+\\rhoAl   |  Resistivity of aluminium
+\\rhoCu   |  Resistivity of copper
 \\F       |  Faraday's constant
 \\AU      |  Astronomical unit
 \\pc      |  Parsec
@@ -163,7 +163,7 @@ I often upload the same version more than once, with subsequent uploads incorpor
 
 ## 7. Source
 
-The source is available from the [downloads page](https://sourceforge.net/projects/alwaysontopcalc/files/).
+The source is available from the [git repository](https://sourceforge.net/p/alwaysontopcalc/code/).
 
 Please [contact me](https://sourceforge.net/p/alwaysontopcalc/discussion/create_topic) if you are enthusiastic enough to have ported the project to Mac OS X, Linux or your favourite operating system.  I'd like to post the ported versions.
 
