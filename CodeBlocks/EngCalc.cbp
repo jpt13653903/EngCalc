@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="Engineering Calculator" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Release">
+				<Option output="bin/EngCalc" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="./" />
+				<Option object_output="obj/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add directory="../CodeBlocks" />
+			<Add directory="Tools" />
+			<Add directory="Resources" />
+			<Add directory="Controls" />
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="Resources" />
+		</ResourceCompiler>
+		<Linker>
+			<Add library="gdi32" />
+			<Add library="user32" />
+			<Add library="kernel32" />
+			<Add library="comctl32" />
+		</Linker>
+		<Unit filename="Controls/ComboBox.cpp" />
+		<Unit filename="Controls/ComboBox.h" />
+		<Unit filename="Controls/Control.cpp" />
+		<Unit filename="Controls/Control.h" />
+		<Unit filename="Controls/Label.cpp" />
+		<Unit filename="Controls/Label.h" />
+		<Unit filename="Controls/Menu.cpp" />
+		<Unit filename="Controls/Menu.h" />
+		<Unit filename="Controls/TextBox.cpp" />
+		<Unit filename="Controls/TextBox.h" />
+		<Unit filename="Global.cpp" />
+		<Unit filename="Global.h" />
+		<Unit filename="Resources/Manifest.xml" />
+		<Unit filename="Resources/Resources.h" />
+		<Unit filename="Resources/Resources.rc">
+			<Option compilerVar="WINDRES" />
+		</Unit>
+		<Unit filename="Tools/Calculator.cpp" />
+		<Unit filename="Tools/Calculator.h" />
+		<Unit filename="Tools/FileWrapper.cpp" />
+		<Unit filename="Tools/FileWrapper.h" />
+		<Unit filename="Tools/JString.cpp" />
+		<Unit filename="Tools/JString.h" />
+		<Unit filename="Tools/LLRBTree.cpp" />
+		<Unit filename="Tools/LLRBTree.h" />
+		<Unit filename="Tools/UnicodeCodec.cpp" />
+		<Unit filename="Tools/UnicodeCodec.h" />
+		<Unit filename="Tools/XML Wrapper.cpp" />
+		<Unit filename="Tools/XML Wrapper.h" />
+		<Unit filename="WinHeader.h" />
+		<Unit filename="main.cpp" />
+		<Unit filename="main.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+			<envvars />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

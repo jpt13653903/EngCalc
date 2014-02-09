@@ -1,0 +1,16 @@
+*.zip
+*.swp
+*.depend
+*.layout
+*.cscope_file_list
+
+*.txt
+!Wiki.txt
+!Readme.txt
+
+Archive*
+DoxyGen/*
+Screenshots/*
+CodeBlocks/obj/*
+CodeBlocks/bin/*
+
