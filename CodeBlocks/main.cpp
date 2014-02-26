@@ -98,16 +98,16 @@ static int CONVERSION_Compare(void* Left, void* Right){
 
  int Result;
 
- Result = left->FromUnit.CompareNoCase(&right->FromUnit);
+ Result = left->FromUnit.CompareNoCase(right->FromUnit);
  if(Result) return Result;
 
- Result = left->FromUnit.Compare(&right->FromUnit);
+ Result = left->FromUnit.Compare(right->FromUnit);
  if(Result) return Result;
 
- Result = left->ToUnit.CompareNoCase(&right->ToUnit);
+ Result = left->ToUnit.CompareNoCase(right->ToUnit);
  if(Result) return Result;
 
- return left->ToUnit.Compare(&right->ToUnit);
+ return left->ToUnit.Compare(right->ToUnit);
 }
 //------------------------------------------------------------------------------
 
@@ -117,10 +117,10 @@ static int CONVERSION_Compare_FromUnit(void* Left, void* Right){
 
  int Result;
 
- Result = left->FromUnit.CompareNoCase(&right->FromUnit);
+ Result = left->FromUnit.CompareNoCase(right->FromUnit);
  if(Result) return Result;
 
- return left->FromUnit.Compare(&right->FromUnit);
+ return left->FromUnit.Compare(right->FromUnit);
 }
 //------------------------------------------------------------------------------
 
@@ -137,9 +137,9 @@ void OnFromUnitClick(){
  Conversions.Compare = CONVERSION_Compare;
 
  while(Conversion){
-  if(Key.FromUnit.Compare(&Conversion->FromUnit)) break;
+  if(Key.FromUnit != Conversion->FromUnit) break;
 
-  ToUnit->AddItem(Conversion->ToUnit.String);
+  ToUnit->AddItem(Conversion->ToUnit.UTF8());
   Conversion = (CONVERSION*)Conversions.Next();
  }
 }
@@ -161,9 +161,9 @@ void LoadConversions(){
   XML.ReadAttribute(Entity, "To"     , &Conversion->ToUnit  );
   XML.ReadAttribute(Entity, "Formula", &Conversion->Formula );
   if(
-   Conversion->FromUnit.Length() &&
-   Conversion->ToUnit  .Length() &&
-   Conversion->Formula .Length()
+   Conversion->FromUnit.Length32() &&
+   Conversion->ToUnit  .Length32() &&
+   Conversion->Formula .Length32()
   ){
    Conversions.Insert(Conversion);
   }else{
@@ -173,12 +173,12 @@ void LoadConversions(){
  }
 
  // Add the conversions to the "FromUnit" combo-box.
- s.Clear();
+ s = "";
  Conversion = (CONVERSION*)Conversions.First();
  while(Conversion){
-  if(s.Compare(&Conversion->FromUnit)){
-   FromUnit->AddItem(Conversion->FromUnit.String);
-   s.Set(&Conversion->FromUnit);
+  if(s != Conversion->FromUnit){
+   FromUnit->AddItem(Conversion->FromUnit.UTF8());
+   s = Conversion->FromUnit;
   }
   Conversion = (CONVERSION*)Conversions.Next();
  }
@@ -195,10 +195,10 @@ bool Invalid(long double d, STRING* s){
  p = (unsigned*)&d;
  if(((p[2] & 0x7FFF) == 0x7FFF) && (p[1] & 0x80000000)){
   if(p[2] & 0x8000){
-   if(p[1] == 0x80000000) s->Set("-Infinity");
-   else                   s->Set("Not a number");
+   if(p[1] == 0x80000000) *s = "-Infinity";
+   else                   *s = "Not a number";
   }else{
-   s->Set("Infinite");
+   *s = "Infinite";
   }
   return true;
  }
@@ -216,15 +216,15 @@ void ToHex(long double d, STRING* s){
  if(Invalid(d, s)) return;
 
  if(d == 0.0){
-  s->Set("0");
+  *s = "0";
   return;
  }
 
  if(d < 0.0){
-  s->Set("-0x");
+  *s = "-0x";
   d *= -1.0;
  }else{
-  s->Set("0x");
+  *s = "0x";
  }
 
  exp = 0;
@@ -238,15 +238,15 @@ void ToHex(long double d, STRING* s){
   if(exp < 0 && d == 0.0) return;
 
   if(exp == -1){
-   s->Append('.');
+   *s += '.';
   }else{
-   if(spaces && places && ((exp+1) % 4 == 0)) s->Append(' ');
+   if(spaces && places && ((exp+1) % 4 == 0)) *s += ' ';
   }
 
   c = floorl(d);
 
-  if(c <= 9) s->Append((char)(c + '0'));
-  else       s->Append((char)(c + 'A' - 10));
+  if(c <= 9) *s += (char)(c + '0');
+  else       *s += (char)(c + 'A' - 10);
 
   d -= c;
   d *= 16.0;
@@ -265,15 +265,15 @@ void ToBinary(long double d, STRING* s){
  if(Invalid(d, s)) return;
 
  if(d == 0.0){
-  s->Set("0");
+  *s = "0";
   return;
  }
 
  if(d < 0.0){
-  s->Set("-0b");
+  *s = "-0b";
   d *= -1.0;
  }else{
-  s->Set("0b");
+  *s = "0b";
  }
 
  exp = 0;
@@ -287,14 +287,14 @@ void ToBinary(long double d, STRING* s){
   if(exp < 0 && d == 0.0) return;
 
   if(exp == -1){
-   s->Append('.');
+   *s += '.';
   }else{
-   if(spaces && places && ((exp+1) % 4 == 0)) s->Append(' ');
+   if(spaces && places && ((exp+1) % 4 == 0)) *s += ' ';
   }
 
   c = floorl(d);
 
-  s->Append((char)(c + '0'));
+  *s += (char)(c + '0');
 
   d -= c;
   d *= 2.0;
@@ -312,11 +312,11 @@ void ToDecimal(long double d, STRING* s){
  if(Invalid(d, s)) return;
 
  if(d == 0.0){
-  s->Set("0");
+  *s = "0";
   return;
  }
 
- s->Clear();
+ *s = "";
  bool Sign = false;
  if(d < 0.0){
   d *= -1.0;
@@ -360,8 +360,8 @@ void ToDecimal(long double d, STRING* s){
 
  // Add trailing zeroes
  for(j = 0; j < exp; j++){
-  if(spaces && j % 3 == 0) s->Append(' ');
-  s->Append('0');
+  if(spaces && j % 3 == 0) *s += ' ';
+  *s += '0';
  }
 
  // Remove zeros after decimal point
@@ -372,22 +372,32 @@ void ToDecimal(long double d, STRING* s){
  }
 
  while(d > 0.0 || exp <= 0){
-  if     (exp     == 0 && s->Length()) s->Append('.');
-  else if(exp % 3 == 0 && spaces     ) s->Append(' ');
+  if     (exp     == 0 && s->Length32()) *s += '.';
+  else if(exp % 3 == 0 && spaces       ) *s += ' ';
 
-  s->Append((char)(fmodl(d, 10.0) + '0'));
+  *s += (char)(fmodl(d, 10.0) + '0');
   d = floorl(d / 10.0);
   exp++;
  }
 
- if(Sign) s->Append('-');
+ if(Sign) *s += '-';
 
- s->Reverse();
+ // Reverse
+ int     Length_32 = s->Length32();
+ int l = Length_32 / 2;
+ char32* Data_32   = s->UTF32   ();
+ char32  c;
+
+ for(j = 0; j < l; j++){
+  c = Data_32[j];
+  Data_32[j] = Data_32[Length_32-j-1];
+  Data_32[Length_32-j-1] = c;
+ }
 
  if(Exponent){
-  if(spaces) s->Append(' ');
-  s->Append('e');
-  s->Append(Exponent);
+  if(spaces) *s += ' ';
+  *s += 'e';
+  *s += Exponent;
  }
 }
 //------------------------------------------------------------------------------
@@ -396,12 +406,12 @@ void Calculate(){
  STRING s, formula;
 
  Formula->GetText(&formula);
- if(!formula.Length()){
+ if(!formula.Length32()){
   Result->SetText("");
   return;
  }
 
- long double result = Calc.Calculate(formula.String);
+ long double result = Calc.Calculate(formula.UTF8());
  if(Menu->GetConverter()){
   CONVERSION  Key;
   CONVERSION* Conversion;
@@ -410,7 +420,7 @@ void Calculate(){
 
   Conversion = (CONVERSION*)Conversions.Find(&Key);
   if(!Conversion) result = 0.0;
-  else result = Calc.Calculate(Conversion->Formula.String, "x", result);
+  else result = Calc.Calculate(Conversion->Formula.UTF8(), "x", result);
  }
 
  switch(Menu->GetFormat()){
@@ -426,7 +436,7 @@ void Calculate(){
    ToDecimal(result, &s);
    break;
  }
- Result->SetText(s.String);
+ Result->SetText(s.UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -624,7 +634,7 @@ LRESULT CALLBACK WindowProcedure(
       }
       SetWindowPos(Window, 0, Rect.left, Rect.top, MainWidth, 21, 0);
       Result ->GetText(&s);
-      Formula->SetText( s.String);
+      Formula->SetText( s.UTF8());
       Calculate();
       break;
 
@@ -772,7 +782,7 @@ int WINAPI WinMain(
  // Process the command-line
  if(ArgV){
   for(int j = 1; j < ArgC; j++){
-   Arg.Set(ArgV[j]);
+   Arg = ArgV[j];
    if      (!Arg.CompareNoCase("calculator")){
     PostMessage(Window, WM_COMMAND, IDM_CONVERTER, 0);
    }else if(!Arg.CompareNoCase("normal")){

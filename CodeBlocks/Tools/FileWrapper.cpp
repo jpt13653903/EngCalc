@@ -34,11 +34,10 @@ FileWrapper::~FileWrapper(){
 bool FileWrapper::Open(const char* Filename, ACCESS Access){
  if(!Filename || !Filename[0]) return false;
 
- UNICODE_CODEC Codec;
+ STRING Codec;
+ Codec = Filename;
 
- wchar_t* WideFile = Codec.GetWideString(Filename);
-  Open   (WideFile, Access);
- delete[] WideFile;
+ Open(Codec.UTF16(), Access);
 
  return Handle != INVALID_HANDLE_VALUE;
 }

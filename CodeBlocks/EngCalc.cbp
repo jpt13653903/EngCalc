@@ -57,12 +57,12 @@
 		<Unit filename="Tools/Calculator.h" />
 		<Unit filename="Tools/FileWrapper.cpp" />
 		<Unit filename="Tools/FileWrapper.h" />
-		<Unit filename="Tools/JString.cpp" />
-		<Unit filename="Tools/JString.h" />
 		<Unit filename="Tools/LLRBTree.cpp" />
 		<Unit filename="Tools/LLRBTree.h" />
-		<Unit filename="Tools/UnicodeCodec.cpp" />
-		<Unit filename="Tools/UnicodeCodec.h" />
+		<Unit filename="Tools/MutEx.cpp" />
+		<Unit filename="Tools/MutEx.h" />
+		<Unit filename="Tools/UnicodeString.cpp" />
+		<Unit filename="Tools/UnicodeString.h" />
 		<Unit filename="Tools/XML Wrapper.cpp" />
 		<Unit filename="Tools/XML Wrapper.h" />
 		<Unit filename="WinHeader.h" />

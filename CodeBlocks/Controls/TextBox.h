@@ -21,9 +21,9 @@
 #ifndef TextBox_h
 #define TextBox_h
 //------------------------------------------------------------------------------
-    
+
 #include "Control.h"
-#include "JString.h"
+#include "UnicodeString.h"
 //------------------------------------------------------------------------------
 
 class TEXT_BOX: public CONTROL{

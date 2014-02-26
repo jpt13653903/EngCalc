@@ -35,13 +35,10 @@ TEXT_BOX::~TEXT_BOX(){
 //------------------------------------------------------------------------------
 
 void TEXT_BOX::SetText(const char* String){
- UNICODE_CODEC Codec;
+ STRING Codec;
+ Codec = String;
 
- wchar_t* WideString = Codec.GetWideString(String);
-
- Edit_SetText(Handle, WideString);
-
- delete[] WideString;
+ Edit_SetText(Handle, Codec.UTF16());
 }
 //------------------------------------------------------------------------------
 
@@ -50,7 +47,7 @@ void TEXT_BOX::GetText(STRING* String){
  wchar_t* Text   = new wchar_t[Length+1];
 
  Edit_GetText(Handle, Text, Length+1);
- String->Set(Text);
+ *String = Text;
 
  delete[] Text;
 }

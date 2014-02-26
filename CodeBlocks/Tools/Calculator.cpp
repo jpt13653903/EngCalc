@@ -42,8 +42,8 @@ struct CONSTANT{
  long double Value;
 
  CONSTANT(const char* Name){
-  this->Name.Set(Name);
-  Value = 0.0;
+  this->Name = Name;
+  Value      = 0.0;
  }
 };
 //------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ static int CONSTANT_Compare(void* Left, void* Right){
  CONSTANT* left  = (CONSTANT*)Left;
  CONSTANT* right = (CONSTANT*)Right;
 
- return left->Name.Compare(&right->Name);
+ return left->Name.Compare(right->Name);
 }
 //------------------------------------------------------------------------------
 
@@ -144,10 +144,10 @@ CALCULATOR::NODE* CALCULATOR::CopyNode(NODE* Root){
  if(Root){
   N->Operation = Root->Operation;
   N->Value     = Root->Value;
-  N->Left      = CopyNode( Root->Left );
-  N->Right     = CopyNode( Root->Right);
-  N->Other     = CopyNode( Root->Other);
-  N->Name.Set            (&Root->Name );
+  N->Left      = CopyNode(Root->Left );
+  N->Right     = CopyNode(Root->Right);
+  N->Other     = CopyNode(Root->Other);
+  N->Name =              (Root->Name );
   return N;
  }else{
   return 0;
@@ -163,7 +163,7 @@ CALCULATOR::NODE* CALCULATOR::NewNode(NODE* Root){
   N->Left      = Root->Left;
   N->Right     = Root->Right;
   N->Other     = Root->Other;
-  N->Name.Set  (&Root->Name);
+  N->Name      = Root->Name;
  }
  return N;
 }
@@ -389,7 +389,7 @@ bool CALCULATOR::PowerOp(NODE* Root){
 //------------------------------------------------------------------------------
 
 void CALCULATOR::FuncName(STRING* Name){
- Name->Clear();
+ *Name = "";
 
  int i = Index;
  while(
@@ -397,7 +397,7 @@ void CALCULATOR::FuncName(STRING* Name){
   ((Buffer[i] >= 'A') && (Buffer[i] <= 'Z')) ||
   ( Buffer[i] == '\\'                      )
  ){
-  Name->Append(Buffer[i++]);
+  *Name += Buffer[i++];
  }
 }
 //------------------------------------------------------------------------------
@@ -426,164 +426,164 @@ bool CALCULATOR::Function(NODE* Root){
   N = NewNode();
   if(!Value(N)) return false;
   if(N->Operation != Var) return false;
-  Diff(Root, N->Name.String);
+  Diff(Root, N->Name.UTF8());
   DeleteTree(N);
- }else if(!s.Compare("log")){
+ }else if(s == "log"){
   Index += 3;
   Root->Operation = Log;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("ln")){
+ }else if(s == "ln"){
   Index += 2;
   Root->Operation = Ln;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("abs")){
+ }else if(s == "abs"){
   Index += 3;
   Root->Operation = Abs;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("round")){
+ }else if(s == "round"){
   Index += 5;
   Root->Operation = Round;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("fix")){
+ }else if(s == "fix"){
   Index += 3;
   Root->Operation = Fix;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("floor")){
+ }else if(s == "floor"){
   Index += 5;
   Root->Operation = Floor;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("ceil")){
+ }else if(s == "ceil"){
   Index += 4;
   Root->Operation = Ceil;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("rand")){
+ }else if(s == "rand"){
   Index += 4;
   Root->Operation = Rand;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("sin")){
+ }else if(s == "sin"){
   Index += 3;
   Root->Operation = Sin;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("asin")){
+ }else if(s == "asin"){
   Index += 4;
   Root->Operation = ASin;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("cos")){
+ }else if(s == "cos"){
   Index += 3;
   Root->Operation = Cos;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("acos")){
+ }else if(s == "acos"){
   Index += 4;
   Root->Operation = ACos;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("tan")){
+ }else if(s == "tan"){
   Index += 3;
   Root->Operation = Tan;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("atan")){
+ }else if(s == "atan"){
   Index += 4;
   Root->Operation = ATan;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("sec")){
+ }else if(s == "sec"){
   Index += 3;
   Root->Operation = Sec;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("asec")){
+ }else if(s == "asec"){
   Index += 4;
   Root->Operation = ASec;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("cosec")){
+ }else if(s == "cosec"){
   Index += 5;
   Root->Operation = Cosec;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("acosec")){
+ }else if(s == "acosec"){
   Index += 6;
   Root->Operation = ACosec;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("cot")){
+ }else if(s == "cot"){
   Index += 3;
   Root->Operation = Cot;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("acot")){
+ }else if(s == "acot"){
   Index += 4;
   Root->Operation = ACot;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("sinh")){
+ }else if(s == "sinh"){
   Index += 4;
   Root->Operation = Sinh;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("asinh")){
+ }else if(s == "asinh"){
   Index += 5;
   Root->Operation = ASinh;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("cosh")){
+ }else if(s == "cosh"){
   Index += 4;
   Root->Operation = Cosh;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("acosh")){
+ }else if(s == "acosh"){
   Index += 5;
   Root->Operation = ACosh;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("tanh")){
+ }else if(s == "tanh"){
   Index += 4;
   Root->Operation = Tanh;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("atanh")){
+ }else if(s == "atanh"){
   Index += 5;
   Root->Operation = ATanh;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("sech")){
+ }else if(s == "sech"){
   Index += 4;
   Root->Operation = Sech;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("asech")){
+ }else if(s == "asech"){
   Index += 5;
   Root->Operation = ASech;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("cosech")){
+ }else if(s == "cosech"){
   Index += 6;
   Root->Operation = Cosech;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("acosech")){
+ }else if(s == "acosech"){
   Index += 7;
   Root->Operation = ACosech;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("coth")){
+ }else if(s == "coth"){
   Index += 4;
   Root->Operation = Coth;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
- }else if(!s.Compare("acoth")){
+ }else if(s == "acoth"){
   Index += 5;
   Root->Operation = ACoth;
   Root->Right = NewNode();
@@ -683,19 +683,19 @@ bool CALCULATOR::Value(NODE* Root){
   }
  }else{
   FuncName(&s);
-  if(s.Length()){
-   CONSTANT  Key(s.String);
+  if(s.Length32()){
+   CONSTANT  Key(s.UTF8());
    CONSTANT* Constant = (CONSTANT*)Constants->Find(&Key);
    if(Constant){
-    Index += Constant->Name.Length();
+    Index += Constant->Name.Length8();
     Root->Operation = Val;
     Root->Value = Constant->Value;
     if(Minus) Root->Value *= -1.;
 
    }else{
-    Index += s.Length();
+    Index += s.Length8();
     Root->Operation = Var;
-    Root->Name.Set(&s);
+    Root->Name      = s;
     if(Minus){
      N = NewNode(Root);
      Root->Operation   = Multiply;
@@ -1154,7 +1154,7 @@ long double CALCULATOR::CalcTree(NODE* Root, const char* Variable,
    }
   }else{ // Value
    if(Root->Operation == Var){
-    if(!Root->Name.Compare(Variable)){
+    if(Root->Name == Variable){
      return Value;
     }else{
      return 0.;
@@ -1225,7 +1225,7 @@ bool CALCULATOR::Simplify(NODE* Root){
        Root->Left      = N->Left;
        Root->Right     = N->Right;
        Root->Other     = N->Other;
-       Root->Name.Set(&N->Name);
+       Root->Name      = N->Name;
        delete N;
        return true;
       }
@@ -1250,7 +1250,7 @@ bool CALCULATOR::Simplify(NODE* Root){
        Root->Left      = N->Left;
        Root->Right     = N->Right;
        Root->Other     = N->Other;
-       Root->Name.Set(&N->Name);
+       Root->Name      = N->Name;
        delete N;
        return true;
       }
@@ -1271,7 +1271,7 @@ bool CALCULATOR::Simplify(NODE* Root){
        Root->Left      = N->Left;
        Root->Right     = N->Right;
        Root->Other     = N->Other;
-       Root->Name.Set(&N->Name);
+       Root->Name      = N->Name;
        delete N;
        return true;
       }
@@ -1288,7 +1288,7 @@ bool CALCULATOR::Simplify(NODE* Root){
        Root->Left      = N->Left;
        Root->Right     = N->Right;
        Root->Other     = N->Other;
-       Root->Name.Set(&N->Name);
+       Root->Name      = N->Name;
        delete N;
        return true;
       }
@@ -1316,7 +1316,7 @@ bool CALCULATOR::Simplify(NODE* Root){
        Root->Left      = N->Left;
        Root->Right     = N->Right;
        Root->Other     = N->Other;
-       Root->Name.Set(&N->Name);
+       Root->Name      = N->Name;
        delete N;
        return true;
       }
@@ -1329,7 +1329,7 @@ bool CALCULATOR::Simplify(NODE* Root){
        Root->Left      = N->Left;
        Root->Right     = N->Right;
        Root->Other     = N->Other;
-       Root->Name.Set(&N->Name);
+       Root->Name      = N->Name;
        delete N;
        return true;
       }
@@ -1346,7 +1346,7 @@ bool CALCULATOR::Simplify(NODE* Root){
        Root->Left      = N->Left;
        Root->Right     = N->Right;
        Root->Other     = N->Other;
-       Root->Name.Set(&N->Name);
+       Root->Name      = N->Name;
        delete N;
        return true;
       }
@@ -2192,7 +2192,7 @@ void CALCULATOR::Diff(NODE* Root, const char* Variable){
    while(Simplify(Root));
   }else{ // Value
    if(Root->Operation == Var){
-    if(!Root->Name.Compare(Variable)){
+    if(Root->Name == Variable){
      Root->Operation = Val;
      Root->Value = 1.;
     }
@@ -2213,454 +2213,454 @@ void CALCULATOR::ViewTree(NODE* Root, STRING* Result, unsigned BufferSize){
    switch(Root->Operation){
     case Fact:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append(&A );
-     Result->Append("!");
+     *Result += A ;
+     *Result += "!";
      return;
 
     case Power:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Append("((");
-     Result->Append(&A );
-     Result->Append(")^");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result += "(";
+     *Result += A ;
+     *Result += ")^";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Multiply:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Append("(");
-     Result->Append(&A );
-     Result->Append("*");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result += "(";
+     *Result += A ;
+     *Result += "*";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Divide:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Append("(");
-     Result->Append(&A );
-     Result->Append("/");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result += "(";
+     *Result += A ;
+     *Result += "/";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Remainder:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Append("(");
-     Result->Append(&A );
-     Result->Append("rem");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result += "(";
+     *Result += A ;
+     *Result += "rem";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Add:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Append("(");
-     Result->Append(&A );
-     Result->Append("+");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result += "(";
+     *Result += A ;
+     *Result += "+";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Subtract:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Append("(");
-     Result->Append(&A );
-     Result->Append("-");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result += "(";
+     *Result += A ;
+     *Result += "-";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Log:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("log(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "log";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Ln:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("ln(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "ln";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Abs:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("abs(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "abs";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Round:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("round(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "round";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Fix:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("fix(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "fix";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Floor:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("floor(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "floor";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Ceil:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("ceil(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "ceil";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Rand:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("rand(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "rand";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Sin:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("sin(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "sin";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ASin:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("asin(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "asin";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Cos:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("cos(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "cos";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ACos:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("acos(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "acos";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Tan:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("tan(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "tan";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ATan:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("atan(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "atan";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Sec:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("sec(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "sec";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ASec:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("asec(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "asec";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Cosec:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("cosec(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "cosec";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ACosec:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("acosec(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "acosec";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Cot:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("cot(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "cot";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ACot:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("acot(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "acot";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Sinh:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("sinh(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "sinh";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ASinh:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("asinh(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "asinh";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Cosh:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("cosh(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "cosh";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ACosh:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("acosh(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "acosh";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Tanh:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("tanh(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "tanh";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ATanh:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("atanh(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "atanh";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Sech:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("sech(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "sech";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ASech:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("asech(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "asech";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Cosech:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("cosech(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "cosech";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ACosech:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("acosech(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "acosech";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Coth:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("coth(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "coth";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case ACoth:
      ViewTree(Root->Right, &A, BufferSize);
-     Result->Append("acoth(");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result += "acoth";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case Condition:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("[");
-     Result->Append(&A );
-     Result->Append("]");
-     Result->Append(&B );
+     *Result  = "[";
+     *Result += A ;
+     *Result += "]";
+     *Result += B ;
      ViewTree(Root->Other, &A, BufferSize);
-     Result->Append(&A );
+     *Result += A ;
      return;
 
     case Greater:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append(">");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += ">";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Less:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append("<");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += "<";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Equal:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append("=");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += "=";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case GreaterEqual:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append(">=");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += ">=";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case LessEqual:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append("<=");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += "<=";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case NotEqual:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append("~=");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += "~=";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Not:
      ViewTree(Root->Left , &A, BufferSize);
-     Result->Set   ("(~");
-     Result->Append(&A );
-     Result->Append(")");
+     *Result  = "(~";
+     *Result += A ;
+     *Result += ")";
      return;
 
     case And:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append("&");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += "&";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Or:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append("|");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += "|";
+     *Result += B ;
+     *Result += ")";
      return;
 
     case Xor:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
-     Result->Set   ("(");
-     Result->Append(&A );
-     Result->Append(":");
-     Result->Append(&B );
-     Result->Append(")");
+     *Result  = "(";
+     *Result += A ;
+     *Result += ":";
+     *Result += B ;
+     *Result += ")";
      return;
 
     default:
-     Result->Set   ("(Unknown Operation: ");
-     Result->Append(Root->Operation);
-     Result->Append(", Value: 0x");
-     Result->Append((double)round(Root->Value), 12);
-     Result->Append(", Name: ");
-     Result->Append(&Root->Name);
-     Result->Append(", Left: ");
-     Result->Append((int)Root->Left);
-     Result->Append(", Right: ");
-     Result->Append((int)Root->Right);
-     Result->Append(", Other: ");
-     Result->Append((int)Root->Other);
-     Result->Append(")");
+     *Result  = "(Unknown Operation: ";
+     *Result += Root->Operation;
+     *Result += ", Value: 0x";
+      Result->AppendFloat((double)round(Root->Value), 12);
+     *Result += ", Name: ";
+     *Result += Root->Name;
+     *Result += ", Left: ";
+     *Result += (int)Root->Left;
+     *Result += ", Right: ";
+     *Result += (int)Root->Right;
+     *Result += ", Other: ";
+     *Result += (int)Root->Other;
+     *Result += ")";
      return;
    }
   }else{ // Value
    if(Root->Operation == Var){
-    Result->Set(&Root->Name);
+    *Result = Root->Name;
     return;
 
    }else if(Root->Operation == Val){
     if(Root->Value < 0.0){
-     Result->Set   ('(');
-     Result->Append((double)Root->Value, 12);
-     Result->Append(')');
+     *Result  = '(';
+      Result->AppendFloat((double)Root->Value, 12);
+     *Result += ')';
     }else{
-     Result->Set((double)Root->Value, 12);
+      Result->SetFloat((double)Root->Value, 12);
     }
     return;
 
    }else{
-    Result->Set   ("(Invalid node: Operation: ");
-    Result->Append(Root->Operation);
-    Result->Append(", Value: ");
-    Result->Append((double)Root->Value);
-    Result->Append(", Name: ");
-    Result->Append(&Root->Name);
-    Result->Append(", Left: ");
-    Result->Append((int)Root->Left);
-    Result->Append(", Right: ");
-    Result->Append((int)Root->Right);
-    Result->Append(", Other: ");
-    Result->Append((int)Root->Other);
-    Result->Append(")");
+    *Result  = "(Invalid node: Operation: ";
+    *Result += Root->Operation;
+    *Result += ", Value: ";
+    *Result += (double)Root->Value;
+    *Result += ", Name: ";
+    *Result += Root->Name;
+    *Result += ", Left: ";
+    *Result += (int)Root->Left;
+    *Result += ", Right: ";
+    *Result += (int)Root->Right;
+    *Result += ", Other: ";
+    *Result += (int)Root->Other;
+    *Result += ")";
     return;
    }
   }
  }else{
-  Result->Clear();
+  *Result = "";
  }
- Result->Clear();
+ *Result = "";
 }
 //------------------------------------------------------------------------------
 

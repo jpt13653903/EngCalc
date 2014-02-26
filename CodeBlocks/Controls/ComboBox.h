@@ -17,13 +17,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
-    
+
 #ifndef ComboBox_h
 #define ComboBox_h
 //------------------------------------------------------------------------------
 
 #include "Control.h"
-#include "Jstring.h"
+#include "UnicodeString.h"
 //------------------------------------------------------------------------------
 
 class COMBO_BOX: public CONTROL{

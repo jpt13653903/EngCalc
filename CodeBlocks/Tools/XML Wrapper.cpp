@@ -29,7 +29,7 @@ static int ENTITY_Compare(void* Left, void* Right){
  XML_Wrapper::ENTITY* left  = (XML_Wrapper::ENTITY*)Left;
  XML_Wrapper::ENTITY* right = (XML_Wrapper::ENTITY*)Right;
 
- return left->Name.Compare(right->Name.String);
+ return left->Name.Compare(right->Name);
 }
 //------------------------------------------------------------------------------
 
@@ -37,12 +37,12 @@ static int ATTRIBUTE_Compare(void* Left, void* Right){
  XML_Wrapper::ATTRIBUTE* left  = (XML_Wrapper::ATTRIBUTE*)Left;
  XML_Wrapper::ATTRIBUTE* right = (XML_Wrapper::ATTRIBUTE*)Right;
 
- return left->Name.Compare(right->Name.String);
+ return left->Name.Compare(right->Name);
 }
 //------------------------------------------------------------------------------
 
 XML_Wrapper::ENTITY::ENTITY(const char* Name){
- this->Name.Append(Name);
+ this->Name += Name;
 
  Children  .Compare = ENTITY_Compare;
  Attributes.Compare = ATTRIBUTE_Compare;
@@ -67,8 +67,8 @@ XML_Wrapper::ENTITY::~ENTITY(){
 //------------------------------------------------------------------------------
 
 XML_Wrapper::ATTRIBUTE::ATTRIBUTE(const char* Name, const char* Value){
- this->Name .Append(Name);
- this->Value.Append(Value);
+ this->Name  += Name;
+ this->Value += Value;
 }
 //------------------------------------------------------------------------------
 
@@ -112,7 +112,7 @@ void XML_Wrapper::New(const char* Document){
  STRING LegalName;
  GetLegalName(Document, &LegalName);
 
- Nesting = new NESTING(LegalName.String);
+ Nesting = new NESTING(LegalName.UTF8());
  Root    = Nesting->Entity;
 }
 //------------------------------------------------------------------------------
@@ -123,7 +123,7 @@ void XML_Wrapper::Begin(const char* Entity){
  STRING LegalName;
  GetLegalName(Entity, &LegalName);
 
- NESTING* Temp = new NESTING(LegalName.String);
+ NESTING* Temp = new NESTING(LegalName.UTF8());
  Nesting->Entity->Children.Insert(Temp->Entity);
 
  Temp->Next = Nesting;
@@ -134,25 +134,25 @@ void XML_Wrapper::Begin(const char* Entity){
 void XML_Wrapper::Comment(const char* Comment){
  if(!Nesting) return;
 
- Nesting->Entity->Comments.Append("<!-- ");
+ Nesting->Entity->Comments += "<!-- ";
 
  int j;
  for(j = 0; Comment[j]; j++){
   if(Comment[j] != '-' || Comment[j+1] != '-'){
-   if(Comment[j] == '\n') Nesting->Entity->Comments.Append("\n     ");
-   else                   Nesting->Entity->Comments.Append(Comment[j]);
+   if(Comment[j] == '\n') Nesting->Entity->Comments += "\n     ";
+   else                   Nesting->Entity->Comments += Comment[j];
 
   }else{
    if(Comment[j+2] == '-'){
-    Nesting->Entity->Comments.Append(em_dash);
+    Nesting->Entity->Comments += em_dash;
     j += 2;
    }else{
-    Nesting->Entity->Comments.Append(en_dash);
+    Nesting->Entity->Comments += en_dash;
     j++;
    }
   }
  }
- Nesting->Entity->Comments.Append(" -->\n");
+ Nesting->Entity->Comments += " -->\n";
 }
 //------------------------------------------------------------------------------
 
@@ -160,8 +160,8 @@ void XML_Wrapper::Attribute(const char* Name, int Value){
  if(!Nesting) return;
 
  STRING s;
- s.Set(Value);
- Attribute(Name, s.String);
+ s = Value;
+ Attribute(Name, s.UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -177,8 +177,8 @@ void XML_Wrapper::Attribute(const char* Name, double Value){
  if(!Nesting) return;
 
  STRING s;
- s.Set(Value);
- Attribute(Name, s.String);
+ s = Value;
+ Attribute(Name, s.UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -186,9 +186,9 @@ void XML_Wrapper::Attribute(const char* Name, unsigned Value){
  if(!Nesting) return;
 
  STRING s;
- s.Set    ("0x");
- s.Append (Value, 8);
- Attribute(Name , s.String);
+ s = "0x";
+ s.AppendHex(Value, 8);
+ Attribute(Name , s.UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -198,13 +198,13 @@ void XML_Wrapper::Attribute(const char* Name, const char* Value){
  STRING LegalName;
  GetLegalName(Name, &LegalName);
 
- ATTRIBUTE* Temp = new ATTRIBUTE(LegalName.String, Value);
+ ATTRIBUTE* Temp = new ATTRIBUTE(LegalName.UTF8(), Value);
  Nesting->Entity->Attributes.Insert(Temp);
 }
 //------------------------------------------------------------------------------
 
 void XML_Wrapper::Attribute(const char* Name, STRING* Value){
- Attribute(Name, Value->String);
+ Attribute(Name, Value->UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -212,8 +212,8 @@ void XML_Wrapper::Content(int Value){
  if(!Nesting) return;
 
  STRING s;
- s.Set(Value);
- Content(s.String);
+ s = Value;
+ Content(s.UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -229,8 +229,8 @@ void XML_Wrapper::Content(double Value){
  if(!Nesting) return;
 
  STRING s;
- s.Set(Value);
- Content(s.String);
+ s = Value;
+ Content(s.UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -238,9 +238,9 @@ void XML_Wrapper::Content(unsigned Value){
  if(!Nesting) return;
 
  STRING s;
- s.Set   ("0x");
- s.Append(Value, 8);
- Content (s.String);
+ s = "0x";
+ s.AppendHex(Value, 8);
+ Content (s.UTF8());
 }
 //------------------------------------------------------------------------------
 
@@ -248,7 +248,7 @@ void XML_Wrapper::Content(const char* Value){
  if(!Nesting) return;
  if(!Value  ) return;
 
- Nesting->Entity->Content.Append(Value);
+ Nesting->Entity->Content += Value;
 }
 //------------------------------------------------------------------------------
 
@@ -262,12 +262,12 @@ void XML_Wrapper::End(){
 //------------------------------------------------------------------------------
 
 void XML_Wrapper::GetLegalName(const char* Name, STRING* LegalName){
- UNICODE_CODEC Codec;
+ STRING Temp;
+ Temp = Name;
 
- LegalName->Clear();
+ *LegalName = "";
 
- int       j    = 0;
- char32_t* Temp = Codec.GetUnicode(Name);
+ int j = 0;
 
  if(
   (Temp[0] == ':'                          ) ||
@@ -286,8 +286,8 @@ void XML_Wrapper::GetLegalName(const char* Name, STRING* LegalName){
   (Temp[0] >= 0x0F900 && Temp[0] <= 0x0FDCF) ||
   (Temp[0] >= 0x0FDF0 && Temp[0] <= 0x0FFFD) ||
   (Temp[0] >= 0x10000 && Temp[0] <= 0xEFFFF)
- )    LegalName->Append(Temp[0]);
- else LegalName->Append('_'    );
+ )    *LegalName += Temp[0];
+ else *LegalName += '_'    ;
 
  j = 1;
  while(Temp[j]){
@@ -313,42 +313,42 @@ void XML_Wrapper::GetLegalName(const char* Name, STRING* LegalName){
    (Temp[j] >= 0x0F900 && Temp[j] <= 0x0FDCF) ||
    (Temp[j] >= 0x0FDF0 && Temp[j] <= 0x0FFFD) ||
    (Temp[j] >= 0x10000 && Temp[j] <= 0xEFFFF)
-  )    LegalName->Append(Temp[j]);
-  else LegalName->Append('_'    );
+  )    *LegalName += Temp[j];
+  else *LegalName += '_'    ;
   j++;
  }
 }
 //------------------------------------------------------------------------------
 
 void XML_Wrapper::GetLegalContent(STRING* Content, STRING* LegalContent){
- LegalContent->Clear();
+ *LegalContent = "";
 
  int   j;
- char* Temp = Content->String;
+ char* Temp = Content->UTF8();
  for(j = 0; Temp[j]; j++){
   switch(Temp[j]){
    case '<':
-    LegalContent->Append("&lt");
+    *LegalContent += "&lt";
     break;
 
    case '>':
-    LegalContent->Append("&gt");
+    *LegalContent += "&gt";
     break;
 
    case '"':
-    LegalContent->Append("&quot");
+    *LegalContent += "&quot";
     break;
 
    case '\'':
-    LegalContent->Append("&apos");
+    *LegalContent += "&apos";
     break;
 
    case '&':
-    LegalContent->Append("&amp");
+    *LegalContent += "&amp";
     break;
 
    default:
-    LegalContent->Append(Temp[j]);
+    *LegalContent += Temp[j];
     break;
   }
  }
@@ -358,20 +358,20 @@ void XML_Wrapper::GetLegalContent(STRING* Content, STRING* LegalContent){
 void XML_Wrapper::SaveEntity(ENTITY* Entity, unsigned Indent){
  unsigned j;
 
- if(Entity->Comments.Length()){
-  char*    s  = Entity->Comments.String;
+ if(Entity->Comments.Length32()){
+  char*    s  = Entity->Comments.UTF8();
   unsigned i1 = 0;
   unsigned i2 = 0;
 
   // Comments are "\n\0" terminated
   while(s[i2]){
    if(s[i2] == '\n'){
-    for(j = 0; j < Indent; j++) Buffer.Append(' ');
+    for(j = 0; j < Indent; j++) Buffer += ' ';
     s[i2] = 0;
-    Buffer.Append(s + i1);
+    Buffer += s + i1;
     s[i2] = '\n';
     i1    = ++i2;
-    Buffer.Append('\n');
+    Buffer += '\n';
 
    }else{
     i2++;
@@ -379,9 +379,9 @@ void XML_Wrapper::SaveEntity(ENTITY* Entity, unsigned Indent){
   }
  }
 
- for(j = 0; j < Indent; j++) Buffer.Append(' ');
- Buffer.Append('<');
- Buffer.Append(&Entity->Name);
+ for(j = 0; j < Indent; j++) Buffer += ' ';
+ Buffer += '<';
+ Buffer += Entity->Name;
 
  // Add Attributes
  if(Entity->Attributes.ItemCount()){
@@ -389,53 +389,53 @@ void XML_Wrapper::SaveEntity(ENTITY* Entity, unsigned Indent){
   ATTRIBUTE* Temp     = (ATTRIBUTE*)Entity->Attributes.First();
   while(Temp){
    GetLegalContent(&Temp->Value, &Temp->LegalValue);
-   j = Temp->Name.Length();
+   j = Temp->Name.Length8();
    if(EqualPos < j) EqualPos = j;
    Temp = (ATTRIBUTE*)Entity->Attributes.Next();
   }
 
   Temp = (ATTRIBUTE*)Entity->Attributes.First();
   while(Temp){
-   Buffer.Append("\n ");
-   for(j = 0; j < Indent; j++) Buffer.Append(' ');
-   Buffer.Append(&Temp->Name);
+   Buffer += "\n ";
+   for(j = 0; j < Indent; j++) Buffer += ' ';
+   Buffer += Temp->Name;
 
-   j = Temp->Name.Length();
-   for(; j < EqualPos ; j++) Buffer.Append(' ');
-   Buffer.Append(" = \"");
+   j = Temp->Name.Length8();
+   for(; j < EqualPos ; j++) Buffer += ' ';
+   Buffer += " = \"";
 
-   Buffer.Append(&Temp->LegalValue);
-   Buffer.Append('"');
+   Buffer += Temp->LegalValue;
+   Buffer += '"';
    Temp = (ATTRIBUTE*)Entity->Attributes.Next();
   }
-  Buffer.Append('\n');
-  for(j = 0; j < Indent; j++) Buffer.Append(' ');
+  Buffer += '\n';
+  for(j = 0; j < Indent; j++) Buffer += ' ';
  }
 
  // Add children and then the content
- if(Entity->Content.Length() || Entity->Children.ItemCount()){
-  Buffer.Append(">\n");
+ if(Entity->Content.Length32() || Entity->Children.ItemCount()){
+  Buffer += ">\n";
 
-  if(Entity->Content.Length()){
+  if(Entity->Content.Length32()){
    GetLegalContent(&Entity->Content, &Entity->LegalContent);
 
-   char*    s  = Entity->LegalContent.String;
+   char*    s  = Entity->LegalContent.UTF8();
    unsigned i1 = 0;
    unsigned i2 = 0;
 
    while(true){
     if(s[i2] == '\n'){
-     for(j = 0; j <= Indent; j++) Buffer.Append(' ');
+     for(j = 0; j <= Indent; j++) Buffer += ' ';
      s[i2] = 0;
-     Buffer.Append(s + i1);
+     Buffer += s + i1;
      s[i2] = '\n';
      i1    = ++i2;
-     Buffer.Append('\n');
+     Buffer += '\n';
 
     }else if(s[i2] == 0){
-     for(j = 0; j <= Indent; j++) Buffer.Append(' ');
-     if(s[i1]) Buffer.Append(s + i1);
-     Buffer.Append('\n');
+     for(j = 0; j <= Indent; j++) Buffer += ' ';
+     if(s[i1]) Buffer += s + i1;
+     Buffer += '\n';
      break;
 
     }else{
@@ -451,13 +451,13 @@ void XML_Wrapper::SaveEntity(ENTITY* Entity, unsigned Indent){
     Temp = (ENTITY*)Entity->Children.Next();
    }
   }
-  for(j = 0; j < Indent; j++) Buffer.Append(' ');
-  Buffer.Append("</");
-  Buffer.Append(&Entity->Name);
-  Buffer.Append(">\n");
+  for(j = 0; j < Indent; j++) Buffer += ' ';
+  Buffer += "</";
+  Buffer += Entity->Name;
+  Buffer += ">\n";
 
  }else{
-  Buffer.Append("/>\n");
+  Buffer += "/>\n";
  }
 }
 //------------------------------------------------------------------------------
@@ -470,15 +470,17 @@ bool XML_Wrapper::Save(const char* Filename){
  FileWrapper File;
  if(!File.Open(Filename, FileWrapper::faCreate)) return false;
 
- Buffer.Append(
-  "<?xml version = \"1.0\" encoding = \"UTF-8\" standalone = \"yes\" ?>\n"
- );
+ Buffer += "<?"
+  "xml version ""= \"1.0\" "
+  "encoding "   "= \"UTF-8\" "
+  "standalone " "= \"yes\" "
+ "?>\n";
  SaveEntity(Root);
- File.Write(Buffer.String, Buffer.Length());
+ File.Write(Buffer.UTF8(), Buffer.Length8());
  File.Close();
 
  // Clear memory
- Buffer.Clear();
+ Buffer = "";
 
  return true;
 }
@@ -529,7 +531,7 @@ bool XML_Wrapper::ReadComment(){
 //------------------------------------------------------------------------------
 
 bool XML_Wrapper::ReadName(STRING* Buffer){
- Buffer->Clear();
+ *Buffer = "";
 
  while(ReadSpace() || ReadComment());
 
@@ -545,10 +547,10 @@ bool XML_Wrapper::ReadName(STRING* Buffer){
   ){
    break;
   }
-  Buffer->Append(ReadBuffer[ReadIndex++]);
+  *Buffer += ReadBuffer[ReadIndex++];
  }
 
- return Buffer->Length();
+ return Buffer->Length8();
 }
 //------------------------------------------------------------------------------
 
@@ -570,7 +572,7 @@ bool XML_Wrapper::ReadContent(STRING* Buffer, char End){
     ReadBuffer[ReadIndex+3] == 't'
    ){
     ReadIndex += 4;
-    Buffer->Append('"');
+    *Buffer += '"';
 
    }else if(
     ReadBuffer[ReadIndex  ] == 'a' &&
@@ -579,21 +581,21 @@ bool XML_Wrapper::ReadContent(STRING* Buffer, char End){
     ReadBuffer[ReadIndex+3] == 's'
    ){
     ReadIndex += 4;
-    Buffer->Append('\'');
+    *Buffer += '\'';
 
    }else if(
     ReadBuffer[ReadIndex  ] == 'l' &&
     ReadBuffer[ReadIndex+1] == 't'
    ){
     ReadIndex += 2;
-    Buffer->Append('<');
+    *Buffer += '<';
 
    }else if(
     ReadBuffer[ReadIndex  ] == 'g' &&
     ReadBuffer[ReadIndex+1] == 't'
    ){
     ReadIndex += 2;
-    Buffer->Append('>');
+    *Buffer += '>';
 
    }else if(
     ReadBuffer[ReadIndex  ] == 'a' &&
@@ -601,15 +603,15 @@ bool XML_Wrapper::ReadContent(STRING* Buffer, char End){
     ReadBuffer[ReadIndex+2] == 'p'
    ){
     ReadIndex += 3;
-    Buffer->Append('&');
+    *Buffer += '&';
    }
 
   }else{
-   Buffer->Append(ReadBuffer[ReadIndex++]);
+   *Buffer += ReadBuffer[ReadIndex++];
   }
  }
 
- return Buffer->Length();
+ return Buffer->Length8();
 }
 //------------------------------------------------------------------------------
 
@@ -695,13 +697,13 @@ bool XML_Wrapper::ReadHeader(){
     return false;
    }
 
-   Key.Name.Clear(); Key.Name.Append("encoding");
+   Key.Name  = "encoding";
    Attribute = (ATTRIBUTE*)Attributes.Find(&Key);
    if(!Attribute){
     MessageBoxA(0, "No encoding", "XML Error", MB_ICONERROR);
     return false;
    }
-   if(Attribute->Value.Compare("UTF-8")){
+   if(Attribute->Value != "UTF-8"){
     MessageBoxA(0, "Encoding other than UTF-8", "XML Error", MB_ICONERROR);
     return false;
    }
@@ -728,7 +730,7 @@ XML_Wrapper::ENTITY* XML_Wrapper::ReadEntity(){
   return 0;
  }
 
- ENTITY* Entity = new ENTITY(Buffer.String);
+ ENTITY* Entity = new ENTITY(Buffer.UTF8());
  while(ReadAttribute(&Entity->Attributes));
 
  while(ReadSpace() || ReadComment());
@@ -758,7 +760,7 @@ XML_Wrapper::ENTITY* XML_Wrapper::ReadEntity(){
    ReadBuffer[ReadIndex+1] == '/'
   ){
    ReadIndex += 2;
-   Buffer.Clear();
+   Buffer = "";
    if(!ReadName(&Buffer)){
     MessageBoxA(0, "Invalid closing tag", "XML Error", MB_ICONERROR);
     delete Entity;
@@ -770,7 +772,7 @@ XML_Wrapper::ENTITY* XML_Wrapper::ReadEntity(){
     return 0;
    }
    ReadIndex++;
-   if(Buffer.Compare(Entity->Name.String)){
+   if(Buffer != Entity->Name){
     MessageBoxA(
      0,
      "Closing tag does not match opening tag",
@@ -789,9 +791,9 @@ XML_Wrapper::ENTITY* XML_Wrapper::ReadEntity(){
    FoundBody = true;
   }
 
-  Buffer.Clear();
+  Buffer = "";
   if(ReadContent(&Buffer)){
-   Entity->Content.Append(&Buffer);
+   Entity->Content += Buffer;
    FoundBody = true;
   }
 
@@ -851,7 +853,7 @@ XML_Wrapper::ENTITY* XML_Wrapper::FindChild(ENTITY* Entity, const char* Name){
  STRING LegalName;
  GetLegalName(Name, &LegalName);
 
- ENTITY Key(LegalName.String);
+ ENTITY Key(LegalName.UTF8());
  return (ENTITY*)Entity->Children.Find(&Key);
 }
 //------------------------------------------------------------------------------
@@ -863,7 +865,7 @@ XML_Wrapper::ENTITY* XML_Wrapper::NextChild(ENTITY* Entity, const char* Name){
  GetLegalName(Name, &LegalName);
 
  ENTITY* Result = (ENTITY*)Entity->Children.Next();
- if(Result && !Result->Name.Compare(&LegalName)) return Result;
+ if(Result && Result->Name == LegalName) return Result;
  return 0;
 }
 //------------------------------------------------------------------------------
@@ -876,7 +878,7 @@ XML_Wrapper::ATTRIBUTE* XML_Wrapper::FindAttribute(
  STRING LegalName;
  GetLegalName(Name, &LegalName);
 
- ATTRIBUTE Key(LegalName.String, "");
+ ATTRIBUTE Key(LegalName.UTF8(), "");
  return (ATTRIBUTE*)Entity->Attributes.Find(&Key);
 }
 //------------------------------------------------------------------------------
@@ -888,7 +890,7 @@ bool XML_Wrapper::ReadAttribute(
 ){
  ATTRIBUTE* A = FindAttribute(Entity, Name);
  if(A){
-  *Value = Calc.Calculate(A->Value.String);
+  *Value = Calc.Calculate(A->Value.UTF8());
   return true;
  }
  return false;
@@ -916,7 +918,7 @@ bool XML_Wrapper::ReadAttribute(
 ){
  ATTRIBUTE* A = FindAttribute(Entity, Name);
  if(A){
-  strcpy(Value, A->Value.String);
+  strcpy(Value, A->Value.UTF8());
   return true;
  }
  return false;
@@ -930,7 +932,7 @@ bool XML_Wrapper::ReadAttribute(
 ){
  ATTRIBUTE* A = FindAttribute(Entity, Name);
  if(A){
-  Value->Set(A->Value.String);
+  *Value = A->Value;
   return true;
  }
  return false;
@@ -944,7 +946,7 @@ bool XML_Wrapper::ReadAttribute(
 ){
  ATTRIBUTE* A = FindAttribute(Entity, Name);
  if(A){
-  *Value = Calc.Calculate(A->Value.String);
+  *Value = Calc.Calculate(A->Value.UTF8());
   return true;
  }
  return false;
@@ -958,7 +960,7 @@ bool XML_Wrapper::ReadAttribute(
 ){
  ATTRIBUTE* A = FindAttribute(Entity, Name);
  if(A){
-  *Value = Calc.Calculate(A->Value.String);
+  *Value = Calc.Calculate(A->Value.UTF8());
   return true;
  }
  return false;
