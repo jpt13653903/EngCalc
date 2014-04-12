@@ -109,6 +109,8 @@ class STRING{
 
   char32 operator[] (size_t Index);
 
+  void   SetLength32(size_t Length);
+
   size_t Length8 (); // In UTF-8  bytes
   size_t Length16(); // In UTF-16 words
   size_t Length32(); // In UTF-32 characters

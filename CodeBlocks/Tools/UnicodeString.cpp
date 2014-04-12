@@ -372,12 +372,7 @@ void STRING::operator= (int d){
 //------------------------------------------------------------------------------
 
 void STRING::operator= (double f){
- Invalidate();
-
- char s[0x100];
- sprintf(s, "%lg", f);
-
- operator= (s);
+ SetFloat(f, 9, false);
 }
 //------------------------------------------------------------------------------
 
@@ -503,6 +498,18 @@ void STRING::operator+= (const STRING& String){
 char32 STRING::operator[] (size_t Index){
  if(Index >= 0 && Index < Length_32) return Data_32[Index];
  return 0;
+}
+//------------------------------------------------------------------------------
+
+void STRING::SetLength32(size_t Length){
+ Invalidate();
+
+ if(Length < Length_32){
+  Length_32          = Length;
+  Data_32[Length_32] = 0;
+ }else{
+  while(Length_32 < Length) Append((char32)0);
+ }
 }
 //------------------------------------------------------------------------------
 
@@ -822,11 +829,11 @@ void STRING::SetHex(unsigned i, int Places){ // Hexadecimal
 //------------------------------------------------------------------------------
 
 void STRING::SetFloat(double d, int SignificantFigures, bool Fill){
- Invalidate();
-
- int    j, shift, places;
+ int    shift, places;
+ bool   sign, trailing;
+ char32 c;
+ size_t j, l;
  double f;
- STRING s;
 
  unsigned* u1 = (unsigned*)&f;
  unsigned* u2 = (unsigned*)&d;
@@ -846,78 +853,72 @@ void STRING::SetFloat(double d, int SignificantFigures, bool Fill){
   operator= ("NAN");
   return;
  }
-
- if(d < 0.0){
-  operator= ('-');
-  d *= -1.0;
- }else{
-  operator= ("");
- }
-
  if(d == 0.0){
   operator= ("0");
   return;
  }
 
- // Find the shift to get the first significant figure at the unit position
- f     = d;
- shift = 0;
- while(f >= 10.0){
-  f /= 10.0;
-  shift++;
+ operator= ("");
+
+ sign = false;
+ if(d < 0.0){
+  sign = true;
+  d   *= -1.0;
  }
- while(f < 1.0){
-  f *= 10.0;
+
+ // Shift so that the whole number is an integer
+ f     = pow(10.0, SignificantFigures);
+ shift = 0;
+ while(round(d) >= f){
+  d /= 10.0;
   shift--;
  }
+ f /= 10.0;
+ while(round(d) < f){
+  d *= 10.0;
+  shift++;
+ }
+ d = round(d);
 
- // Round accordingly and store as integer
- f = pow  (10.0, SignificantFigures - shift - 1);
- d = round(d * f);
-
- // Convert the integer to characters
- places = 0;
+ places   = 0;
+ trailing = true;
  while(d >= 1.0){
-  s.Append((char32)(fmod(d, 10.0) + '0'));
-  d /= 10.0;
+  if(shift && places == shift) Append((char32)'.');
+  c = fmod(d, 10.0) + '0';
+  if(c > '0' || !trailing || Fill){
+   Append(c);
+   trailing = false;
+  }
+  d = floor(d / 10.0);
   places++;
  }
- // s.Reverse
- int l = s.Length_32 / 2;
+
+ // Prepend zeros to small numbers
+ while(places <= shift){
+  if(shift && places == shift) Append((char32)'.');
+  Append((char32)'0');
+  places++;
+ }
+
+ // Prepend sign for negative numbers
+ if(sign) Append((char32)'-');
+
+ // Reverse
+ l = Length_32 / 2;
  for(j = 0; j < l; j++){
-  char32 c = s.Data_32[j];
-  s.Data_32[j] = s.Data_32[s.Length_32-j-1];
-  s.Data_32[s.Length_32-j-1] = c;
+  c = Data_32[j];
+  Data_32[j] = Data_32[Length_32-j-1];
+  Data_32[Length_32-j-1] = c;
  }
 
- // Correct for a round up
- if(places > SignificantFigures) shift++;
-
- // Convert to correct output format
- if(shift < 0){
-  operator+= ("0.");
-  for(j = 1; j < -shift; j++) Append((char32)'0');
-  for(j = 0; j < places; j++) Append((char32)s.Data_32[j]);
-  if(!Fill){
-   while(Data_32[Length_32-1] == '0') Length_32--;
-   if   (Data_32[Length_32-1] == '.') Length_32--;
-   Data_32[Length_32] = 0;
-  }
-
- }else{
-  for(j = 0; j < places && j < shift+1; j++) Append((char32)s.Data_32[j]);
-  if(j < places){
-   Append((char32)'.');
-   for(; j < places ; j++) Append((char32)s.Data_32[j]);
-   if(!Fill){
-    while(Data_32[Length_32-1] == '0') Length_32--;
-    if   (Data_32[Length_32-1] == '.') Length_32--;
-    Data_32[Length_32] = 0;
-   }
-  }else{
-   for(; j < shift+1; j++) Append((char32)'0');
-  }
+ // Append zeros to large numbers
+ while(shift < 0){
+  Append((char32)'0');
+  shift++;
  }
+
+ // Invalidate the UTF8 and UTF16 buffers
+ Invalidate();
 }
 //------------------------------------------------------------------------------
 
