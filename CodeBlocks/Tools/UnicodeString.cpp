@@ -883,7 +883,10 @@ void STRING::SetFloat(double d, int SignificantFigures, bool Fill){
  places   = 0;
  trailing = true;
  while(d >= 1.0){
-  if(shift && places == shift) Append((char32)'.');
+  if(shift && places == shift){
+   if(!trailing) Append((char32)'.');
+   trailing = false;
+  }
   c = fmod(d, 10.0) + '0';
   if(c > '0' || !trailing || Fill){
    Append(c);
