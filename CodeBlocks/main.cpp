@@ -789,6 +789,8 @@ int WINAPI WinMain(
     PostMessage(Window, WM_COMMAND, IDM_NORMAL, 0);
    }else if(!Arg.CompareNoCase("not-on-top")){
     PostMessage(Window, WM_COMMAND, IDM_ALWAYS_ON_TOP, 0);
+   }else if(!Arg.CompareNoCase("degrees")){
+    PostMessage(Window, WM_COMMAND, IDM_DEGREES, 0);
    }
   }
   LocalFree(ArgV);
