@@ -17,7 +17,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
-    
+
 #ifndef Global_h
 #define Global_h
 //------------------------------------------------------------------------------
@@ -26,7 +26,7 @@
 //------------------------------------------------------------------------------
 
 // Space left on the right upon startup
-#define RightSpace 120
+#define RightSpace 140
 //------------------------------------------------------------------------------
 
 // Global handles
