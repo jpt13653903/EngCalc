@@ -25,10 +25,6 @@
 #include "WinHeader.h"
 //------------------------------------------------------------------------------
 
-// Space left on the right upon startup
-#define RightSpace 140
-//------------------------------------------------------------------------------
-
 // Global handles
 extern HWND      Window;
 extern HFONT     Font;

@@ -12,6 +12,7 @@
 				<Option object_output="obj/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
+				<Option parameters="calculator RightSpace=200" />
 				<Compiler>
 					<Add option="-O2" />
 				</Compiler>

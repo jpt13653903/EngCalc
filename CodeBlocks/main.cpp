@@ -443,7 +443,7 @@ void Calculate(){
 void OnAboutClick(){
  MessageBox(
   Window,
-  L"Engineering Calculator, Version 1.4\n"
+  L"Engineering Calculator, Version 1.5\n"
   L"Built on "__DATE__" at "__TIME__"\n"
   L"\n"
   L"Copyright (C) John-Philip Taylor\n"
@@ -647,10 +647,10 @@ LRESULT CALLBACK WindowProcedure(
       break;
 
      case IDM_MANUAL:
-      WinExec(
-       "explorer.exe "
-       "\"https://sourceforge.net/p/alwaysontopcalc/wiki/Home/\"",
-       SW_MAXIMIZE
+      ShellExecute(
+       0, L"open",
+       L"\"https://sourceforge.net/p/alwaysontopcalc/wiki/Home/\"",
+       0, 0, SW_MAXIMIZE
       );
       break;
 
@@ -680,6 +680,23 @@ static HICON LoadIconSmall(WORD Icon){
 }
 //------------------------------------------------------------------------------
 
+void ComplexArgument(STRING* Arg){
+ int     j;
+ char32* A = Arg->UTF32();
+
+ if(Arg->Length32() > 10 && A[10] == '='){
+  A[10] = 0;
+  if(!Arg->CompareNoCase("rightspace")){
+   RightSpace = 0;
+   for(j = 11; A[j] >= '0' && A[j] <= '9'; j++){
+    RightSpace = 10*RightSpace + A[j]-'0';
+   }
+  }
+  A[10] = '=';
+ }
+}
+//------------------------------------------------------------------------------
+
 int WINAPI WinMain(
  HINSTANCE hInstance,
  HINSTANCE hPrevInstance,
@@ -692,9 +709,9 @@ int WINAPI WinMain(
  InitCommonControlsEx(&icex);
 
  // Make sure the "working folder" is correct
- int      j, q, i;
- wchar_t* FullCommandLine = GetCommandLineW();
- wchar_t* NewCurrentDirectory;
+ int            j, q, i;
+ const wchar_t* FullCommandLine = GetCommandLineW();
+       wchar_t* NewCurrentDirectory;
 
  for(j = 0; FullCommandLine[j]; j++);
  while(j && FullCommandLine[j] != '\\') j--;
@@ -707,6 +724,29 @@ int WINAPI WinMain(
 
   SetCurrentDirectoryW(NewCurrentDirectory);
   delete[] NewCurrentDirectory;
+ }
+
+ // Get the command-line
+ int       ArgC;
+ STRING    Arg;
+ wchar_t** ArgV = CommandLineToArgvW(FullCommandLine, &ArgC);
+
+ bool Calculator = false;
+ bool Normal     = false;
+ bool NotOnTop   = false;
+ bool Degrees    = false;
+
+ // Process the command-line
+ if(ArgV){
+  for(int j = 1; j < ArgC; j++){
+   Arg = ArgV[j];
+   if     (!Arg.CompareNoCase("calculator")) Calculator = true;
+   else if(!Arg.CompareNoCase("normal"    )) Normal     = true;
+   else if(!Arg.CompareNoCase("not-on-top")) NotOnTop   = true;
+   else if(!Arg.CompareNoCase("degrees"   )) Degrees    = true;
+   else ComplexArgument(&Arg);
+  }
+  LocalFree(ArgV);
  }
 
  // Store the Instance handle in the global variable
@@ -774,27 +814,10 @@ int WINAPI WinMain(
  ToUnit   = new COMBO_BOX(590, 150);
  Menu     = new MENU;
 
- // Get the command-line
- int       ArgC;
- STRING    Arg;
- wchar_t** ArgV = CommandLineToArgvW(GetCommandLineW(), &ArgC);
-
- // Process the command-line
- if(ArgV){
-  for(int j = 1; j < ArgC; j++){
-   Arg = ArgV[j];
-   if      (!Arg.CompareNoCase("calculator")){
-    PostMessage(Window, WM_COMMAND, IDM_CONVERTER, 0);
-   }else if(!Arg.CompareNoCase("normal")){
-    PostMessage(Window, WM_COMMAND, IDM_NORMAL, 0);
-   }else if(!Arg.CompareNoCase("not-on-top")){
-    PostMessage(Window, WM_COMMAND, IDM_ALWAYS_ON_TOP, 0);
-   }else if(!Arg.CompareNoCase("degrees")){
-    PostMessage(Window, WM_COMMAND, IDM_DEGREES, 0);
-   }
-  }
-  LocalFree(ArgV);
- }
+ if(Calculator) PostMessage(Window, WM_COMMAND, IDM_CONVERTER    , 0);
+ if(Normal    ) PostMessage(Window, WM_COMMAND, IDM_NORMAL       , 0);
+ if(NotOnTop  ) PostMessage(Window, WM_COMMAND, IDM_ALWAYS_ON_TOP, 0);
+ if(Degrees   ) PostMessage(Window, WM_COMMAND, IDM_DEGREES      , 0);
 
  // Show the window
  ShowWindow(Window, SW_SHOW);
