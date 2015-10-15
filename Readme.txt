@@ -1,9 +1,16 @@
 Installation Instructions 
 ------------------------- 
 
-1. Download EngCalc - 1.4.zip 
+1. Download EngCalc - 1.5.zip 
 2. Unzip the archive to your favourite folder 
 3. Run "bin\EngCalc.exe"
+
+Changes from Version 1.4
+------------------------
+
+- Added the RightSpace command-line parameter
+- Added Degrees command-line option
+- Moved the default position to be Windows 10 compatible
 
 Changes From Version 1.3
 ------------------------
