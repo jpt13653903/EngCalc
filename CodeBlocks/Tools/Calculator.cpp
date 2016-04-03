@@ -433,6 +433,11 @@ bool CALCULATOR::Function(NODE* Root){
   Root->Operation = Log;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
+ }else if(s == "lb"){
+  Index += 2;
+  Root->Operation = Log2;
+  Root->Right = NewNode();
+  if(!Factorial(Root->Right)) return false;
  }else if(s == "ln"){
   Index += 2;
   Root->Operation = Ln;
@@ -884,6 +889,9 @@ long double CALCULATOR::CalcTree(NODE* Root, const char* Variable,
     case Log:
      A = CalcTree(Root->Right, Variable, Value);
      return log10l(A);
+    case Log2:
+     A = CalcTree(Root->Right, Variable, Value);
+     return log2l(A);
     case Ln:
      A = CalcTree(Root->Right, Variable, Value);
      return logl(A);
@@ -1466,7 +1474,23 @@ void CALCULATOR::Diff(NODE* Root, const char* Variable){
 
      Temp            = Temp->Left;
      Temp->Operation = Val;
-     Temp->Value     = 0.434294481903252; // log(e)
+     Temp->Value     = 0.434294481903251828; // log(e)
+     break;
+    case Log2:
+     N = Root->Right;
+     Root->Operation = Multiply;
+     Root->Left      = NewNode();
+     Root->Right     = CopyNode(N);
+     Diff(Root->Right, Variable);
+
+     Temp            = Root->Left;
+     Temp->Operation = Divide;
+     Temp->Left      = NewNode();
+     Temp->Right     = N;
+
+     Temp            = Temp->Left;
+     Temp->Operation = Val;
+     Temp->Value     = 1.44269504088896341; // log2(e)
      break;
     case Ln:
      N = Root->Right;
@@ -2280,6 +2304,13 @@ void CALCULATOR::ViewTree(NODE* Root, STRING* Result, unsigned BufferSize){
     case Log:
      ViewTree(Root->Right, &A, BufferSize);
      *Result += "log";
+     *Result += A ;
+     *Result += ")";
+     return;
+
+    case Log2:
+     ViewTree(Root->Right, &A, BufferSize);
+     *Result += "log2";
      *Result += A ;
      *Result += ")";
      return;

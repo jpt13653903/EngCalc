@@ -48,6 +48,7 @@ class CALCULATOR{
    Add,
    Subtract,
    Log,
+   Log2,
    Ln,
    Abs,
    Round,

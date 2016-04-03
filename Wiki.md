@@ -13,13 +13,15 @@ Unzip [the archive](https://sourceforge.net/projects/alwaysontopcalc/files/lates
 ### 2.1 Command-line Options
 Some of the default options can be changed by creating a short-cut and adding command-line options. Some of these options toggle, as opposed to set, so use them only once.
 
-Option     | Action
------------|-------
-Calculator | Start in Calculator mode, as opposed to converter mode
-Normal     | Start with Normal number format, instead of Engineering
-Not-on-top | Start with "Always on top" disabled
+Option       | Action
+-------------|-------
+Calculator   | Start in Calculator mode, as opposed to converter mode
+Normal       | Start with Normal number format, instead of Engineering
+Not-on-top   | Start with "Always on top" disabled
+Degrees      | Start with Degrees instead of Radians
+RightSpace=X | Change the start-up position by specifying the distance from the right of the screen (X is some integer value, in pixels)
 
-As an example, you could create a short-cut that runs "bin\\EngCalc.exe calculator normal not-on-top", which will start Engineering Calculator in calculator mode, with normal form answers and not always on top.
+As an example, you could create a short-cut that runs "bin\\EngCalc.exe calculator normal not-on-top rightspace=200", which will start Engineering Calculator in calculator mode, with normal form answers, not always on top and 200 pixels from the right of the screen.
 
 ## 3. Converter.xml File
 
@@ -80,6 +82,7 @@ Function| Meaning
 -       | Negate
 ~       | Logical Not
 log     | Logarithm to base 10
+log2    | Logarithm to base 2
 ln      | Logarithm to base e
 abs     | Absolute value
 round   | Round
@@ -128,7 +131,7 @@ All constants are in SI units.
 Constant  | Meaning
 ----------|--------
 e         |  Natural base
-pi        |  π
+pi        |  &pi;
 \\c       |  Speed of light
 \\G       |  Gravitational constant
 \\g       |  Gravitational acceleration of the earth

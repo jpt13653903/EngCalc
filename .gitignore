@@ -5,7 +5,6 @@
 *.cscope_file_list
 
 *.txt
-!Wiki.txt
 !Readme.txt
 
 Archive*
