@@ -82,7 +82,7 @@ Function| Meaning
 -       | Negate
 ~       | Logical Not
 log     | Logarithm to base 10
-log2    | Logarithm to base 2
+lb      | Logarithm to base 2
 ln      | Logarithm to base e
 abs     | Absolute value
 round   | Round
