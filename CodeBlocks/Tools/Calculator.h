@@ -122,6 +122,7 @@ class CALCULATOR{
   bool PowerOp    (NODE* Root);
   bool Function   (NODE* Root);
   bool Factorial  (NODE* Root);
+  bool Exponent   (NODE* Root);
   bool Value      (NODE* Root);
   bool Float      (long double* f);
 

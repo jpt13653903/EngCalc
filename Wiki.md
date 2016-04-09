@@ -43,9 +43,11 @@ All space and tab characters are ignored, even those whithin numbers.
 
 ### 4.1 Numbers
 
-- Decimal numbers have any number of decimal digits, an optional decimal point (or comma) and an optional exponent, which starts with 'e' or 'E', followed by a decimal integer.
+- Decimal numbers have any number of decimal digits, an optional decimal point (or comma).
 - Hexadecimal numbers start with '0x' and is followed by any number of hexadecimal digits.
 - Binary numbers start with '0b' and is followed by any number of 0's and 1's.
+- Decimal, hexadecimal and binary numbers can have an optional decimal exponent, which starts with 'e' or 'E', followed by a decimal integer.
+- Decimal, hexadecimal and binary numbers can have an optional binary exponent, which starts with 'p' or 'P', followed by a decimal integer.
 - Numbers are represented internally in 80-bit extended precision floating-point format.  All the limits of this format therefore applies.
 
 ### 4.2 Operators

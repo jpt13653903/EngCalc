@@ -1,9 +1,15 @@
 Installation Instructions 
 ------------------------- 
 
-1. Download EngCalc - 1.5.zip 
+1. Download EngCalc - 1.6.zip 
 2. Unzip the archive to your favourite folder 
 3. Run "bin\EngCalc.exe"
+
+Changes from Version 1.5
+------------------------
+
+- All number formats can now have a decimal or binary exponent, by means of
+  "e" or "p", respectively.
 
 Changes from Version 1.4
 ------------------------

@@ -627,6 +627,37 @@ bool CALCULATOR::Factorial(NODE* Root){
 }
 //------------------------------------------------------------------------------
 
+bool CALCULATOR::Exponent(NODE* Root){
+ int  s = 1;
+ int  i;
+ bool Binary;
+
+      if(Buffer[Index] == 'e' || Buffer[Index] == 'E') Binary = false;
+ else if(Buffer[Index] == 'p' || Buffer[Index] == 'P') Binary = true;
+ else return true; // It's not an exponent, but not an error either
+ Index++;
+
+ s = 1;
+ if(Buffer[Index] == '+'){
+  Index++;
+ }else if(Buffer[Index] == '-'){
+  Index++;
+  s = -1;
+ }
+ i = 0;
+ while((Buffer[Index] >= '0') && (Buffer[Index] <= '9')){
+  i = i * 10 + (Buffer[Index] - '0');
+  Index++;
+ }
+ i *= s;
+
+ if(Binary) Root->Value *= pow( 2.0, i);
+ else       Root->Value *= pow(10.0, i);
+
+ return true;
+}
+//------------------------------------------------------------------------------
+
 bool CALCULATOR::Value(NODE* Root){
  bool        Minus = false;
  STRING      s;
@@ -656,6 +687,7 @@ bool CALCULATOR::Value(NODE* Root){
   if(Minus) f *= -1.;
   Root->Operation = Val;
   Root->Value     = f;
+  if(!Exponent(Root)) return false;
 
  }else if((Buffer[Index] == '0') && (Buffer[Index+1] == 'b')){
   Index += 2;
@@ -667,6 +699,7 @@ bool CALCULATOR::Value(NODE* Root){
   if(Minus) f *= -1.;
   Root->Operation = Val;
   Root->Value     = f;
+  if(!Exponent(Root)) return false;
 
  }else if(((Buffer[Index] >= '0') && (Buffer[Index] <= '9')) ||
           ((Buffer[Index] == '.') || (Buffer[Index] == ',')) ){
@@ -674,6 +707,7 @@ bool CALCULATOR::Value(NODE* Root){
   if(Minus) f *= -1.;
   Root->Operation = Val;
   Root->Value     = f;
+  if(!Exponent(Root)) return false;
 
  }else if(Buffer[Index] == '('){
   Index++;
@@ -722,7 +756,7 @@ bool CALCULATOR::Float(long double* f){
  int i;
  long double temp;
 
- temp = 0.;
+ temp = 0.0;
  while((Buffer[Index] >= '0') && (Buffer[Index] <= '9')){
   temp = temp * 10. + (Buffer[Index] - '0');
   Index++;
@@ -737,25 +771,6 @@ bool CALCULATOR::Float(long double* f){
    Index++;
   }
  }
-
- if((Buffer[Index] == 'e') || (Buffer[Index] == 'E')){
-  Index++;
-  s = 1;
-  if(Buffer[Index] == '+'){
-   Index++;
-  }else if(Buffer[Index] == '-'){
-   Index++;
-   s = -1;
-  }
-  i = 0;
-  while((Buffer[Index] >= '0') && (Buffer[Index] <= '9')){
-   i = i * 10 + (Buffer[Index] - '0');
-   Index++;
-  }
-  i *= s;
-  temp *= pow(10., i);
- }
-
  *f = temp;
 
  return true;
