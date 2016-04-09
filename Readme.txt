@@ -8,8 +8,8 @@ Installation Instructions
 Changes from Version 1.5
 ------------------------
 
-- All number formats can now have a decimal or binary exponent, by means of
-  "e" or "p", respectively.
+- All number formats can now have a decimal or binary exponent,
+  by means of "e" or "p", respectively.
 
 Changes from Version 1.4
 ------------------------

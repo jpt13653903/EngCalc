@@ -39,11 +39,11 @@ The window can be dragged to where you want it by dragging close to the '=' sign
 
 Evaluation is performed in the normal mathematical order (brackets -> functions -> multiply and divide -> add and subtract -> logical operators).
 
-All space and tab characters are ignored, even those whithin numbers.
+All space and tab characters are ignored, even those within numbers.
 
 ### 4.1 Numbers
 
-- Decimal numbers have any number of decimal digits, an optional decimal point (or comma).
+- Decimal numbers have any number of decimal digits and an optional decimal point (or comma).
 - Hexadecimal numbers start with '0x' and is followed by any number of hexadecimal digits.
 - Binary numbers start with '0b' and is followed by any number of 0's and 1's.
 - Decimal, hexadecimal and binary numbers can have an optional decimal exponent, which starts with 'e' or 'E', followed by a decimal integer.
