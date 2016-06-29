@@ -266,6 +266,42 @@ bool CALCULATOR::LogicOp(NODE* Root){
      Root->Operation = Xor;
      if(!AddOp(Root->Right)) return false;
      break;
+    case 'a':
+     if((Buffer[Index+1] == 'n') && (Buffer[Index+2] == 'd')){
+      Index += 3;
+      N = NewNode(Root);
+      Root->Left  = N;
+      Root->Right = NewNode();
+      Root->Operation = bAnd;
+      if(!AddOp(Root->Right)) return false;
+     }else{
+      return true;
+     }
+     break;
+    case 'o':
+     if(Buffer[Index+1] == 'r'){
+      Index += 2;
+      N = NewNode(Root);
+      Root->Left  = N;
+      Root->Right = NewNode();
+      Root->Operation = bOr;
+      if(!AddOp(Root->Right)) return false;
+     }else{
+      return true;
+     }
+     break;
+    case 'x':
+     if((Buffer[Index+1] == 'o') && (Buffer[Index+2] == 'r')){
+      Index += 3;
+      N = NewNode(Root);
+      Root->Left  = N;
+      Root->Right = NewNode();
+      Root->Operation = bXor;
+      if(!AddOp(Root->Right)) return false;
+     }else{
+      return true;
+     }
+     break;
     default:
      return true;
    }
@@ -591,6 +627,11 @@ bool CALCULATOR::Function(NODE* Root){
  }else if(s == "acoth"){
   Index += 5;
   Root->Operation = ACoth;
+  Root->Right = NewNode();
+  if(!Factorial(Root->Right)) return false;
+ }else if(s == "not"){
+  Index += 3;
+  Root->Operation = bNot;
   Root->Right = NewNode();
   if(!Factorial(Root->Right)) return false;
  }else{
@@ -1147,6 +1188,9 @@ long double CALCULATOR::CalcTree(NODE* Root, const char* Variable,
      }else{
       return 0.;
      }
+    case bNot:
+     A = CalcTree(Root->Right, Variable, Value);
+     return ~((uint64_t)A);
     case And:
      A = CalcTree(Root->Left , Variable, Value);
      B = CalcTree(Root->Right, Variable, Value);
@@ -1172,6 +1216,18 @@ long double CALCULATOR::CalcTree(NODE* Root, const char* Variable,
      }else{
       return 0.;
      }
+    case bAnd:
+     A = CalcTree(Root->Left , Variable, Value);
+     B = CalcTree(Root->Right, Variable, Value);
+     return ((uint64_t)A) & ((uint64_t)B);
+    case bOr:
+     A = CalcTree(Root->Left , Variable, Value);
+     B = CalcTree(Root->Right, Variable, Value);
+     return ((uint64_t)A) | ((uint64_t)B);
+    case bXor:
+     A = CalcTree(Root->Left , Variable, Value);
+     B = CalcTree(Root->Right, Variable, Value);
+     return ((uint64_t)A) ^ ((uint64_t)B);
     default:
      break;
    }
@@ -2625,6 +2681,13 @@ void CALCULATOR::ViewTree(NODE* Root, STRING* Result, unsigned BufferSize){
      *Result += ")";
      return;
 
+    case bNot:
+     ViewTree(Root->Left , &A, BufferSize);
+     *Result  = "(not";
+     *Result += A ;
+     *Result += ")";
+     return;
+
     case And:
      ViewTree(Root->Left , &A, BufferSize);
      ViewTree(Root->Right, &B, BufferSize);
@@ -2651,6 +2714,36 @@ void CALCULATOR::ViewTree(NODE* Root, STRING* Result, unsigned BufferSize){
      *Result  = "(";
      *Result += A ;
      *Result += ":";
+     *Result += B ;
+     *Result += ")";
+     return;
+
+    case bAnd:
+     ViewTree(Root->Left , &A, BufferSize);
+     ViewTree(Root->Right, &B, BufferSize);
+     *Result  = "(";
+     *Result += A ;
+     *Result += " and ";
+     *Result += B ;
+     *Result += ")";
+     return;
+
+    case bOr:
+     ViewTree(Root->Left , &A, BufferSize);
+     ViewTree(Root->Right, &B, BufferSize);
+     *Result  = "(";
+     *Result += A ;
+     *Result += " or ";
+     *Result += B ;
+     *Result += ")";
+     return;
+
+    case bXor:
+     ViewTree(Root->Left , &A, BufferSize);
+     ViewTree(Root->Right, &B, BufferSize);
+     *Result  = "(";
+     *Result += A ;
+     *Result += " xor ";
      *Result += B ;
      *Result += ")";
      return;

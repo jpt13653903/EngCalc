@@ -1,9 +1,14 @@
 Installation Instructions 
 ------------------------- 
 
-1. Download EngCalc - 1.6.zip 
+1. Download EngCalc - 1.7.zip 
 2. Unzip the archive to your favourite folder 
 3. Run "bin\EngCalc.exe"
+
+Changes from Version 1.6
+------------------------
+
+- Added bit-wise logical operators
 
 Changes from Version 1.5
 ------------------------

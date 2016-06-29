@@ -56,22 +56,25 @@ Operators are used in the form 'A op B', where 'A' and 'B' are numbers, or formu
 
 Operator|Meaning
 --------|-------
-+       | Add
--       | Subtract
-\*      | Multiply
-/       | Divide
-%       | Remainder (modulus) after division
-rem     | Same as '%'
-^       | Raise to the power of
->       | Greater than
->=      | Greater than or equal to
-<       | Less than
-<=      | Less than or equal to
-=       | Equal
-~=      | Not equal
-&       | Logical and
-/       | Logical or (vertical bar)
-:       | Logical exclusive or
+`+`     | Add
+`-`     | Subtract
+`*`     | Multiply
+`/`     | Divide
+`%`     | Remainder (modulus) after division
+`rem`   | Same as '%'
+`^`     | Raise to the power of
+`>`     | Greater than
+`>=`    | Greater than or equal to
+`<`     | Less than
+`<=`    | Less than or equal to
+`=`     | Equal
+`~=`    | Not equal
+`&`     | Logical and
+`|`     | Logical or (vertical bar)
+`:`     | Logical exclusive or
+`and`   | bit-wise and
+`or`    | bit-wise or
+`xor`   | bit-wise exclusive or
 
 For interest sake, the formula evaluation library is also used for drawing graphs in another application, where the logical operators are used to define piece-wise functions.
 
@@ -79,43 +82,44 @@ For interest sake, the formula evaluation library is also used for drawing graph
 
 Functions are used either in the form 'funcA', where A is a number, or 'func(A)' where 'A' is a number or formula.
 
-Function| Meaning
---------|--------
--       | Negate
-~       | Logical Not
-log     | Logarithm to base 10
-lb      | Logarithm to base 2
-ln      | Logarithm to base e
-abs     | Absolute value
-round   | Round
-fix     | Drops the part after the decimal point
-floor   | Floor
-ceil    | Ceiling
-rand    | Uniform random number between 0 and the number specified
-sin     | Sine
-asin    | Arcsine
-cos     | Cosine
-acos    | Arccosine
-tan     | Tangent
-atan    | Arctangent
-sec     | Sec
-asec    | Arcsec
-cosec   | Cosec
-acosec  | Arccosec
-cot     | Cotangent
-acot    | Arccotangent
-sinh    | Hyperbolic sine
-asin    | Hyperbolic arcsine
-cosh    | Hyperbolic cosine
-acosh   | Hyperbolic arccosine
-tanh    | Hyperbolic tangent
-atanh   | Hyperbolic arctangent
-sech    | Hyperbolic sec
-asech   | Hyperbolic arcsec
-cosech  | Hyperbolic cosec
-acosech | Hyperbolic arccosec
-coth    | Hyperbolic cotangent
-acoth   | Hyperbolic arccotangent
+Function  | Meaning
+----------|--------
+`-`       | Negate
+`~`       | Logical not
+`not`     | Bit-wise not
+`log`     | Logarithm to base 10
+`lb`      | Logarithm to base 2
+`ln`      | Logarithm to base e
+`abs`     | Absolute value
+`round`   | Round
+`fix`     | Drops the part after the decimal point
+`floor`   | Floor
+`ceil`    | Ceiling
+`rand`    | Uniform random number between 0 and the number specified
+`sin`     | Sine
+`asin`    | Arcsine
+`cos`     | Cosine
+`acos`    | Arccosine
+`tan`     | Tangent
+`atan`    | Arctangent
+`sec`     | Sec
+`asec`    | Arcsec
+`cosec`   | Cosec
+`acosec`  | Arccosec
+`cot`     | Cotangent
+`acot`    | Arccotangent
+`sinh`    | Hyperbolic sine
+`asin`    | Hyperbolic arcsine
+`cosh`    | Hyperbolic cosine
+`acosh`   | Hyperbolic arccosine
+`tanh`    | Hyperbolic tangent
+`atanh`   | Hyperbolic arctangent
+`sech`    | Hyperbolic sec
+`asech`   | Hyperbolic arcsec
+`cosech`  | Hyperbolic cosec
+`acosech` | Hyperbolic arccosec
+`coth`    | Hyperbolic cotangent
+`acoth`   | Hyperbolic arccotangent
 
 ### 4.4 Other Functionality
 

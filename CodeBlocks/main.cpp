@@ -443,7 +443,7 @@ void Calculate(){
 void OnAboutClick(){
  MessageBox(
   Window,
-  L"Engineering Calculator, Version 1.6\n"
+  L"Engineering Calculator, Version 1.7\n"
   L"Built on "__DATE__" at "__TIME__"\n"
   L"\n"
   L"Copyright (C) John-Philip Taylor\n"

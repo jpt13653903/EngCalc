@@ -24,6 +24,7 @@
 
 #include <math.h>
 #include <stdlib.h>
+#include <stdint.h>
 //------------------------------------------------------------------------------
 
 #include "LLRBTree.h"
@@ -91,6 +92,10 @@ class CALCULATOR{
    And,
    Or,
    Xor,
+   bAnd,
+   bOr,
+   bXor,
+   bNot,
    Var,
    Val
   };
