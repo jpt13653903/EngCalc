@@ -172,7 +172,7 @@ I often upload the same version more than once, with subsequent uploads incorpor
 
 ## 7. Source
 
-The source is available from the [git repository](https://sourceforge.net/p/alwaysontopcalc/code/).
+The source is available from the [git repository](https://sourceforge.net/p/alwaysontopcalc/code/) and [GitHub](https://github.com/jpt13653903/EngCalc).
 
 Please [contact me](https://sourceforge.net/p/alwaysontopcalc/discussion/create_topic) if you are enthusiastic enough to have ported the project to Mac OS X, Linux or your favourite operating system.  I'd like to post the ported versions.
 
