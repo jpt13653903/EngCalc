@@ -44,7 +44,7 @@ void COMBO_BOX::Clear(){
 //------------------------------------------------------------------------------
 
 void COMBO_BOX::AddItem(const char* Item){
- STRING Codec;
+ UnicodeString Codec;
  Codec = Item;
 
  ComboBox_AddString(Handle, Codec.UTF16());
@@ -53,12 +53,12 @@ void COMBO_BOX::AddItem(const char* Item){
 }
 //------------------------------------------------------------------------------
 
-void COMBO_BOX::GetItem(STRING* Item){
+void COMBO_BOX::GetItem(UnicodeString* Item){
  int      Length = ComboBox_GetTextLength(Handle);
  wchar_t* Text   = new wchar_t[Length+1];
 
  ComboBox_GetText(Handle, Text, Length+1);
- *Item = Text;
+ *Item = (char16*)Text;
 
  delete[] Text;
 }

@@ -18,37 +18,23 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
 
-#include "TextBox.h"
+#ifndef TextBox_h
+#define TextBox_h
 //------------------------------------------------------------------------------
 
-TEXT_BOX::TEXT_BOX(
- int Left, int Width, bool ReadOnly
-): CONTROL(
- L"EDIT", WS_BORDER | WS_TABSTOP | ES_AUTOHSCROLL, Left, 0, Width, 21
-){
- if(ReadOnly) SendMessage(Handle, EM_SETREADONLY, 1, 0);
-}
+#include "Control.h"
+#include "UnicodeString.h"
 //------------------------------------------------------------------------------
 
-TEXT_BOX::~TEXT_BOX(){
-}
+class TEXT_BOX: public CONTROL{
+ public:
+  TEXT_BOX(int Left, int Width, bool ReadOnly = false);
+ ~TEXT_BOX();
+
+ void SetText(const char* String);
+ void GetText(UnicodeString*     String);
+};
 //------------------------------------------------------------------------------
 
-void TEXT_BOX::SetText(const char* String){
- STRING Codec;
- Codec = String;
-
- Edit_SetText(Handle, Codec.UTF16());
-}
-//------------------------------------------------------------------------------
-
-void TEXT_BOX::GetText(STRING* String){
- int      Length = Edit_GetTextLength(Handle);
- wchar_t* Text   = new wchar_t[Length+1];
-
- Edit_GetText(Handle, Text, Length+1);
- *String = Text;
-
- delete[] Text;
-}
+#endif
 //------------------------------------------------------------------------------

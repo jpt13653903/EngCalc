@@ -18,25 +18,31 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
 
-#ifndef WinHeader_h
-#define WinHeader_h
+#include "Menu.h"
+#include "Label.h"
+#include "TextBox.h"
+#include "ComboBox.h"
+#include "LLRBTree.h"
+#include "Calculator.h"
+#include "XML.h"
+#include "FileWrapper.h"
 //------------------------------------------------------------------------------
 
-// Set the minimum Windows version to Windows XP
-#define  NTDDI_VERSION 0x05010000
-#define  WINVER        0x0501
-#define _WIN32_WINNT   WINVER
-#define _WIN32_IE      WINVER
-#define  UNICODE
+int MainWidth;
+int RightSpace = 140;
 //------------------------------------------------------------------------------
 
-#include <windows.h>
-#include <windowsx.h>
-#include <commctrl.h>
+MENU     * Menu;
+LABEL    * Label;
+TEXT_BOX * Formula;
+TEXT_BOX * Result;
+COMBO_BOX* FromUnit;
+COMBO_BOX* ToUnit;
 //------------------------------------------------------------------------------
 
-#include "Resources.h"
+LLRBTree   Conversions;
+Calculator Calc;
 //------------------------------------------------------------------------------
 
-#endif
+#define NotifyMessage WM_APP
 //------------------------------------------------------------------------------

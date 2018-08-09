@@ -18,31 +18,19 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
 
-#include "Menu.h"
-#include "Label.h"
-#include "TextBox.h"
-#include "ComboBox.h"
-#include "LLRBTree.h"
-#include "Calculator.h"
-#include "XML Wrapper.h"
-#include "FileWrapper.h"
+#ifndef WinHeader_h
+#define WinHeader_h
 //------------------------------------------------------------------------------
 
-int MainWidth;
-int RightSpace = 140;
+#include "General.h"
 //------------------------------------------------------------------------------
 
-MENU     * Menu;
-LABEL    * Label;
-TEXT_BOX * Formula;
-TEXT_BOX * Result;
-COMBO_BOX* FromUnit;
-COMBO_BOX* ToUnit;
+#include <windowsx.h>
+#include <commctrl.h>
 //------------------------------------------------------------------------------
 
-LLRBTree   Conversions;
-CALCULATOR Calc;
+#include "Resources.h"
 //------------------------------------------------------------------------------
 
-#define NotifyMessage WM_APP
+#endif
 //------------------------------------------------------------------------------

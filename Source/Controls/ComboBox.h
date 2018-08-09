@@ -2,7 +2,7 @@
 // Copyright (C) John-Philip Taylor
 // jpt13653903@gmail.com
 //
-// This file is part of a library
+// This file is part of Engineering Calculator
 //
 // This file is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -18,27 +18,28 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
 
-#include "MutEx.h"
-#include "Global.h"
+#ifndef ComboBox_h
+#define ComboBox_h
 //------------------------------------------------------------------------------
 
-MUTEX::MUTEX(){
- MutEx = CreateMutex(0, 0, 0);
-}
+#include "Control.h"
+#include "UnicodeString.h"
 //------------------------------------------------------------------------------
 
-MUTEX::~MUTEX(){
- Release    ();
- CloseHandle(MutEx);
-}
+class COMBO_BOX: public CONTROL{
+ private:
+  int ItemCount;
+
+ public:
+  COMBO_BOX(int Left, int Width);
+ ~COMBO_BOX();
+
+ void Clear  ();
+ void AddItem(const char* Item);
+
+ void GetItem(UnicodeString* Item);
+};
 //------------------------------------------------------------------------------
 
-void MUTEX::Obtain(){
- WaitForSingleObject(MutEx, INFINITE);
-}
-//------------------------------------------------------------------------------
-
-void MUTEX::Release(){
- ReleaseMutex(MutEx);
-}
+#endif
 //------------------------------------------------------------------------------

@@ -18,28 +18,37 @@
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
 
-#ifndef ComboBox_h
-#define ComboBox_h
+#include "TextBox.h"
 //------------------------------------------------------------------------------
 
-#include "Control.h"
-#include "UnicodeString.h"
+TEXT_BOX::TEXT_BOX(
+ int Left, int Width, bool ReadOnly
+): CONTROL(
+ L"EDIT", WS_BORDER | WS_TABSTOP | ES_AUTOHSCROLL, Left, 0, Width, 21
+){
+ if(ReadOnly) SendMessage(Handle, EM_SETREADONLY, 1, 0);
+}
 //------------------------------------------------------------------------------
 
-class COMBO_BOX: public CONTROL{
- private:
-  int ItemCount;
-
- public:
-  COMBO_BOX(int Left, int Width);
- ~COMBO_BOX();
-
- void Clear  ();
- void AddItem(const char* Item);
-
- void GetItem(STRING* Item);
-};
+TEXT_BOX::~TEXT_BOX(){
+}
 //------------------------------------------------------------------------------
 
-#endif
+void TEXT_BOX::SetText(const char* String){
+ UnicodeString Codec;
+ Codec = String;
+
+ Edit_SetText(Handle, (wchar_t*)Codec.UTF16());
+}
+//------------------------------------------------------------------------------
+
+void TEXT_BOX::GetText(UnicodeString* String){
+ int      Length = Edit_GetTextLength(Handle);
+ wchar_t* Text   = new wchar_t[Length+1];
+
+ Edit_GetText(Handle, Text, Length+1);
+ *String = (char16*)Text;
+
+ delete[] Text;
+}
 //------------------------------------------------------------------------------

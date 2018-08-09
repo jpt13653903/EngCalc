@@ -1,0 +1,11 @@
+Bugs:
+
+ToDo:
+- New version (2.0)
+  - Use arbitrary precision floats and infinite precision rationals
+
+Future Version Ideas:
+- Resize
+  - Both in width and height.
+  - Resizing the input and output separately?
+
