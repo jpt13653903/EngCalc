@@ -22,46 +22,46 @@
 //------------------------------------------------------------------------------
 
 CONTROL::CONTROL(
- const wchar_t* Class, DWORD Style,
- int            Left , int   Top,
- int            Width, int   Height
+  const wchar_t* Class, DWORD Style,
+  int            Left , int   Top,
+  int            Width, int   Height
 ){
- Handle = CreateWindow(
-  Class,
-  L"",
-  WS_CHILD | WS_VISIBLE | Style,
-  Left, Top,
-  Width, Height,
-  Window,
-  0,
-  Instance,
-  0
- );
- SendMessage(Handle, WM_SETFONT, (WPARAM)Font, 0);
+  Handle = CreateWindow(
+    Class,
+    L"",
+    WS_CHILD | WS_VISIBLE | Style,
+    Left, Top,
+    Width, Height,
+    Window,
+    0,
+    Instance,
+    0
+  );
+  SendMessage(Handle, WM_SETFONT, (WPARAM)Font, 0);
 }
 //------------------------------------------------------------------------------
 
 CONTROL::~CONTROL(){
- DestroyWindow(Handle);
+  DestroyWindow(Handle);
 }
 //------------------------------------------------------------------------------
 
 void CONTROL::SetFocus(){
- ::SetFocus(Handle);
+  ::SetFocus(Handle);
 }
 //------------------------------------------------------------------------------
 
 void CONTROL::SetLeft(int Left){
- SetWindowPos (Handle, 0, Left, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
+  SetWindowPos (Handle, 0, Left, 0, 0, 0, SWP_NOSIZE | SWP_NOZORDER);
 }
 //------------------------------------------------------------------------------
 
 void CONTROL::Hide(){
- ShowWindow(Handle, SW_HIDE);
+  ShowWindow(Handle, SW_HIDE);
 }
 //------------------------------------------------------------------------------
 
 void CONTROL::Show(){
- ShowWindow(Handle, SW_SHOW);
+  ShowWindow(Handle, SW_SHOW);
 }
 //------------------------------------------------------------------------------

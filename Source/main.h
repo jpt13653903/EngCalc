@@ -40,8 +40,8 @@ COMBO_BOX* FromUnit;
 COMBO_BOX* ToUnit;
 //------------------------------------------------------------------------------
 
-LLRBTree   Conversions;
-Calculator Calc;
+LLRB_TREE  Conversions;
+CALCULATOR Calc;
 //------------------------------------------------------------------------------
 
 #define NotifyMessage WM_APP

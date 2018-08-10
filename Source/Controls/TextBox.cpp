@@ -22,11 +22,11 @@
 //------------------------------------------------------------------------------
 
 TEXT_BOX::TEXT_BOX(
- int Left, int Width, bool ReadOnly
+  int Left, int Width, bool ReadOnly
 ): CONTROL(
- L"EDIT", WS_BORDER | WS_TABSTOP | ES_AUTOHSCROLL, Left, 0, Width, 21
+  L"EDIT", WS_BORDER | WS_TABSTOP | ES_AUTOHSCROLL, Left, 0, Width, 21
 ){
- if(ReadOnly) SendMessage(Handle, EM_SETREADONLY, 1, 0);
+  if(ReadOnly) SendMessage(Handle, EM_SETREADONLY, 1, 0);
 }
 //------------------------------------------------------------------------------
 
@@ -35,20 +35,20 @@ TEXT_BOX::~TEXT_BOX(){
 //------------------------------------------------------------------------------
 
 void TEXT_BOX::SetText(const char* String){
- UnicodeString Codec;
- Codec = String;
+  UNICODE_STRING Codec;
+  Codec = String;
 
- Edit_SetText(Handle, (wchar_t*)Codec.UTF16());
+  Edit_SetText(Handle, (wchar_t*)Codec.UTF16());
 }
 //------------------------------------------------------------------------------
 
-void TEXT_BOX::GetText(UnicodeString* String){
- int      Length = Edit_GetTextLength(Handle);
- wchar_t* Text   = new wchar_t[Length+1];
+void TEXT_BOX::GetText(UNICODE_STRING* String){
+  int      Length = Edit_GetTextLength(Handle);
+  wchar_t* Text   = new wchar_t[Length+1];
 
- Edit_GetText(Handle, Text, Length+1);
- *String = (char16*)Text;
+  Edit_GetText(Handle, Text, Length+1);
+  *String = (char16*)Text;
 
- delete[] Text;
+  delete[] Text;
 }
 //------------------------------------------------------------------------------

@@ -27,17 +27,17 @@
 //------------------------------------------------------------------------------
 
 class COMBO_BOX: public CONTROL{
- private:
-  int ItemCount;
+  private:
+    int ItemCount;
 
- public:
-  COMBO_BOX(int Left, int Width);
- ~COMBO_BOX();
+  public:
+    COMBO_BOX(int Left, int Width);
+   ~COMBO_BOX();
 
- void Clear  ();
- void AddItem(const char* Item);
+    void Clear  ();
+    void AddItem(const char* Item);
 
- void GetItem(UnicodeString* Item);
+    void GetItem(UNICODE_STRING* Item);
 };
 //------------------------------------------------------------------------------
 

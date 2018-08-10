@@ -42,39 +42,39 @@
 //------------------------------------------------------------------------------
 
 class MENU{
- public:
-  enum FORMAT{Decimal, Hexadecimal, Binary};
+  public:
+    enum FORMAT{Decimal, Hexadecimal, Binary};
 
- private:
-  bool   Radians;
-  bool   Converter;
-  bool   AlwaysOnTop;
-  bool   Engineering;
-  bool   GroupDigits;
-  FORMAT Format;
+  private:
+    bool   Radians;
+    bool   Converter;
+    bool   AlwaysOnTop;
+    bool   Engineering;
+    bool   GroupDigits;
+    FORMAT Format;
 
- public:
-  HMENU  Handle;
-  HACCEL AcceleratorTable;
+  public:
+    HMENU  Handle;
+    HACCEL AcceleratorTable;
 
-  MENU();
- ~MENU();
+    MENU();
+   ~MENU();
 
-  void SetRadians    (bool   Value);
-  void SetConverter  (bool   Value);
-  void SetAlwaysOnTop(bool   Value);
-  void SetEngineering(bool   Value);
-  void SetGroupDigits(bool   Value);
-  void SetFormat     (FORMAT Value);
+    void SetRadians    (bool   Value);
+    void SetConverter  (bool   Value);
+    void SetAlwaysOnTop(bool   Value);
+    void SetEngineering(bool   Value);
+    void SetGroupDigits(bool   Value);
+    void SetFormat     (FORMAT Value);
 
-  bool   GetRadians    ();
-  bool   GetConverter  ();
-  bool   GetAlwaysOnTop();
-  bool   GetEngineering();
-  bool   GetGroupDigits();
-  FORMAT GetFormat     ();
+    bool   GetRadians    ();
+    bool   GetConverter  ();
+    bool   GetAlwaysOnTop();
+    bool   GetEngineering();
+    bool   GetGroupDigits();
+    FORMAT GetFormat     ();
 
-  void Show();
+    void Show();
 };
 //------------------------------------------------------------------------------
 

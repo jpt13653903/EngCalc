@@ -86,9 +86,9 @@ void MoveWindow(int X, int Y){
 //------------------------------------------------------------------------------
 
 struct CONVERSION{
-  UnicodeString FromUnit;
-  UnicodeString ToUnit;
-  UnicodeString Formula;
+  UNICODE_STRING FromUnit;
+  UNICODE_STRING ToUnit;
+  UNICODE_STRING Formula;
 };
 //------------------------------------------------------------------------------
 
@@ -146,9 +146,9 @@ void OnFromUnitClick(){
 //------------------------------------------------------------------------------
 
 void LoadConversions(){
-  UnicodeString s;
-  CONVERSION*   Conversion;
-  XML           xml;
+  UNICODE_STRING s;
+  CONVERSION*    Conversion;
+  XML            xml;
 
   // Read Converter.xml
   if(!xml.Load("..\\Converter.xml")) return;
@@ -187,7 +187,7 @@ void LoadConversions(){
 }
 //------------------------------------------------------------------------------
 
-bool Invalid(long double d, UnicodeString* s){
+bool Invalid(long double d, UNICODE_STRING* s){
   unsigned* p;
 
   // See the "Intel Architecture Software Developer's Manual,
@@ -206,9 +206,9 @@ bool Invalid(long double d, UnicodeString* s){
 }
 //------------------------------------------------------------------------------
 
-// These do not use the UnicodeString::Set functions
+// These do not use the UNICODE_STRING::Set functions
 // because a custom format is desired
-void ToHex(long double d, UnicodeString* s){
+void ToHex(long double d, UNICODE_STRING* s){
   int  exp, places;
   char c;
   bool spaces = Menu->GetGroupDigits();
@@ -257,7 +257,7 @@ void ToHex(long double d, UnicodeString* s){
 }
 //------------------------------------------------------------------------------
 
-void ToBinary(long double d, UnicodeString* s){
+void ToBinary(long double d, UNICODE_STRING* s){
   int  exp, places;
   char c;
   bool spaces = Menu->GetGroupDigits();
@@ -305,7 +305,7 @@ void ToBinary(long double d, UnicodeString* s){
 }
 //------------------------------------------------------------------------------
 
-void ToDecimal(long double d, UnicodeString* s){
+void ToDecimal(long double d, UNICODE_STRING* s){
   int  j, exp, Exponent;
   bool spaces = Menu->GetGroupDigits();
 
@@ -403,7 +403,7 @@ void ToDecimal(long double d, UnicodeString* s){
 //------------------------------------------------------------------------------
 
 void Calculate(){
-  UnicodeString s, formula;
+  UNICODE_STRING s, formula;
 
   Formula->GetText(&formula);
   if(!formula.Length32()){
@@ -482,7 +482,7 @@ LRESULT CALLBACK WindowProcedure(
   static int X, Y;
 
   RECT   Rect;
-  UnicodeString s;
+  UNICODE_STRING s;
 
   switch(Message){
     case WM_CLOSE:
@@ -546,13 +546,13 @@ LRESULT CALLBACK WindowProcedure(
         switch(LOWORD(wParam)){
           case IDM_DEGREES:
             Menu->SetRadians(false);
-            Calc.Measure = Calculator::Degrees;
+            Calc.Measure = CALCULATOR::Degrees;
             Calculate();
             break;
 
           case IDM_RADIANS:
             Menu->SetRadians(true);
-            Calc.Measure = Calculator::Radians;
+            Calc.Measure = CALCULATOR::Radians;
             Calculate();
             break;
 
@@ -682,7 +682,7 @@ static HICON LoadIconSmall(WORD Icon){
 }
 //------------------------------------------------------------------------------
 
-void ComplexArgument(UnicodeString* Arg){
+void ComplexArgument(UNICODE_STRING* Arg){
   int     j;
   char32* A = Arg->UTF32();
 
@@ -729,9 +729,9 @@ int WINAPI WinMain(
   }
 
   // Get the command-line
-  int           ArgC;
-  UnicodeString Arg;
-  wchar_t**     ArgV = CommandLineToArgvW(FullCommandLine, &ArgC);
+  int            ArgC;
+  UNICODE_STRING Arg;
+  wchar_t**      ArgV = CommandLineToArgvW(FullCommandLine, &ArgC);
 
   bool Calculator = false;
   bool Normal     = false;

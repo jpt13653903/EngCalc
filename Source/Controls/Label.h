@@ -26,9 +26,9 @@
 //------------------------------------------------------------------------------
 
 class LABEL: public CONTROL{
- public:
-  LABEL(int Left, int Width, const wchar_t* Caption);
- ~LABEL();
+  public:
+    LABEL(int Left, int Width, const wchar_t* Caption);
+   ~LABEL();
 };
 //------------------------------------------------------------------------------
 

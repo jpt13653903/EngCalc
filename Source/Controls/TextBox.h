@@ -27,12 +27,12 @@
 //------------------------------------------------------------------------------
 
 class TEXT_BOX: public CONTROL{
- public:
-  TEXT_BOX(int Left, int Width, bool ReadOnly = false);
- ~TEXT_BOX();
+  public:
+    TEXT_BOX(int Left, int Width, bool ReadOnly = false);
+   ~TEXT_BOX();
 
- void SetText(const char* String);
- void GetText(UnicodeString*     String);
+  void SetText(const char*     String);
+  void GetText(UNICODE_STRING* String);
 };
 //------------------------------------------------------------------------------
 

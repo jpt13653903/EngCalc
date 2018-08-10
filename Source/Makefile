@@ -45,7 +45,7 @@ clean:
 
 # Binaries
 
-bin/EngCalc.exe: main.cpp main.h $(Objects) $(Headers)
+bin/EngCalc.exe: main.cpp $(Objects) $(Headers)
 	mkdir -p bin
 	$(CC) $(Options) $(Version) $(Includes) $< $(Objects) -s $(LibInclude) $(Libraries) -o $@
 #-------------------------------------------------------------------------------

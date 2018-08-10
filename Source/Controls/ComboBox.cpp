@@ -22,14 +22,14 @@
 //------------------------------------------------------------------------------
 
 COMBO_BOX::COMBO_BOX(
- int Left, int Width
+  int Left, int Width
 ): CONTROL(
   L"COMBOBOX",
   WS_BORDER | WS_TABSTOP | WS_VSCROLL | CBS_AUTOHSCROLL | CBS_DROPDOWNLIST,
   Left, -1,
   Width, 400
 ){
- ItemCount = 0;
+  ItemCount = 0;
 }
 //------------------------------------------------------------------------------
 
@@ -38,28 +38,28 @@ COMBO_BOX::~COMBO_BOX(){
 //------------------------------------------------------------------------------
 
 void COMBO_BOX::Clear(){
- ComboBox_ResetContent(Handle);
- ItemCount = 0;
+  ComboBox_ResetContent(Handle);
+  ItemCount = 0;
 }
 //------------------------------------------------------------------------------
 
 void COMBO_BOX::AddItem(const char* Item){
- UnicodeString Codec;
- Codec = Item;
+  UNICODE_STRING Codec;
+  Codec = Item;
 
- ComboBox_AddString(Handle, Codec.UTF16());
- if(!ItemCount) ComboBox_SetCurSel(Handle, 0);
- ItemCount++;
+  ComboBox_AddString(Handle, Codec.UTF16());
+  if(!ItemCount) ComboBox_SetCurSel(Handle, 0);
+  ItemCount++;
 }
 //------------------------------------------------------------------------------
 
-void COMBO_BOX::GetItem(UnicodeString* Item){
- int      Length = ComboBox_GetTextLength(Handle);
- wchar_t* Text   = new wchar_t[Length+1];
+void COMBO_BOX::GetItem(UNICODE_STRING* Item){
+  int      Length = ComboBox_GetTextLength(Handle);
+  wchar_t* Text   = new wchar_t[Length+1];
 
- ComboBox_GetText(Handle, Text, Length+1);
- *Item = (char16*)Text;
+  ComboBox_GetText(Handle, Text, Length+1);
+  *Item = (char16*)Text;
 
- delete[] Text;
+  delete[] Text;
 }
 //------------------------------------------------------------------------------

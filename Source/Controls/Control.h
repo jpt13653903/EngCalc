@@ -26,20 +26,20 @@
 //------------------------------------------------------------------------------
 
 class CONTROL{
- public:
-  HWND Handle;
+  public:
+    HWND Handle;
 
-  CONTROL(
-   const wchar_t* Class, DWORD Style,
-   int            Left , int   Top,
-   int            Width, int   Height
-  );
- ~CONTROL();
+    CONTROL(
+      const wchar_t* Class, DWORD Style,
+      int            Left , int   Top,
+      int            Width, int   Height
+    );
+   ~CONTROL();
 
- void SetFocus();
- void SetLeft (int Left);
- void Hide    ();
- void Show    ();
+    void SetFocus();
+    void SetLeft (int Left);
+    void Hide    ();
+    void Show    ();
 };
 //------------------------------------------------------------------------------
 

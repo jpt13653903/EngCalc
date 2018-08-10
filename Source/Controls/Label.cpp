@@ -22,11 +22,11 @@
 //------------------------------------------------------------------------------
 
 LABEL::LABEL(
- int Left, int Width, const wchar_t* Caption
+  int Left, int Width, const wchar_t* Caption
 ): CONTROL(
- L"STATIC", SS_CENTER, Left, 0, Width, 21
+  L"STATIC", SS_CENTER, Left, 0, Width, 21
 ){
- SetWindowText(Handle, Caption);
+  SetWindowText(Handle, Caption);
 }
 //------------------------------------------------------------------------------
 

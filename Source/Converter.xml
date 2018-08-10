@@ -1,856 +1,857 @@
 <?xml version = "1.0" encoding = "UTF-8" standalone = "yes" ?>
 <!-- https://en.wikipedia.org/wiki/Conversion_of_units -->
-    
+
 <Engineering_Calculator_Conversions>
-<!-- Length ================================================================ -->
- <Conversion From = "angstrom" To = "metre" Formula = "x/1e10" />
- <Conversion From = "metre" To = "angstrom" Formula = "x*1e10" />
+  <!-- Length ================================================================ -->
+    <Conversion From = "angstrom" To = "metre" Formula = "x/1e10" />
+    <Conversion From = "metre" To = "angstrom" Formula = "x*1e10" />
 
- <Conversion From = "bohr" To = "angstrom" Formula = "x*5.2917720859e-1" />
- <Conversion From = "angstrom" To = "bohr" Formula = "x/5.2917720859e-1" />
+    <Conversion From = "bohr" To = "angstrom" Formula = "x*5.2917720859e-1" />
+    <Conversion From = "angstrom" To = "bohr" Formula = "x/5.2917720859e-1" />
 
- <Conversion From = "bohr" To = "metre" Formula = "x*5.2917720859e-11" />
- <Conversion From = "metre" To = "bohr" Formula = "x/5.2917720859e-11" />
- <Conversion From = "chain" To = "metre" Formula = "x*20.11684" />
- <Conversion From = "metre" To = "chain" Formula = "x/20.11684" />
+    <Conversion From = "bohr" To = "metre" Formula = "x*5.2917720859e-11" />
+    <Conversion From = "metre" To = "bohr" Formula = "x/5.2917720859e-11" />
+    <Conversion From = "chain" To = "metre" Formula = "x*20.11684" />
+    <Conversion From = "metre" To = "chain" Formula = "x/20.11684" />
 
- <Conversion From = "cubit" To = "metre" Formula = "x*0.5" />
- <Conversion From = "metre" To = "cubit" Formula = "x/0.5" />
+    <Conversion From = "cubit" To = "metre" Formula = "x*0.5" />
+    <Conversion From = "metre" To = "cubit" Formula = "x/0.5" />
 
- <Conversion From = "ell" To = "metre" Formula = "x*1.143" />
- <Conversion From = "metre" To = "ell" Formula = "x/1.143" />
+    <Conversion From = "ell" To = "metre" Formula = "x*1.143" />
+    <Conversion From = "metre" To = "ell" Formula = "x/1.143" />
 
- <Conversion From = "fathom" To = "metre" Formula = "x*1.8288" />
- <Conversion From = "metre" To = "fathom" Formula = "x/1.8288" />
+    <Conversion From = "fathom" To = "metre" Formula = "x*1.8288" />
+    <Conversion From = "metre" To = "fathom" Formula = "x/1.8288" />
 
- <Conversion From = "fermi" To = "metre" Formula = "x*1e-15" />
- <Conversion From = "metre" To = "fermi" Formula = "x/1e-15" />
+    <Conversion From = "fermi" To = "metre" Formula = "x*1e-15" />
+    <Conversion From = "metre" To = "fermi" Formula = "x/1e-15" />
 
- <Conversion From = "finger" To = "metre" Formula = "x*0.022225" />
- <Conversion From = "metre" To = "finger" Formula = "x/0.022225" />
+    <Conversion From = "finger" To = "metre" Formula = "x*0.022225" />
+    <Conversion From = "metre" To = "finger" Formula = "x/0.022225" />
 
- <Conversion From = "foot" To = "metre" Formula = "x*0.3048" />
- <Conversion From = "metre" To = "foot" Formula = "x/0.3048" />
+    <Conversion From = "foot" To = "metre" Formula = "x*0.3048" />
+    <Conversion From = "metre" To = "foot" Formula = "x/0.3048" />
 
- <Conversion From = "furlong" To = "metre" Formula = "x*201.168" />
- <Conversion From = "metre" To = "furlong" Formula = "x/201.168" />
+    <Conversion From = "furlong" To = "metre" Formula = "x*201.168" />
+    <Conversion From = "metre" To = "furlong" Formula = "x/201.168" />
 
- <Conversion From = "hand" To = "metre" Formula = "x*0.1016" />
- <Conversion From = "metre" To = "hand" Formula = "x/0.1016" />
+    <Conversion From = "hand" To = "metre" Formula = "x*0.1016" />
+    <Conversion From = "metre" To = "hand" Formula = "x/0.1016" />
 
- <Conversion From = "inch" To = "metre" Formula = "x*25.4e-3" />
- <Conversion From = "metre" To = "inch" Formula = "x/25.4e-3" />
+    <Conversion From = "inch" To = "metre" Formula = "x*25.4e-3" />
+    <Conversion From = "metre" To = "inch" Formula = "x/25.4e-3" />
 
- <Conversion From = "league" To = "mile" Formula = "x*4828.032/1609.344" />
- <Conversion From = "mile" To = "league" Formula = "x/4828.032*1609.344" />
+    <Conversion From = "league" To = "mile" Formula = "x*4828.032/1609.344" />
+    <Conversion From = "mile" To = "league" Formula = "x/4828.032*1609.344" />
 
- <Conversion From = "league" To = "metre" Formula = "x*4828.032" />
- <Conversion From = "metre" To = "league" Formula = "x/4828.032" />
+    <Conversion From = "league" To = "metre" Formula = "x*4828.032" />
+    <Conversion From = "metre" To = "league" Formula = "x/4828.032" />
 
- <Conversion From = "light-year" To = "metre" Formula = "x*9.4607304725808e15" />
- <Conversion From = "metre" To = "light-year" Formula = "x/9.4607304725808e15" />
+    <Conversion From = "light-year" To = "metre" Formula = "x*9.4607304725808e15" />
+    <Conversion From = "metre" To = "light-year" Formula = "x/9.4607304725808e15" />
 
- <Conversion From = "mickey" To = "metre" Formula = "x*1.27e-4" />
- <Conversion From = "metre" To = "mickey" Formula = "x/1.27e-4" />
+    <Conversion From = "mickey" To = "metre" Formula = "x*1.27e-4" />
+    <Conversion From = "metre" To = "mickey" Formula = "x/1.27e-4" />
 
- <Conversion From = "nail" To = "metre" Formula = "x*0.05715" />
- <Conversion From = "metre" To = "nail" Formula = "x/0.05715" />
+    <Conversion From = "nail" To = "metre" Formula = "x*0.05715" />
+    <Conversion From = "metre" To = "nail" Formula = "x/0.05715" />
 
- <Conversion From = "mil" To = "metre" Formula = "x*25.4e-6" />
- <Conversion From = "metre" To = "mil" Formula = "x/25.4e-6" />
+    <Conversion From = "mil" To = "metre" Formula = "x*25.4e-6" />
+    <Conversion From = "metre" To = "mil" Formula = "x/25.4e-6" />
 
- <Conversion From = "mile" To = "metre" Formula = "x*1609.344" />
- <Conversion From = "metre" To = "mile" Formula = "x/1609.344" />
+    <Conversion From = "mile" To = "metre" Formula = "x*1609.344" />
+    <Conversion From = "metre" To = "mile" Formula = "x/1609.344" />
 
- <Conversion From = "nautical-mile" To = "metre" Formula = "x*1852" />
- <Conversion From = "metre" To = "nautical-mile" Formula = "x/1852" />
+    <Conversion From = "nautical-mile" To = "metre" Formula = "x*1852" />
+    <Conversion From = "metre" To = "nautical-mile" Formula = "x/1852" />
 
- <Conversion From = "pace" To = "metre" Formula = "x*0.762" />
- <Conversion From = "metre" To = "pace" Formula = "x/0.762" />
+    <Conversion From = "pace" To = "metre" Formula = "x*0.762" />
+    <Conversion From = "metre" To = "pace" Formula = "x/0.762" />
 
- <Conversion From = "palm" To = "metre" Formula = "x*0.0762" />
- <Conversion From = "metre" To = "palm" Formula = "x/0.0762" />
+    <Conversion From = "palm" To = "metre" Formula = "x*0.0762" />
+    <Conversion From = "metre" To = "palm" Formula = "x/0.0762" />
 
- <Conversion From = "parsec" To = "metre" Formula = "x*3.08567782e16" />
- <Conversion From = "metre" To = "parsec" Formula = "x/3.08567782e16" />
+    <Conversion From = "parsec" To = "metre" Formula = "x*3.08567782e16" />
+    <Conversion From = "metre" To = "parsec" Formula = "x/3.08567782e16" />
 
- <Conversion From = "pica" To = "metre" Formula = "x*12/72*25.4e-3" />
- <Conversion From = "metre" To = "pica" Formula = "x/12*72/25.4e-3" />
+    <Conversion From = "pica" To = "metre" Formula = "x*12/72*25.4e-3" />
+    <Conversion From = "metre" To = "pica" Formula = "x/12*72/25.4e-3" />
 
- <Conversion From = "point" To = "metre" Formula = "x/72*25.4e-3" />
- <Conversion From = "metre" To = "point" Formula = "x*72/25.4e-3" />
+    <Conversion From = "point" To = "metre" Formula = "x/72*25.4e-3" />
+    <Conversion From = "metre" To = "point" Formula = "x*72/25.4e-3" />
 
- <Conversion From = "point" To = "inch" Formula = "x/72" />
- <Conversion From = "inch" To = "point" Formula = "x*72" />
+    <Conversion From = "point" To = "inch" Formula = "x/72" />
+    <Conversion From = "inch" To = "point" Formula = "x*72" />
 
- <Conversion From = "stick" To = "metre" Formula = "x*0.0508" />
- <Conversion From = "metre" To = "stick" Formula = "x/0.0508" />
+    <Conversion From = "stick" To = "metre" Formula = "x*0.0508" />
+    <Conversion From = "metre" To = "stick" Formula = "x/0.0508" />
 
- <Conversion From = "twip" To = "metre" Formula = "x/1440*25.4e-3" />
- <Conversion From = "metre" To = "twip" Formula = "x*1440/25.4e-3" />
+    <Conversion From = "twip" To = "metre" Formula = "x/1440*25.4e-3" />
+    <Conversion From = "metre" To = "twip" Formula = "x*1440/25.4e-3" />
 
- <Conversion From = "yard" To = "metre" Formula = "x*0.9144" />
- <Conversion From = "metre" To = "yard" Formula = "x/0.9144" />
+    <Conversion From = "yard" To = "metre" Formula = "x*0.9144" />
+    <Conversion From = "metre" To = "yard" Formula = "x/0.9144" />
 
-<!-- Area ================================================================== -->
- <Conversion From = "acre" To = "square metre" Formula = "x*4046.8564224" />
- <Conversion From = "square metre" To = "acre" Formula = "x/4046.8564224" />
+  <!-- Area ================================================================== -->
+    <Conversion From = "acre" To = "square metre" Formula = "x*4046.8564224" />
+    <Conversion From = "square metre" To = "acre" Formula = "x/4046.8564224" />
 
- <Conversion From = "barn" To = "square metre" Formula = "x*1e-28" />
- <Conversion From = "square metre" To = "barn" Formula = "x/1e-28" />
+    <Conversion From = "barn" To = "square metre" Formula = "x*1e-28" />
+    <Conversion From = "square metre" To = "barn" Formula = "x/1e-28" />
 
- <Conversion From = "barony" To = "square metre" Formula = "x*1.618742e7" />
- <Conversion From = "square metre" To = "barony" Formula = "x/1.618742e7" />
+    <Conversion From = "barony" To = "square metre" Formula = "x*1.618742e7" />
+    <Conversion From = "square metre" To = "barony" Formula = "x/1.618742e7" />
 
- <Conversion From = "board" To = "square metre" Formula = "x*7.74192e-3" />
- <Conversion From = "square metre" To = "board" Formula = "x/7.74192e-3" />
+    <Conversion From = "board" To = "square metre" Formula = "x*7.74192e-3" />
+    <Conversion From = "square metre" To = "board" Formula = "x/7.74192e-3" />
 
- <Conversion From = "hectare" To = "square metre" Formula = "x*1e4" />
- <Conversion From = "square metre" To = "hectare" Formula = "x/1e4" />
+    <Conversion From = "hectare" To = "square metre" Formula = "x*1e4" />
+    <Conversion From = "square metre" To = "hectare" Formula = "x/1e4" />
 
- <Conversion From = "hide" To = "square metre" Formula = "x*5e5" />
- <Conversion From = "square metre" To = "hide" Formula = "x/5e5" />
+    <Conversion From = "hide" To = "square metre" Formula = "x*5e5" />
+    <Conversion From = "square metre" To = "hide" Formula = "x/5e5" />
 
- <Conversion From = "shed" To = "square metre" Formula = "x*1e-52" />
- <Conversion From = "square metre" To = "shed" Formula = "x/1e-52" />
+    <Conversion From = "shed" To = "square metre" Formula = "x*1e-52" />
+    <Conversion From = "square metre" To = "shed" Formula = "x/1e-52" />
 
- <Conversion From = "square foot" To = "square metre" Formula = "x*9.290304e-2" />
- <Conversion From = "square metre" To = "square foot" Formula = "x/9.290304e-2" />
+    <Conversion From = "square foot" To = "square metre" Formula = "x*9.290304e-2" />
+    <Conversion From = "square metre" To = "square foot" Formula = "x/9.290304e-2" />
 
- <Conversion From = "square inch" To = "square metre" Formula = "x*6.4516e-4" />
- <Conversion From = "square metre" To = "square inch" Formula = "x/6.4516e-4" />
+    <Conversion From = "square inch" To = "square metre" Formula = "x*6.4516e-4" />
+    <Conversion From = "square metre" To = "square inch" Formula = "x/6.4516e-4" />
 
- <Conversion From = "square mile" To = "square metre" Formula = "x*2.589988110336e6" />
- <Conversion From = "square metre" To = "square mile" Formula = "x/2.589988110336e6" />
+    <Conversion From = "square mile" To = "square metre" Formula = "x*2.589988110336e6" />
+    <Conversion From = "square metre" To = "square mile" Formula = "x/2.589988110336e6" />
 
- <Conversion From = "square yard" To = "square metre" Formula = "x*0.83612736" />
- <Conversion From = "square metre" To = "square yard" Formula = "x/0.83612736" />
+    <Conversion From = "square yard" To = "square metre" Formula = "x*0.83612736" />
+    <Conversion From = "square metre" To = "square yard" Formula = "x/0.83612736" />
 
- <Conversion From = "township" To = "square metre" Formula = "x*9.323994e7" />
- <Conversion From = "square metre" To = "township" Formula = "x/9.323994e7" />
+    <Conversion From = "township" To = "square metre" Formula = "x*9.323994e7" />
+    <Conversion From = "square metre" To = "township" Formula = "x/9.323994e7" />
 
- <Conversion From = "yardland" To = "square metre" Formula = "x*1.2e5" />
- <Conversion From = "square metre" To = "yardland" Formula = "x/1.2e5" />
+    <Conversion From = "yardland" To = "square metre" Formula = "x*1.2e5" />
+    <Conversion From = "square metre" To = "yardland" Formula = "x/1.2e5" />
 
-<!-- Volume (cubic metre) ================================================== -->
- <Conversion From = "acre-foot" To = "cubic metre" Formula = "x*1233.48183754752" />
- <Conversion From = "cubic metre" To = "acre-foot" Formula = "x/1233.48183754752" />
+  <!-- Volume (cubic metre) ================================================== -->
+    <Conversion From = "acre-foot" To = "cubic metre" Formula = "x*1233.48183754752" />
+    <Conversion From = "cubic metre" To = "acre-foot" Formula = "x/1233.48183754752" />
 
- <Conversion From = "acre-inch" To = "cubic metre" Formula = "x*102.79015312896" />
- <Conversion From = "cubic metre" To = "acre-inch" Formula = "x/102.79015312896" />
+    <Conversion From = "acre-inch" To = "cubic metre" Formula = "x*102.79015312896" />
+    <Conversion From = "cubic metre" To = "acre-inch" Formula = "x/102.79015312896" />
 
- <Conversion From = "barrel (imperial)" To = "cubic metre" Formula = "x*0.16365924" />
- <Conversion From = "cubic metre" To = "barrel (imperial)" Formula = "x/0.16365924" />
+    <Conversion From = "barrel (imperial)" To = "cubic metre" Formula = "x*0.16365924" />
+    <Conversion From = "cubic metre" To = "barrel (imperial)" Formula = "x/0.16365924" />
 
- <Conversion From = "barrel (petroleum)" To = "cubic metre" Formula = "x*0.158987294928" />
- <Conversion From = "cubic metre" To = "barrel (petroleum)" Formula = "x/0.158987294928" />
+    <Conversion From = "barrel (petroleum)" To = "cubic metre" Formula = "x*0.158987294928" />
+    <Conversion From = "cubic metre" To = "barrel (petroleum)" Formula = "x/0.158987294928" />
 
- <Conversion From = "board-foot" To = "cubic metre" Formula = "x*2.359737216e-3" />
- <Conversion From = "cubic metre" To = "board-foot" Formula = "x/2.359737216e-3" />
+    <Conversion From = "board-foot" To = "cubic metre" Formula = "x*2.359737216e-3" />
+    <Conversion From = "cubic metre" To = "board-foot" Formula = "x/2.359737216e-3" />
 
- <Conversion From = "bucket" To = "cubic metre" Formula = "x*0.01818436" />
- <Conversion From = "cubic metre" To = "bucket" Formula = "x/0.01818436" />
+    <Conversion From = "bucket" To = "cubic metre" Formula = "x*0.01818436" />
+    <Conversion From = "cubic metre" To = "bucket" Formula = "x/0.01818436" />
 
- <Conversion From = "bushel" To = "cubic metre" Formula = "x*0.03636872" />
- <Conversion From = "cubic metre" To = "bushel" Formula = "x/0.03636872" />
+    <Conversion From = "bushel" To = "cubic metre" Formula = "x*0.03636872" />
+    <Conversion From = "cubic metre" To = "bushel" Formula = "x/0.03636872" />
 
- <Conversion From = "butt" To = "cubic metre" Formula = "x*0.476961884784" />
- <Conversion From = "pipe" To = "cubic metre" Formula = "x*0.476961884784" />
- <Conversion From = "cubic metre" To = "butt" Formula = "x/0.476961884784" />
- <Conversion From = "cubic metre" To = "pipe" Formula = "x/0.476961884784" />
+    <Conversion From = "butt" To = "cubic metre" Formula = "x*0.476961884784" />
+    <Conversion From = "pipe" To = "cubic metre" Formula = "x*0.476961884784" />
+    <Conversion From = "cubic metre" To = "butt" Formula = "x/0.476961884784" />
+    <Conversion From = "cubic metre" To = "pipe" Formula = "x/0.476961884784" />
 
- <Conversion From = "coomb" To = "cubic metre" Formula = "x*0.14547488" />
- <Conversion From = "cubic metre" To = "coomb" Formula = "x/0.14547488" />
+    <Conversion From = "coomb" To = "cubic metre" Formula = "x*0.14547488" />
+    <Conversion From = "cubic metre" To = "coomb" Formula = "x/0.14547488" />
 
- <Conversion From = "cord" To = "cubic metre" Formula = "x*3.624556363776" />
- <Conversion From = "cubic metre" To = "cord" Formula = "x/3.624556363776" />
+    <Conversion From = "cord" To = "cubic metre" Formula = "x*3.624556363776" />
+    <Conversion From = "cubic metre" To = "cord" Formula = "x/3.624556363776" />
 
- <Conversion From = "cord-foot" To = "cubic metre" Formula = "x*0.453069545472" />
- <Conversion From = "cubic metre" To = "cord-foot" Formula = "x/0.453069545472" />
+    <Conversion From = "cord-foot" To = "cubic metre" Formula = "x*0.453069545472" />
+    <Conversion From = "cubic metre" To = "cord-foot" Formula = "x/0.453069545472" />
 
- <Conversion From = "cubic fathom" To = "cubic metre" Formula = "x*6.116438863872" />
- <Conversion From = "cubic metre" To = "cubic fathom" Formula = "x/6.116438863872" />
+    <Conversion From = "cubic fathom" To = "cubic metre" Formula = "x*6.116438863872" />
+    <Conversion From = "cubic metre" To = "cubic fathom" Formula = "x/6.116438863872" />
 
- <Conversion From = "cubic foot" To = "cubic metre" Formula = "x*0.028316846592" />
- <Conversion From = "cubic metre" To = "cubic foot" Formula = "x/0.028316846592" />
+    <Conversion From = "cubic foot" To = "cubic metre" Formula = "x*0.028316846592" />
+    <Conversion From = "cubic metre" To = "cubic foot" Formula = "x/0.028316846592" />
 
- <Conversion From = "cubic inch" To = "cubic metre" Formula = "x*16.387064e-6" />
- <Conversion From = "cubic metre" To = "cubic inch" Formula = "x/16.387064e-6" />
+    <Conversion From = "cubic inch" To = "cubic metre" Formula = "x*16.387064e-6" />
+    <Conversion From = "cubic metre" To = "cubic inch" Formula = "x/16.387064e-6" />
 
- <Conversion From = "cubic mile" To = "cubic metre" Formula = "x*4168181825.440579584" />
- <Conversion From = "cubic metre" To = "cubic mile" Formula = "x/4168181825.440579584" />
+    <Conversion From = "cubic mile" To = "cubic metre" Formula = "x*4168181825.440579584" />
+    <Conversion From = "cubic metre" To = "cubic mile" Formula = "x/4168181825.440579584" />
 
- <Conversion From = "cubic yard" To = "cubic metre" Formula = "x*0.764554857984" />
- <Conversion From = "cubic metre" To = "cubic yard" Formula = "x/0.764554857984" />
+    <Conversion From = "cubic yard" To = "cubic metre" Formula = "x*0.764554857984" />
+    <Conversion From = "cubic metre" To = "cubic yard" Formula = "x/0.764554857984" />
 
- <Conversion From = "cup" To = "cubic metre" Formula = "x*250e-6" />
- <Conversion From = "cubic metre" To = "cup" Formula = "x/250e-6" />
+    <Conversion From = "cup" To = "cubic metre" Formula = "x*250e-6" />
+    <Conversion From = "cubic metre" To = "cup" Formula = "x/250e-6" />
 
- <Conversion From = "dash" To = "cubic metre" Formula = "x*369.961751302083e-9" />
- <Conversion From = "cubic metre" To = "dash" Formula = "x/369.961751302083e-9" />
+    <Conversion From = "dash" To = "cubic metre" Formula = "x*369.961751302083e-9" />
+    <Conversion From = "cubic metre" To = "dash" Formula = "x/369.961751302083e-9" />
 
- <Conversion From = "dessertspoon" To = "cubic metre" Formula = "x*11.8387760416e-6" />
- <Conversion From = "cubic metre" To = "dessertspoon" Formula = "x/11.8387760416e-6" />
+    <Conversion From = "dessertspoon" To = "cubic metre" Formula = "x*11.8387760416e-6" />
+    <Conversion From = "cubic metre" To = "dessertspoon" Formula = "x/11.8387760416e-6" />
 
- <Conversion From = "drop (medical)" To = "cubic metre" Formula = "x*1/12*1e-6" />
- <Conversion From = "cubic metre" To = "drop (medical)" Formula = "x/1*12/1e-6" />
+    <Conversion From = "drop (medical)" To = "cubic metre" Formula = "x*1/12*1e-6" />
+    <Conversion From = "cubic metre" To = "drop (medical)" Formula = "x/1*12/1e-6" />
 
- <Conversion From = "drop (metric)" To = "cubic metre" Formula = "x*1/20*1e-6" />
- <Conversion From = "cubic metre" To = "drop (metric)" Formula = "x/1*20/1e-6" />
+    <Conversion From = "drop (metric)" To = "cubic metre" Formula = "x*1/20*1e-6" />
+    <Conversion From = "cubic metre" To = "drop (metric)" Formula = "x/1*20/1e-6" />
 
- <Conversion From = "fifth" To = "cubic metre" Formula = "x*757.0823568e-6" />
- <Conversion From = "cubic metre" To = "fifth" Formula = "x/757.0823568e-6" />
+    <Conversion From = "fifth" To = "cubic metre" Formula = "x*757.0823568e-6" />
+    <Conversion From = "cubic metre" To = "fifth" Formula = "x/757.0823568e-6" />
 
- <Conversion From = "firkin" To = "cubic metre" Formula = "x*0.034068706056" />
- <Conversion From = "cubic metre" To = "firkin" Formula = "x/0.034068706056" />
+    <Conversion From = "firkin" To = "cubic metre" Formula = "x*0.034068706056" />
+    <Conversion From = "cubic metre" To = "firkin" Formula = "x/0.034068706056" />
 
- <Conversion From = "gallon (beer)" To = "cubic metre" Formula = "x*4.621152048e-3" />
- <Conversion From = "cubic metre" To = "gallon (beer)" Formula = "x/4.621152048e-3" />
+    <Conversion From = "gallon (beer)" To = "cubic metre" Formula = "x*4.621152048e-3" />
+    <Conversion From = "cubic metre" To = "gallon (beer)" Formula = "x/4.621152048e-3" />
 
- <Conversion From = "gallon (imperial)" To = "cubic metre" Formula = "x*4.54609e-3" />
- <Conversion From = "cubic metre" To = "gallon (imperial)" Formula = "x/4.54609e-3" />
+    <Conversion From = "gallon (imperial)" To = "cubic metre" Formula = "x*4.54609e-3" />
+    <Conversion From = "cubic metre" To = "gallon (imperial)" Formula = "x/4.54609e-3" />
 
- <Conversion From = "gallon (US)" To = "cubic metre" Formula = "x*3.785411784e-3" />
- <Conversion From = "cubic metre" To = "gallon (US)" Formula = "x/3.785411784e-3" />
+    <Conversion From = "gallon (US)" To = "cubic metre" Formula = "x*3.785411784e-3" />
+    <Conversion From = "cubic metre" To = "gallon (US)" Formula = "x/3.785411784e-3" />
 
- <Conversion From = "lambda" To = "cubic metre" Formula = "x*1e-9" />
- <Conversion From = "cubic metre" To = "lambda" Formula = "x/1e-9" />
+    <Conversion From = "lambda" To = "cubic metre" Formula = "x*1e-9" />
+    <Conversion From = "cubic metre" To = "lambda" Formula = "x/1e-9" />
 
- <Conversion From = "last" To = "cubic metre" Formula = "x*2.9094976" />
- <Conversion From = "cubic metre" To = "last" Formula = "x/2.9094976" />
+    <Conversion From = "last" To = "cubic metre" Formula = "x*2.9094976" />
+    <Conversion From = "cubic metre" To = "last" Formula = "x/2.9094976" />
 
- <Conversion From = "litre" To = "cubic metre" Formula = "x*1e-3" />
- <Conversion From = "cubic metre" To = "litre" Formula = "x/1e-3" />
+    <Conversion From = "litre" To = "cubic metre" Formula = "x*1e-3" />
+    <Conversion From = "cubic metre" To = "litre" Formula = "x/1e-3" />
 
- <Conversion From = "load" To = "cubic metre" Formula = "x*1.4158423296" />
- <Conversion From = "cubic metre" To = "load" Formula = "x/1.4158423296" />
+    <Conversion From = "load" To = "cubic metre" Formula = "x*1.4158423296" />
+    <Conversion From = "cubic metre" To = "load" Formula = "x/1.4158423296" />
 
- <Conversion From = "ounce" To = "cubic metre" Formula = "x*28.4130625e-6" />
- <Conversion From = "cubic metre" To = "ounce" Formula = "x/28.4130625e-6" />
+    <Conversion From = "ounce" To = "cubic metre" Formula = "x*28.4130625e-6" />
+    <Conversion From = "cubic metre" To = "ounce" Formula = "x/28.4130625e-6" />
 
- <Conversion From = "peck" To = "cubic metre" Formula = "x*9.09218e-3" />
- <Conversion From = "cubic metre" To = "peck" Formula = "x/9.09218e-3" />
+    <Conversion From = "peck" To = "cubic metre" Formula = "x*9.09218e-3" />
+    <Conversion From = "cubic metre" To = "peck" Formula = "x/9.09218e-3" />
 
- <Conversion From = "perch" To = "cubic metre" Formula = "x*0.700841953152" />
- <Conversion From = "cubic metre" To = "perch" Formula = "x/0.700841953152" />
+    <Conversion From = "perch" To = "cubic metre" Formula = "x*0.700841953152" />
+    <Conversion From = "cubic metre" To = "perch" Formula = "x/0.700841953152" />
 
- <Conversion From = "pinch" To = "cubic metre" Formula = "x*739.92350260416e-9" />
- <Conversion From = "cubic metre" To = "pinch" Formula = "x/739.92350260416e-9" />
+    <Conversion From = "pinch" To = "cubic metre" Formula = "x*739.92350260416e-9" />
+    <Conversion From = "cubic metre" To = "pinch" Formula = "x/739.92350260416e-9" />
 
- <Conversion From = "pint" To = "cubic metre" Formula = "x*568.26125e-6" />
- <Conversion From = "cubic metre" To = "pint" Formula = "x/568.26125e-6" />
+    <Conversion From = "pint" To = "cubic metre" Formula = "x*568.26125e-6" />
+    <Conversion From = "cubic metre" To = "pint" Formula = "x/568.26125e-6" />
 
- <Conversion From = "pony" To = "cubic metre" Formula = "x*22.180147171875e-6" />
- <Conversion From = "cubic metre" To = "pony" Formula = "x/22.180147171875e-6" />
+    <Conversion From = "pony" To = "cubic metre" Formula = "x*22.180147171875e-6" />
+    <Conversion From = "cubic metre" To = "pony" Formula = "x/22.180147171875e-6" />
 
- <Conversion From = "quart" To = "cubic metre" Formula = "x*1.1365225e-3" />
- <Conversion From = "cubic metre" To = "quart" Formula = "x/1.1365225e-3" />
+    <Conversion From = "quart" To = "cubic metre" Formula = "x*1.1365225e-3" />
+    <Conversion From = "cubic metre" To = "quart" Formula = "x/1.1365225e-3" />
 
- <Conversion From = "pail" To = "cubic metre" Formula = "x*0.29094976" />
- <Conversion From = "cubic metre" To = "pail" Formula = "x/0.29094976" />
+    <Conversion From = "pail" To = "cubic metre" Formula = "x*0.29094976" />
+    <Conversion From = "cubic metre" To = "pail" Formula = "x/0.29094976" />
 
- <Conversion From = "register ton" To = "cubic metre" Formula = "x*2.8316846592" />
- <Conversion From = "cubic metre" To = "register ton" Formula = "x/2.8316846592" />
+    <Conversion From = "register ton" To = "cubic metre" Formula = "x*2.8316846592" />
+    <Conversion From = "cubic metre" To = "register ton" Formula = "x/2.8316846592" />
 
- <Conversion From = "shot" To = "cubic metre" Formula = "x*29.57e-6" />
- <Conversion From = "cubic metre" To = "shot" Formula = "x/29.57e-6" />
+    <Conversion From = "shot" To = "cubic metre" Formula = "x*29.57e-6" />
+    <Conversion From = "cubic metre" To = "shot" Formula = "x/29.57e-6" />
 
- <Conversion From = "tablespoon" To = "cubic metre" Formula = "x*15e-6" />
- <Conversion From = "cubic metre" To = "tablespoon" Formula = "x/15e-6" />
+    <Conversion From = "tablespoon" To = "cubic metre" Formula = "x*15e-6" />
+    <Conversion From = "cubic metre" To = "tablespoon" Formula = "x/15e-6" />
 
- <Conversion From = "teaspoon" To = "cubic metre" Formula = "x*5e-6" />
- <Conversion From = "cubic metre" To = "teaspoon" Formula = "x/5e-6" />
+    <Conversion From = "teaspoon" To = "cubic metre" Formula = "x*5e-6" />
+    <Conversion From = "cubic metre" To = "teaspoon" Formula = "x/5e-6" />
 
- <Conversion From = "timber foot" To = "cubic metre" Formula = "x*0.028316846592" />
- <Conversion From = "cubic metre" To = "timber foot" Formula = "x/0.028316846592" />
+    <Conversion From = "timber foot" To = "cubic metre" Formula = "x*0.028316846592" />
+    <Conversion From = "cubic metre" To = "timber foot" Formula = "x/0.028316846592" />
 
- <Conversion From = "tun" To = "cubic metre" Formula = "x*0.953923769568" />
- <Conversion From = "cubic metre" To = "tun" Formula = "x/0.953923769568" />
+    <Conversion From = "tun" To = "cubic metre" Formula = "x*0.953923769568" />
+    <Conversion From = "cubic metre" To = "tun" Formula = "x/0.953923769568" />
 
- <Conversion From = "wey" To = "cubic metre" Formula = "x*1.4095628066752" />
- <Conversion From = "cubic metre" To = "wey" Formula = "x/1.4095628066752" />
+    <Conversion From = "wey" To = "cubic metre" Formula = "x*1.4095628066752" />
+    <Conversion From = "cubic metre" To = "wey" Formula = "x/1.4095628066752" />
 
-<!-- Volume (litre) ======================================================== -->
- <Conversion From = "acre-foot" To = "litre" Formula = "x*1233.48183754752*1000" />
- <Conversion From = "litre" To = "acre-foot" Formula = "x/1233.48183754752/1000" />
+  <!-- Volume (litre) ======================================================== -->
+    <Conversion From = "acre-foot" To = "litre" Formula = "x*1233.48183754752*1000" />
+    <Conversion From = "litre" To = "acre-foot" Formula = "x/1233.48183754752/1000" />
 
- <Conversion From = "acre-inch" To = "litre" Formula = "x*102.79015312896*1000" />
- <Conversion From = "litre" To = "acre-inch" Formula = "x/102.79015312896/1000" />
+    <Conversion From = "acre-inch" To = "litre" Formula = "x*102.79015312896*1000" />
+    <Conversion From = "litre" To = "acre-inch" Formula = "x/102.79015312896/1000" />
 
- <Conversion From = "barrel (imperial)" To = "litre" Formula = "x*0.16365924*1000" />
- <Conversion From = "litre" To = "barrel (imperial)" Formula = "x/0.16365924/1000" />
+    <Conversion From = "barrel (imperial)" To = "litre" Formula = "x*0.16365924*1000" />
+    <Conversion From = "litre" To = "barrel (imperial)" Formula = "x/0.16365924/1000" />
 
- <Conversion From = "barrel (petroleum)" To = "litre" Formula = "x*0.158987294928*1000" />
- <Conversion From = "litre" To = "barrel (petroleum)" Formula = "x/0.158987294928/1000" />
+    <Conversion From = "barrel (petroleum)" To = "litre" Formula = "x*0.158987294928*1000" />
+    <Conversion From = "litre" To = "barrel (petroleum)" Formula = "x/0.158987294928/1000" />
 
- <Conversion From = "board-foot" To = "litre" Formula = "x*2.359737216e-3*1000" />
- <Conversion From = "litre" To = "board-foot" Formula = "x/2.359737216e-3/1000" />
+    <Conversion From = "board-foot" To = "litre" Formula = "x*2.359737216e-3*1000" />
+    <Conversion From = "litre" To = "board-foot" Formula = "x/2.359737216e-3/1000" />
 
- <Conversion From = "bucket" To = "litre" Formula = "x*0.01818436*1000" />
- <Conversion From = "litre" To = "bucket" Formula = "x/0.01818436/1000" />
+    <Conversion From = "bucket" To = "litre" Formula = "x*0.01818436*1000" />
+    <Conversion From = "litre" To = "bucket" Formula = "x/0.01818436/1000" />
 
- <Conversion From = "bushel" To = "litre" Formula = "x*0.03636872*1000" />
- <Conversion From = "litre" To = "bushel" Formula = "x/0.03636872/1000" />
+    <Conversion From = "bushel" To = "litre" Formula = "x*0.03636872*1000" />
+    <Conversion From = "litre" To = "bushel" Formula = "x/0.03636872/1000" />
 
- <Conversion From = "butt" To = "litre" Formula = "x*0.476961884784*1000" />
- <Conversion From = "pipe" To = "litre" Formula = "x*0.476961884784/1000" />
- <Conversion From = "litre" To = "butt" Formula = "x/0.476961884784*1000" />
- <Conversion From = "litre" To = "pipe" Formula = "x/0.476961884784/1000" />
+    <Conversion From = "butt" To = "litre" Formula = "x*0.476961884784*1000" />
+    <Conversion From = "pipe" To = "litre" Formula = "x*0.476961884784/1000" />
+    <Conversion From = "litre" To = "butt" Formula = "x/0.476961884784*1000" />
+    <Conversion From = "litre" To = "pipe" Formula = "x/0.476961884784/1000" />
 
- <Conversion From = "coomb" To = "litre" Formula = "x*0.14547488*1000" />
- <Conversion From = "litre" To = "coomb" Formula = "x/0.14547488/1000" />
+    <Conversion From = "coomb" To = "litre" Formula = "x*0.14547488*1000" />
+    <Conversion From = "litre" To = "coomb" Formula = "x/0.14547488/1000" />
 
- <Conversion From = "cord" To = "litre" Formula = "x*3.624556363776*1000" />
- <Conversion From = "litre" To = "cord" Formula = "x/3.624556363776/1000" />
+    <Conversion From = "cord" To = "litre" Formula = "x*3.624556363776*1000" />
+    <Conversion From = "litre" To = "cord" Formula = "x/3.624556363776/1000" />
 
- <Conversion From = "cord-foot" To = "litre" Formula = "x*0.453069545472*1000" />
- <Conversion From = "litre" To = "cord-foot" Formula = "x/0.453069545472/1000" />
+    <Conversion From = "cord-foot" To = "litre" Formula = "x*0.453069545472*1000" />
+    <Conversion From = "litre" To = "cord-foot" Formula = "x/0.453069545472/1000" />
 
- <Conversion From = "cubic fathom" To = "litre" Formula = "x*6.116438863872*1000" />
- <Conversion From = "litre" To = "cubic fathom" Formula = "x/6.116438863872/1000" />
+    <Conversion From = "cubic fathom" To = "litre" Formula = "x*6.116438863872*1000" />
+    <Conversion From = "litre" To = "cubic fathom" Formula = "x/6.116438863872/1000" />
 
- <Conversion From = "cubic foot" To = "litre" Formula = "x*0.028316846592*1000" />
- <Conversion From = "litre" To = "cubic foot" Formula = "x/0.028316846592/1000" />
+    <Conversion From = "cubic foot" To = "litre" Formula = "x*0.028316846592*1000" />
+    <Conversion From = "litre" To = "cubic foot" Formula = "x/0.028316846592/1000" />
 
- <Conversion From = "cubic inch" To = "litre" Formula = "x*16.387064e-6*1000" />
- <Conversion From = "litre" To = "cubic inch" Formula = "x/16.387064e-6/1000" />
+    <Conversion From = "cubic inch" To = "litre" Formula = "x*16.387064e-6*1000" />
+    <Conversion From = "litre" To = "cubic inch" Formula = "x/16.387064e-6/1000" />
 
- <Conversion From = "cubic mile" To = "litre" Formula = "x*4168181825.440579584*1000" />
- <Conversion From = "litre" To = "cubic mile" Formula = "x/4168181825.440579584/1000" />
+    <Conversion From = "cubic mile" To = "litre" Formula = "x*4168181825.440579584*1000" />
+    <Conversion From = "litre" To = "cubic mile" Formula = "x/4168181825.440579584/1000" />
 
- <Conversion From = "cubic yard" To = "litre" Formula = "x*0.764554857984*1000" />
- <Conversion From = "litre" To = "cubic yard" Formula = "x/0.764554857984/1000" />
+    <Conversion From = "cubic yard" To = "litre" Formula = "x*0.764554857984*1000" />
+    <Conversion From = "litre" To = "cubic yard" Formula = "x/0.764554857984/1000" />
 
- <Conversion From = "cup" To = "litre" Formula = "x*250e-6*1000" />
- <Conversion From = "litre" To = "cup" Formula = "x/250e-6/1000" />
+    <Conversion From = "cup" To = "litre" Formula = "x*250e-6*1000" />
+    <Conversion From = "litre" To = "cup" Formula = "x/250e-6/1000" />
 
- <Conversion From = "dash" To = "litre" Formula = "x*369.961751302083e-9*1000" />
- <Conversion From = "litre" To = "dash" Formula = "x/369.961751302083e-9/1000" />
+    <Conversion From = "dash" To = "litre" Formula = "x*369.961751302083e-9*1000" />
+    <Conversion From = "litre" To = "dash" Formula = "x/369.961751302083e-9/1000" />
 
- <Conversion From = "dessertspoon" To = "litre" Formula = "x*11.8387760416e-6*1000" />
- <Conversion From = "litre" To = "dessertspoon" Formula = "x/11.8387760416e-6/1000" />
+    <Conversion From = "dessertspoon" To = "litre" Formula = "x*11.8387760416e-6*1000" />
+    <Conversion From = "litre" To = "dessertspoon" Formula = "x/11.8387760416e-6/1000" />
 
- <Conversion From = "drop (medical)" To = "litre" Formula = "x*1/12*1e-6*1000" />
- <Conversion From = "litre" To = "drop (medical)" Formula = "x/1*12/1e-6/1000" />
+    <Conversion From = "drop (medical)" To = "litre" Formula = "x*1/12*1e-6*1000" />
+    <Conversion From = "litre" To = "drop (medical)" Formula = "x/1*12/1e-6/1000" />
 
- <Conversion From = "drop (metric)" To = "litre" Formula = "x*1/20*1e-6*1000" />
- <Conversion From = "litre" To = "drop (metric)" Formula = "x/1*20/1e-6/1000" />
+    <Conversion From = "drop (metric)" To = "litre" Formula = "x*1/20*1e-6*1000" />
+    <Conversion From = "litre" To = "drop (metric)" Formula = "x/1*20/1e-6/1000" />
 
- <Conversion From = "fifth" To = "litre" Formula = "x*757.0823568e-6*1000" />
- <Conversion From = "litre" To = "fifth" Formula = "x/757.0823568e-6/1000" />
+    <Conversion From = "fifth" To = "litre" Formula = "x*757.0823568e-6*1000" />
+    <Conversion From = "litre" To = "fifth" Formula = "x/757.0823568e-6/1000" />
 
- <Conversion From = "firkin" To = "litre" Formula = "x*0.034068706056*1000" />
- <Conversion From = "litre" To = "firkin" Formula = "x/0.034068706056/1000" />
+    <Conversion From = "firkin" To = "litre" Formula = "x*0.034068706056*1000" />
+    <Conversion From = "litre" To = "firkin" Formula = "x/0.034068706056/1000" />
 
- <Conversion From = "gallon (beer)" To = "litre" Formula = "x*4.621152048e-3*1000" />
- <Conversion From = "litre" To = "gallon (beer)" Formula = "x/4.621152048e-3/1000" />
+    <Conversion From = "gallon (beer)" To = "litre" Formula = "x*4.621152048e-3*1000" />
+    <Conversion From = "litre" To = "gallon (beer)" Formula = "x/4.621152048e-3/1000" />
 
- <Conversion From = "gallon (imperial)" To = "litre" Formula = "x*4.54609e-3*1000" />
- <Conversion From = "litre" To = "gallon (imperial)" Formula = "x/4.54609e-3/1000" />
+    <Conversion From = "gallon (imperial)" To = "litre" Formula = "x*4.54609e-3*1000" />
+    <Conversion From = "litre" To = "gallon (imperial)" Formula = "x/4.54609e-3/1000" />
 
- <Conversion From = "gallon (US)" To = "litre" Formula = "x*3.785411784e-3*1000" />
- <Conversion From = "litre" To = "gallon (US)" Formula = "x/3.785411784e-3/1000" />
+    <Conversion From = "gallon (US)" To = "litre" Formula = "x*3.785411784e-3*1000" />
+    <Conversion From = "litre" To = "gallon (US)" Formula = "x/3.785411784e-3/1000" />
 
- <Conversion From = "lambda" To = "litre" Formula = "x*1e-9*1000" />
- <Conversion From = "litre" To = "lambda" Formula = "x/1e-9/1000" />
+    <Conversion From = "lambda" To = "litre" Formula = "x*1e-9*1000" />
+    <Conversion From = "litre" To = "lambda" Formula = "x/1e-9/1000" />
 
- <Conversion From = "last" To = "litre" Formula = "x*2.9094976*1000" />
- <Conversion From = "litre" To = "last" Formula = "x/2.9094976/1000" />
+    <Conversion From = "last" To = "litre" Formula = "x*2.9094976*1000" />
+    <Conversion From = "litre" To = "last" Formula = "x/2.9094976/1000" />
 
- <Conversion From = "load" To = "litre" Formula = "x*1.4158423296*1000" />
- <Conversion From = "litre" To = "load" Formula = "x/1.4158423296/1000" />
+    <Conversion From = "load" To = "litre" Formula = "x*1.4158423296*1000" />
+    <Conversion From = "litre" To = "load" Formula = "x/1.4158423296/1000" />
 
- <Conversion From = "ounce" To = "litre" Formula = "x*28.4130625e-6*1000" />
- <Conversion From = "litre" To = "ounce" Formula = "x/28.4130625e-6/1000" />
+    <Conversion From = "ounce" To = "litre" Formula = "x*28.4130625e-6*1000" />
+    <Conversion From = "litre" To = "ounce" Formula = "x/28.4130625e-6/1000" />
 
- <Conversion From = "peck" To = "litre" Formula = "x*9.09218e-3*1000" />
- <Conversion From = "litre" To = "peck" Formula = "x/9.09218e-3/1000" />
+    <Conversion From = "peck" To = "litre" Formula = "x*9.09218e-3*1000" />
+    <Conversion From = "litre" To = "peck" Formula = "x/9.09218e-3/1000" />
 
- <Conversion From = "perch" To = "litre" Formula = "x*0.700841953152*1000" />
- <Conversion From = "litre" To = "perch" Formula = "x/0.700841953152/1000" />
+    <Conversion From = "perch" To = "litre" Formula = "x*0.700841953152*1000" />
+    <Conversion From = "litre" To = "perch" Formula = "x/0.700841953152/1000" />
 
- <Conversion From = "pinch" To = "litre" Formula = "x*739.92350260416e-9*1000" />
- <Conversion From = "litre" To = "pinch" Formula = "x/739.92350260416e-9/1000" />
+    <Conversion From = "pinch" To = "litre" Formula = "x*739.92350260416e-9*1000" />
+    <Conversion From = "litre" To = "pinch" Formula = "x/739.92350260416e-9/1000" />
 
- <Conversion From = "pint" To = "litre" Formula = "x*568.26125e-6*1000" />
- <Conversion From = "litre" To = "pint" Formula = "x/568.26125e-6/1000" />
+    <Conversion From = "pint" To = "litre" Formula = "x*568.26125e-6*1000" />
+    <Conversion From = "litre" To = "pint" Formula = "x/568.26125e-6/1000" />
 
- <Conversion From = "pony" To = "litre" Formula = "x*22.180147171875e-6*1000" />
- <Conversion From = "litre" To = "pony" Formula = "x/22.180147171875e-6/1000" />
+    <Conversion From = "pony" To = "litre" Formula = "x*22.180147171875e-6*1000" />
+    <Conversion From = "litre" To = "pony" Formula = "x/22.180147171875e-6/1000" />
 
- <Conversion From = "quart" To = "litre" Formula = "x*1.1365225e-3*1000" />
- <Conversion From = "litre" To = "quart" Formula = "x/1.1365225e-3/1000" />
+    <Conversion From = "quart" To = "litre" Formula = "x*1.1365225e-3*1000" />
+    <Conversion From = "litre" To = "quart" Formula = "x/1.1365225e-3/1000" />
 
- <Conversion From = "pail" To = "litre" Formula = "x*0.29094976*1000" />
- <Conversion From = "litre" To = "pail" Formula = "x/0.29094976/1000" />
+    <Conversion From = "pail" To = "litre" Formula = "x*0.29094976*1000" />
+    <Conversion From = "litre" To = "pail" Formula = "x/0.29094976/1000" />
 
- <Conversion From = "register ton" To = "litre" Formula = "x*2.8316846592*1000" />
- <Conversion From = "litre" To = "register ton" Formula = "x/2.8316846592/1000" />
+    <Conversion From = "register ton" To = "litre" Formula = "x*2.8316846592*1000" />
+    <Conversion From = "litre" To = "register ton" Formula = "x/2.8316846592/1000" />
 
- <Conversion From = "shot" To = "litre" Formula = "x*29.57e-6*1000" />
- <Conversion From = "litre" To = "shot" Formula = "x/29.57e-6/1000" />
+    <Conversion From = "shot" To = "litre" Formula = "x*29.57e-6*1000" />
+    <Conversion From = "litre" To = "shot" Formula = "x/29.57e-6/1000" />
 
- <Conversion From = "tablespoon" To = "litre" Formula = "x*15e-6*1000" />
- <Conversion From = "litre" To = "tablespoon" Formula = "x/15e-6/1000" />
+    <Conversion From = "tablespoon" To = "litre" Formula = "x*15e-6*1000" />
+    <Conversion From = "litre" To = "tablespoon" Formula = "x/15e-6/1000" />
 
- <Conversion From = "teaspoon" To = "litre" Formula = "x*5e-6*1000" />
- <Conversion From = "litre" To = "teaspoon" Formula = "x/5e-6/1000" />
+    <Conversion From = "teaspoon" To = "litre" Formula = "x*5e-6*1000" />
+    <Conversion From = "litre" To = "teaspoon" Formula = "x/5e-6/1000" />
 
- <Conversion From = "timber foot" To = "litre" Formula = "x*0.028316846592*1000" />
- <Conversion From = "litre" To = "timber foot" Formula = "x/0.028316846592/1000" />
+    <Conversion From = "timber foot" To = "litre" Formula = "x*0.028316846592*1000" />
+    <Conversion From = "litre" To = "timber foot" Formula = "x/0.028316846592/1000" />
 
- <Conversion From = "tun" To = "litre" Formula = "x*0.953923769568*1000" />
- <Conversion From = "litre" To = "tun" Formula = "x/0.953923769568/1000" />
+    <Conversion From = "tun" To = "litre" Formula = "x*0.953923769568*1000" />
+    <Conversion From = "litre" To = "tun" Formula = "x/0.953923769568/1000" />
 
- <Conversion From = "wey" To = "litre" Formula = "x*1.4095628066752*1000" />
- <Conversion From = "litre" To = "wey" Formula = "x/1.4095628066752/1000" />
+    <Conversion From = "wey" To = "litre" Formula = "x*1.4095628066752*1000" />
+    <Conversion From = "litre" To = "wey" Formula = "x/1.4095628066752/1000" />
 
-<!-- Angle ================================================================= -->
- <Conversion From = "angular mil" To = "radian" Formula = "x*2*pi/6400" />
- <Conversion From = "radian" To = "angular mil" Formula = "x/2/pi*6400" />
- 
- <Conversion From = "arcminute" To = "radian" Formula = "x*pi/180/60" />
- <Conversion From = "radian" To = "arcminute" Formula = "x/pi*180*60" />
- 
- <Conversion From = "arcsecond" To = "radian" Formula = "x*pi/180/3600" />
- <Conversion From = "radian" To = "arcsecond" Formula = "x/pi*180*3600" />
- 
- <Conversion From = "degree" To = "radian" Formula = "x*pi/180" />
- <Conversion From = "radian" To = "degree" Formula = "x/pi*180" />
- 
- <Conversion From = "gradian" To = "radian" Formula = "x*pi/200" />
- <Conversion From = "radian" To = "gradian" Formula = "x/pi*200" />
- 
- <Conversion From = "octant" To = "radian" Formula = "x*pi/4" />
- <Conversion From = "radian" To = "octant" Formula = "x/pi*4" />
- 
- <Conversion From = "quadrant" To = "radian" Formula = "x*pi/2" />
- <Conversion From = "radian" To = "quadrant" Formula = "x/pi*2" />
- 
- <Conversion From = "sextant" To = "radian" Formula = "x*pi/3" />
- <Conversion From = "radian" To = "sextant" Formula = "x/pi*3" />
- 
- <Conversion From = "sign" To = "radian" Formula = "x*pi/6" />
- <Conversion From = "radian" To = "sign" Formula = "x/pi*6" />
- 
-<!-- Mass ================================================================== -->
- <Conversion From = "atomic unit" To = "kilogram" Formula = "x*1.66053873e-27" />
- <Conversion From = "atomic mass" To = "kilogram" Formula = "x*1.66053873e-27" />
- <Conversion From = "kilogram" To = "atomic unit" Formula = "x/1.66053873e-27" />
- <Conversion From = "kilogram" To = "atomic mass" Formula = "x/1.66053873e-27" />
+  <!-- Angle ================================================================= -->
+    <Conversion From = "angular mil" To = "radian" Formula = "x*2*pi/6400" />
+    <Conversion From = "radian" To = "angular mil" Formula = "x/2/pi*6400" />
+    
+    <Conversion From = "arcminute" To = "radian" Formula = "x*pi/180/60" />
+    <Conversion From = "radian" To = "arcminute" Formula = "x/pi*180*60" />
+    
+    <Conversion From = "arcsecond" To = "radian" Formula = "x*pi/180/3600" />
+    <Conversion From = "radian" To = "arcsecond" Formula = "x/pi*180*3600" />
+    
+    <Conversion From = "degree" To = "radian" Formula = "x*pi/180" />
+    <Conversion From = "radian" To = "degree" Formula = "x/pi*180" />
+    
+    <Conversion From = "gradian" To = "radian" Formula = "x*pi/200" />
+    <Conversion From = "radian" To = "gradian" Formula = "x/pi*200" />
+    
+    <Conversion From = "octant" To = "radian" Formula = "x*pi/4" />
+    <Conversion From = "radian" To = "octant" Formula = "x/pi*4" />
+    
+    <Conversion From = "quadrant" To = "radian" Formula = "x*pi/2" />
+    <Conversion From = "radian" To = "quadrant" Formula = "x/pi*2" />
+    
+    <Conversion From = "sextant" To = "radian" Formula = "x*pi/3" />
+    <Conversion From = "radian" To = "sextant" Formula = "x/pi*3" />
+    
+    <Conversion From = "sign" To = "radian" Formula = "x*pi/6" />
+    <Conversion From = "radian" To = "sign" Formula = "x/pi*6" />
+    
+  <!-- Mass ================================================================== -->
+    <Conversion From = "atomic unit" To = "kilogram" Formula = "x*1.66053873e-27" />
+    <Conversion From = "atomic mass" To = "kilogram" Formula = "x*1.66053873e-27" />
+    <Conversion From = "kilogram" To = "atomic unit" Formula = "x/1.66053873e-27" />
+    <Conversion From = "kilogram" To = "atomic mass" Formula = "x/1.66053873e-27" />
 
- <Conversion From = "electron mass" To = "kilogram" Formula = "x*9.10938215e-31" />
- <Conversion From = "kilogram" To = "electron mass" Formula = "x/9.10938215e-31" />
+    <Conversion From = "electron mass" To = "kilogram" Formula = "x*9.10938215e-31" />
+    <Conversion From = "kilogram" To = "electron mass" Formula = "x/9.10938215e-31" />
 
- <Conversion From = "bag (coffee)" To = "kilogram" Formula = "x*60" />
- <Conversion From = "kilogram" To = "bag (coffee)" Formula = "x/60" />
+    <Conversion From = "bag (coffee)" To = "kilogram" Formula = "x*60" />
+    <Conversion From = "kilogram" To = "bag (coffee)" Formula = "x/60" />
 
- <Conversion From = "bag (cement)" To = "kilogram" Formula = "x*42.63768278" />
- <Conversion From = "kilogram" To = "bag (cement)" Formula = "x/42.63768278" />
+    <Conversion From = "bag (cement)" To = "kilogram" Formula = "x*42.63768278" />
+    <Conversion From = "kilogram" To = "bag (cement)" Formula = "x/42.63768278" />
 
- <Conversion From = "barge" To = "kilogram" Formula = "x*20411.65665" />
- <Conversion From = "kilogram" To = "barge" Formula = "x/20411.65665" />
+    <Conversion From = "barge" To = "kilogram" Formula = "x*20411.65665" />
+    <Conversion From = "kilogram" To = "barge" Formula = "x/20411.65665" />
 
- <Conversion From = "carat" To = "kilogram" Formula = "x*205.196548333e-6" />
- <Conversion From = "kilogram" To = "carat" Formula = "x/205.196548333e-6" />
+    <Conversion From = "carat" To = "kilogram" Formula = "x*205.196548333e-6" />
+    <Conversion From = "kilogram" To = "carat" Formula = "x/205.196548333e-6" />
 
- <Conversion From = "carat (metric)" To = "kilogram" Formula = "x*200e-6" />
- <Conversion From = "kilogram" To = "carat (metric)" Formula = "x/200e-6" />
+    <Conversion From = "carat (metric)" To = "kilogram" Formula = "x*200e-6" />
+    <Conversion From = "kilogram" To = "carat (metric)" Formula = "x/200e-6" />
 
- <Conversion From = "clove" To = "kilogram" Formula = "x*3.62873896" />
- <Conversion From = "kilogram" To = "clove" Formula = "x/3.62873896" />
+    <Conversion From = "clove" To = "kilogram" Formula = "x*3.62873896" />
+    <Conversion From = "kilogram" To = "clove" Formula = "x/3.62873896" />
 
- <Conversion From = "crith" To = "kilogram" Formula = "x*89.9349e-6" />
- <Conversion From = "kilogram" To = "crith" Formula = "x/89.9349e-6" />
+    <Conversion From = "crith" To = "kilogram" Formula = "x*89.9349e-6" />
+    <Conversion From = "kilogram" To = "crith" Formula = "x/89.9349e-6" />
 
- <Conversion From = "dalton" To = "kilogram" Formula = "x*1.66090210e-27" />
- <Conversion From = "kilogram" To = "dalton" Formula = "x/1.66090210e-27" />
+    <Conversion From = "dalton" To = "kilogram" Formula = "x*1.66090210e-27" />
+    <Conversion From = "kilogram" To = "dalton" Formula = "x/1.66090210e-27" />
 
- <Conversion From = "dram" To = "kilogram" Formula = "x*1.7718451953125e-3" />
- <Conversion From = "kilogram" To = "dram" Formula = "x/1.7718451953125e-3" />
+    <Conversion From = "dram" To = "kilogram" Formula = "x*1.7718451953125e-3" />
+    <Conversion From = "kilogram" To = "dram" Formula = "x/1.7718451953125e-3" />
 
- <Conversion From = "electronvolt" To = "kilogram" Formula = "x*1.7826e-36" />
- <Conversion From = "kilogram" To = "electronvolt" Formula = "x/1.7826e-36" />
+    <Conversion From = "electronvolt" To = "kilogram" Formula = "x*1.7826e-36" />
+    <Conversion From = "kilogram" To = "electronvolt" Formula = "x/1.7826e-36" />
 
- <Conversion From = "gamma" To = "kilogram" Formula = "x*1e-9" />
- <Conversion From = "kilogram" To = "gamma" Formula = "x/1e-9" />
+    <Conversion From = "gamma" To = "kilogram" Formula = "x*1e-9" />
+    <Conversion From = "kilogram" To = "gamma" Formula = "x/1e-9" />
 
- <Conversion From = "grain" To = "kilogram" Formula = "x*64.79891" />
- <Conversion From = "kilogram" To = "grain" Formula = "x/64.79891" />
+    <Conversion From = "grain" To = "kilogram" Formula = "x*64.79891" />
+    <Conversion From = "kilogram" To = "grain" Formula = "x/64.79891" />
 
- <Conversion From = "kip" To = "kilogram" Formula = "x*453.59237" />
- <Conversion From = "kilogram" To = "kip" Formula = "x/453.59237" />
+    <Conversion From = "kip" To = "kilogram" Formula = "x*453.59237" />
+    <Conversion From = "kilogram" To = "kip" Formula = "x/453.59237" />
 
- <Conversion From = "mark" To = "kilogram" Formula = "x*248.8278144e-3" />
- <Conversion From = "kilogram" To = "mark" Formula = "x/248.8278144e-3" />
+    <Conversion From = "mark" To = "kilogram" Formula = "x*248.8278144e-3" />
+    <Conversion From = "kilogram" To = "mark" Formula = "x/248.8278144e-3" />
 
- <Conversion From = "mite" To = "kilogram" Formula = "x*3.2399455e-6" />
- <Conversion From = "kilogram" To = "mite" Formula = "x/3.2399455e-6" />
+    <Conversion From = "mite" To = "kilogram" Formula = "x*3.2399455e-6" />
+    <Conversion From = "kilogram" To = "mite" Formula = "x/3.2399455e-6" />
 
- <Conversion From = "mite (metric)" To = "kilogram" Formula = "x*50e-6" />
- <Conversion From = "kilogram" To = "mite (metric)" Formula = "x/50e-6" />
+    <Conversion From = "mite (metric)" To = "kilogram" Formula = "x*50e-6" />
+    <Conversion From = "kilogram" To = "mite (metric)" Formula = "x/50e-6" />
 
- <Conversion From = "ounce" To = "kilogram" Formula = "x*28.349523125e-3" />
- <Conversion From = "kilogram" To = "ounce" Formula = "x/28.349523125e-3" />
+    <Conversion From = "ounce" To = "kilogram" Formula = "x*28.349523125e-3" />
+    <Conversion From = "kilogram" To = "ounce" Formula = "x/28.349523125e-3" />
 
- <Conversion From = "pennyweight" To = "kilogram" Formula = "x*1.55517384e-3" />
- <Conversion From = "kilogram" To = "pennyweight" Formula = "x/1.55517384e-3" />
+    <Conversion From = "pennyweight" To = "kilogram" Formula = "x*1.55517384e-3" />
+    <Conversion From = "kilogram" To = "pennyweight" Formula = "x/1.55517384e-3" />
 
- <Conversion From = "point" To = "kilogram" Formula = "x*2e-6" />
- <Conversion From = "kilogram" To = "point" Formula = "x/2e-6" />
+    <Conversion From = "point" To = "kilogram" Formula = "x*2e-6" />
+    <Conversion From = "kilogram" To = "point" Formula = "x/2e-6" />
 
- <Conversion From = "pound" To = "kilogram" Formula = "x*0.45359237" />
- <Conversion From = "kilogram" To = "pound" Formula = "x/0.45359237" />
+    <Conversion From = "pound" To = "kilogram" Formula = "x*0.45359237" />
+    <Conversion From = "kilogram" To = "pound" Formula = "x/0.45359237" />
 
- <Conversion From = "quater" To = "kilogram" Formula = "x*12.70058636" />
- <Conversion From = "kilogram" To = "quater" Formula = "x/12.70058636" />
+    <Conversion From = "quater" To = "kilogram" Formula = "x*12.70058636" />
+    <Conversion From = "kilogram" To = "quater" Formula = "x/12.70058636" />
 
- <Conversion From = "quintal" To = "kilogram" Formula = "x*100" />
- <Conversion From = "kilogram" To = "quintal" Formula = "x/100" />
+    <Conversion From = "quintal" To = "kilogram" Formula = "x*100" />
+    <Conversion From = "kilogram" To = "quintal" Formula = "x/100" />
 
- <Conversion From = "scruple" To = "kilogram" Formula = "x*1.2959782e-3" />
- <Conversion From = "kilogram" To = "scruple" Formula = "x/1.2959782e-3" />
+    <Conversion From = "scruple" To = "kilogram" Formula = "x*1.2959782e-3" />
+    <Conversion From = "kilogram" To = "scruple" Formula = "x/1.2959782e-3" />
 
- <Conversion From = "sheet" To = "kilogram" Formula = "x*647.9891e-6" />
- <Conversion From = "kilogram" To = "sheet" Formula = "x/647.9891e-6" />
+    <Conversion From = "sheet" To = "kilogram" Formula = "x*647.9891e-6" />
+    <Conversion From = "kilogram" To = "sheet" Formula = "x/647.9891e-6" />
 
- <Conversion From = "slug" To = "kilogram" Formula = "x*14.593903" />
- <Conversion From = "kilogram" To = "slug" Formula = "x/14.593903" />
+    <Conversion From = "slug" To = "kilogram" Formula = "x*14.593903" />
+    <Conversion From = "kilogram" To = "slug" Formula = "x/14.593903" />
 
- <Conversion From = "stone" To = "kilogram" Formula = "x*6.35029318" />
- <Conversion From = "kilogram" To = "stone" Formula = "x/6.35029318" />
+    <Conversion From = "stone" To = "kilogram" Formula = "x*6.35029318" />
+    <Conversion From = "kilogram" To = "stone" Formula = "x/6.35029318" />
 
- <Conversion From = "tonne" To = "kilogram" Formula = "x*1000" />
- <Conversion From = "kilogram" To = "tonne" Formula = "x/1000" />
+    <Conversion From = "tonne" To = "kilogram" Formula = "x*1000" />
+    <Conversion From = "kilogram" To = "tonne" Formula = "x/1000" />
 
- <Conversion From = "wey" To = "kilogram" Formula = "x*114.30527724" />
- <Conversion From = "kilogram" To = "wey" Formula = "x/114.30527724" />
+    <Conversion From = "wey" To = "kilogram" Formula = "x*114.30527724" />
+    <Conversion From = "kilogram" To = "wey" Formula = "x/114.30527724" />
 
-<!-- Time ================================================================== -->
- <Conversion From = "atomic unit" To = "second" Formula = "x*2.418884254e-17" />
- <Conversion From = "second" To = "atomic unit" Formula = "x/2.418884254e-17" />
+  <!-- Time ================================================================== -->
+    <Conversion From = "atomic unit" To = "second" Formula = "x*2.418884254e-17" />
+    <Conversion From = "second" To = "atomic unit" Formula = "x/2.418884254e-17" />
 
- <Conversion From = "Callippic cycle" To = "second" Formula = "x*2.3983776e9" />
- <Conversion From = "second" To = "Callippic cycle" Formula = "x/2.3983776e9" />
+    <Conversion From = "Callippic cycle" To = "second" Formula = "x*2.3983776e9" />
+    <Conversion From = "second" To = "Callippic cycle" Formula = "x/2.3983776e9" />
 
- <Conversion From = "day" To = "second" Formula = "x*86400" />
- <Conversion From = "second" To = "day" Formula = "x/86400" />
+    <Conversion From = "day" To = "second" Formula = "x*86400" />
+    <Conversion From = "second" To = "day" Formula = "x/86400" />
 
- <Conversion From = "helek" To = "second" Formula = "x*3600/1080" />
- <Conversion From = "second" To = "helek" Formula = "x/3600*1080" />
+    <Conversion From = "helek" To = "second" Formula = "x*3600/1080" />
+    <Conversion From = "second" To = "helek" Formula = "x/3600*1080" />
 
- <Conversion From = "hour" To = "second" Formula = "x*3600" />
- <Conversion From = "second" To = "hour" Formula = "x/3600" />
+    <Conversion From = "hour" To = "second" Formula = "x*3600" />
+    <Conversion From = "second" To = "hour" Formula = "x/3600" />
 
- <Conversion From = "jiffy" To = "second" Formula = "x/60" />
- <Conversion From = "second" To = "jiffy" Formula = "x*60" />
+    <Conversion From = "jiffy" To = "second" Formula = "x/60" />
+    <Conversion From = "second" To = "jiffy" Formula = "x*60" />
 
- <Conversion From = "ke" To = "second" Formula = "x*900" />
- <Conversion From = "second" To = "ke" Formula = "x/900" />
+    <Conversion From = "ke" To = "second" Formula = "x*900" />
+    <Conversion From = "second" To = "ke" Formula = "x/900" />
 
- <Conversion From = "lustre" To = "second" Formula = "x*5*365*24*3600" />
- <Conversion From = "second" To = "lustre" Formula = "x/5/365/24/3600" />
+    <Conversion From = "lustre" To = "second" Formula = "x*5*365*24*3600" />
+    <Conversion From = "second" To = "lustre" Formula = "x/5/365/24/3600" />
 
- <Conversion From = "minute" To = "second" Formula = "x*60" />
- <Conversion From = "second" To = "minute" Formula = "x/60" />
+    <Conversion From = "minute" To = "second" Formula = "x*60" />
+    <Conversion From = "second" To = "minute" Formula = "x/60" />
 
- <Conversion From = "moment" To = "second" Formula = "x*90" />
- <Conversion From = "second" To = "moment" Formula = "x/90" />
+    <Conversion From = "moment" To = "second" Formula = "x*90" />
+    <Conversion From = "second" To = "moment" Formula = "x/90" />
 
- <Conversion From = "octaeteris" To = "second" Formula = "x*2.524608e8" />
- <Conversion From = "second" To = "octaeteris" Formula = "x/2.524608e8" />
+    <Conversion From = "octaeteris" To = "second" Formula = "x*2.524608e8" />
+    <Conversion From = "second" To = "octaeteris" Formula = "x/2.524608e8" />
 
- <Conversion From = "Planck time" To = "second" Formula = "x*1.351211868e-43" />
- <Conversion From = "second" To = "Planck time" Formula = "x/1.351211868e-43" />
+    <Conversion From = "Planck time" To = "second" Formula = "x*1.351211868e-43" />
+    <Conversion From = "second" To = "Planck time" Formula = "x/1.351211868e-43" />
 
- <Conversion From = "shake" To = "second" Formula = "x*10e-9" />
- <Conversion From = "second" To = "shake" Formula = "x/10e-9" />
+    <Conversion From = "shake" To = "second" Formula = "x*10e-9" />
+    <Conversion From = "second" To = "shake" Formula = "x/10e-9" />
 
- <Conversion From = "sigma" To = "second" Formula = "x*1e-6" />
- <Conversion From = "second" To = "sigma" Formula = "x/1e-6" />
+    <Conversion From = "sigma" To = "second" Formula = "x*1e-6" />
+    <Conversion From = "second" To = "sigma" Formula = "x/1e-6" />
 
- <Conversion From = "Sothic cycle" To = "second" Formula = "x*4.6074096e10" />
- <Conversion From = "second" To = "Sothic cycle" Formula = "x/4.6074096e10" />
+    <Conversion From = "Sothic cycle" To = "second" Formula = "x*4.6074096e10" />
+    <Conversion From = "second" To = "Sothic cycle" Formula = "x/4.6074096e10" />
 
- <Conversion From = "svedberg" To = "second" Formula = "x*100e-15" />
- <Conversion From = "second" To = "svedberg" Formula = "x/100e-15" />
+    <Conversion From = "svedberg" To = "second" Formula = "x*100e-15" />
+    <Conversion From = "second" To = "svedberg" Formula = "x/100e-15" />
 
- <Conversion From = "week" To = "second" Formula = "x*604800" />
- <Conversion From = "second" To = "week" Formula = "x/604800" />
+    <Conversion From = "week" To = "second" Formula = "x*604800" />
+    <Conversion From = "second" To = "week" Formula = "x/604800" />
 
- <Conversion From = "year" To = "second" Formula = "x*31556952" />
- <Conversion From = "second" To = "year" Formula = "x/31556952" />
+    <Conversion From = "year" To = "second" Formula = "x*31556952" />
+    <Conversion From = "second" To = "year" Formula = "x/31556952" />
 
-<!-- Frequency ============================================================= -->
- <Conversion From = "revs/minute" To = "hertz" Formula = "x/60" />
- <Conversion From = "hertz" To = "revs/minute" Formula = "x*60" />
+  <!-- Frequency ============================================================= -->
+    <Conversion From = "revs/minute" To = "hertz" Formula = "x/60" />
+    <Conversion From = "hertz" To = "revs/minute" Formula = "x*60" />
 
- <Conversion From = "revs/minute" To = "radians/second" Formula = "x/60*2*pi" />
- <Conversion From = "radians/second" To = "revs/minute" Formula = "x*60/2/pi" />
+    <Conversion From = "revs/minute" To = "radians/second" Formula = "x/60*2*pi" />
+    <Conversion From = "radians/second" To = "revs/minute" Formula = "x*60/2/pi" />
 
- <Conversion From = "hertz" To = "radians/second" Formula = "x*2*pi" />
- <Conversion From = "radians/second" To = "hertz" Formula = "x/2/pi" />
+    <Conversion From = "hertz" To = "radians/second" Formula = "x*2*pi" />
+    <Conversion From = "radians/second" To = "hertz" Formula = "x/2/pi" />
 
-<!-- Speed ================================================================= -->
- <Conversion From = "foot/second" To = "metre/second" Formula = "x*3.048e-1" />
- <Conversion From = "metre/second" To = "foot/second" Formula = "x/3.048e-1" />
+  <!-- Speed ================================================================= -->
+    <Conversion From = "foot/second" To = "metre/second" Formula = "x*3.048e-1" />
+    <Conversion From = "metre/second" To = "foot/second" Formula = "x/3.048e-1" />
 
- <Conversion From = "furlong/fortnight" To = "metre/second" Formula = "x*1.663095e-4" />
- <Conversion From = "metre/second" To = "furlong/fortnight" Formula = "x/1.663095e-4" />
+    <Conversion From = "furlong/fortnight" To = "metre/second" Formula = "x*1.663095e-4" />
+    <Conversion From = "metre/second" To = "furlong/fortnight" Formula = "x/1.663095e-4" />
 
- <Conversion From = "inch/second" To = "metre/second" Formula = "x*2.54e-2" />
- <Conversion From = "metre/second" To = "inch/second" Formula = "x/2.54e-2" />
+    <Conversion From = "inch/second" To = "metre/second" Formula = "x*2.54e-2" />
+    <Conversion From = "metre/second" To = "inch/second" Formula = "x/2.54e-2" />
 
- <Conversion From = "kilometre/hour" To = "metre/second" Formula = "x*1/3.6" />
- <Conversion From = "metre/second" To = "kilometre/hour" Formula = "x/1*3.6" />
+    <Conversion From = "kilometre/hour" To = "metre/second" Formula = "x*1/3.6" />
+    <Conversion From = "metre/second" To = "kilometre/hour" Formula = "x/1*3.6" />
 
- <Conversion From = "knot" To = "metre/second" Formula = "x*0.514444" />
- <Conversion From = "metre/second" To = "knot" Formula = "x/0.514444" />
+    <Conversion From = "knot" To = "metre/second" Formula = "x*0.514444" />
+    <Conversion From = "metre/second" To = "knot" Formula = "x/0.514444" />
 
- <Conversion From = "mile/hour" To = "metre/second" Formula = "x*0.44704" />
- <Conversion From = "metre/second" To = "mile/hour" Formula = "x/0.44704" />
+    <Conversion From = "mile/hour" To = "metre/second" Formula = "x*0.44704" />
+    <Conversion From = "metre/second" To = "mile/hour" Formula = "x/0.44704" />
 
- <Conversion From = "mile/minute" To = "metre/second" Formula = "x*26.8224" />
- <Conversion From = "metre/second" To = "mile.minute" Formula = "x/26.8224" />
+    <Conversion From = "mile/minute" To = "metre/second" Formula = "x*26.8224" />
+    <Conversion From = "metre/second" To = "mile.minute" Formula = "x/26.8224" />
 
- <Conversion From = "mile/second" To = "metre/second" Formula = "x*1609.344" />
- <Conversion From = "metre/second" To = "mile/second" Formula = "x/1609.344" />
+    <Conversion From = "mile/second" To = "metre/second" Formula = "x*1609.344" />
+    <Conversion From = "metre/second" To = "mile/second" Formula = "x/1609.344" />
 
- <Conversion From = "foot/second" To = "kilometre/hour" Formula = "x*3.048e-1*3.6" />
- <Conversion From = "kilometre/hour" To = "foot/second" Formula = "x/3.048e-1/3.6" />
+    <Conversion From = "foot/second" To = "kilometre/hour" Formula = "x*3.048e-1*3.6" />
+    <Conversion From = "kilometre/hour" To = "foot/second" Formula = "x/3.048e-1/3.6" />
 
- <Conversion From = "furlong/fortnight" To = "kilometre/hour" Formula = "x*1.663095e-4*3.6" />
- <Conversion From = "kilometre/hour" To = "furlong/fortnight" Formula = "x/1.663095e-4/3.6" />
+    <Conversion From = "furlong/fortnight" To = "kilometre/hour" Formula = "x*1.663095e-4*3.6" />
+    <Conversion From = "kilometre/hour" To = "furlong/fortnight" Formula = "x/1.663095e-4/3.6" />
 
- <Conversion From = "inch/second" To = "kilometre/hour" Formula = "x*2.54e-2*3.6" />
- <Conversion From = "kilometre/hour" To = "inch/second" Formula = "x/2.54e-2/3.6" />
+    <Conversion From = "inch/second" To = "kilometre/hour" Formula = "x*2.54e-2*3.6" />
+    <Conversion From = "kilometre/hour" To = "inch/second" Formula = "x/2.54e-2/3.6" />
 
- <Conversion From = "knot" To = "kilometre/hour" Formula = "x*0.514444*3.6" />
- <Conversion From = "kilometre/hour" To = "knot" Formula = "x/0.514444/3.6" />
+    <Conversion From = "knot" To = "kilometre/hour" Formula = "x*0.514444*3.6" />
+    <Conversion From = "kilometre/hour" To = "knot" Formula = "x/0.514444/3.6" />
 
- <Conversion From = "mile/hour" To = "kilometre/hour" Formula = "x*0.44704*3.6" />
- <Conversion From = "kilometre/hour" To = "mile/hour" Formula = "x/0.44704/3.6" />
+    <Conversion From = "mile/hour" To = "kilometre/hour" Formula = "x*0.44704*3.6" />
+    <Conversion From = "kilometre/hour" To = "mile/hour" Formula = "x/0.44704/3.6" />
 
- <Conversion From = "mile/minute" To = "kilometre/hour" Formula = "x*26.8224*3.6" />
- <Conversion From = "kilometre/hour" To = "mile.minute" Formula = "x/26.8224/3.6" />
+    <Conversion From = "mile/minute" To = "kilometre/hour" Formula = "x*26.8224*3.6" />
+    <Conversion From = "kilometre/hour" To = "mile.minute" Formula = "x/26.8224/3.6" />
 
- <Conversion From = "mile/second" To = "kilometre/hour" Formula = "x*1609.344*3.6" />
- <Conversion From = "kilometre/hour" To = "mile/second" Formula = "x/1609.344/3.6" />
+    <Conversion From = "mile/second" To = "kilometre/hour" Formula = "x*1609.344*3.6" />
+    <Conversion From = "kilometre/hour" To = "mile/second" Formula = "x/1609.344/3.6" />
 
-<!-- Force ================================================================= -->
- <Conversion From = "atomic unit" To = "newton" Formula = "x*8.23872206e-8" />
- <Conversion From = "newton" To = "atomic unit" Formula = "x/8.23872206e-8" />
+  <!-- Force ================================================================= -->
+    <Conversion From = "atomic unit" To = "newton" Formula = "x*8.23872206e-8" />
+    <Conversion From = "newton" To = "atomic unit" Formula = "x/8.23872206e-8" />
 
- <Conversion From = "dyne" To = "newton" Formula = "x*1e-5" />
- <Conversion From = "newton" To = "dyne" Formula = "x/1e-5" />
+    <Conversion From = "dyne" To = "newton" Formula = "x*1e-5" />
+    <Conversion From = "newton" To = "dyne" Formula = "x/1e-5" />
 
- <Conversion From = "grave" To = "newton" Formula = "x*9.80665" />
- <Conversion From = "newton" To = "grave" Formula = "x/9.80665" />
+    <Conversion From = "grave" To = "newton" Formula = "x*9.80665" />
+    <Conversion From = "newton" To = "grave" Formula = "x/9.80665" />
 
- <Conversion From = "kip" To = "newton" Formula = "x*4.4482216152605e3" />
- <Conversion From = "newton" To = "kip" Formula = "x/4.4482216152605e3" />
+    <Conversion From = "kip" To = "newton" Formula = "x*4.4482216152605e3" />
+    <Conversion From = "newton" To = "kip" Formula = "x/4.4482216152605e3" />
 
- <Conversion From = "ounce" To = "newton" Formula = "x*0.2780138509537812" />
- <Conversion From = "newton" To = "ounce" Formula = "x/0.2780138509537812" />
+    <Conversion From = "ounce" To = "newton" Formula = "x*0.2780138509537812" />
+    <Conversion From = "newton" To = "ounce" Formula = "x/0.2780138509537812" />
 
- <Conversion From = "pound" To = "newton" Formula = "x*4.4482216152605" />
- <Conversion From = "newton" To = "pound" Formula = "x/4.4482216152605" />
+    <Conversion From = "pound" To = "newton" Formula = "x*4.4482216152605" />
+    <Conversion From = "newton" To = "pound" Formula = "x/4.4482216152605" />
 
- <Conversion From = "poundal" To = "newton" Formula = "x*0.138254954376" />
- <Conversion From = "newton" To = "poundal" Formula = "x/0.138254954376" />
+    <Conversion From = "poundal" To = "newton" Formula = "x*0.138254954376" />
+    <Conversion From = "newton" To = "poundal" Formula = "x/0.138254954376" />
 
- <Conversion From = "sthene" To = "newton" Formula = "x*1e3" />
- <Conversion From = "newton" To = "sthene" Formula = "x/1e3" />
+    <Conversion From = "sthene" To = "newton" Formula = "x*1e3" />
+    <Conversion From = "newton" To = "sthene" Formula = "x/1e3" />
 
- <Conversion From = "ton" To = "newton" Formula = "x*8.896443230521e3" />
- <Conversion From = "newton" To = "ton" Formula = "x/8.896443230521e3" />
+    <Conversion From = "ton" To = "newton" Formula = "x*8.896443230521e3" />
+    <Conversion From = "newton" To = "ton" Formula = "x/8.896443230521e3" />
 
-<!-- Pressure ============================================================== -->
- <Conversion From = "atmosphere" To = "pascal" Formula = "x*101325" />
- <Conversion From = "pascal" To = "atmosphere" Formula = "x/" />
+  <!-- Pressure ============================================================== -->
+    <Conversion From = "atmosphere" To = "pascal" Formula = "x*101325" />
+    <Conversion From = "pascal" To = "atmosphere" Formula = "x/" />
 
- <Conversion From = "bar" To = "pascal" Formula = "x*1e5" />
- <Conversion From = "pascal" To = "bar" Formula = "x/1e5" />
+    <Conversion From = "bar" To = "pascal" Formula = "x*1e5" />
+    <Conversion From = "pascal" To = "bar" Formula = "x/1e5" />
 
- <Conversion From = "barye" To = "pascal" Formula = "x*0.1" />
- <Conversion From = "pascal" To = "barye" Formula = "x/0.1" />
+    <Conversion From = "barye" To = "pascal" Formula = "x*0.1" />
+    <Conversion From = "pascal" To = "barye" Formula = "x/0.1" />
 
- <Conversion From = "cm mercury" To = "pascal" Formula = "x*1.33322e3" />
- <Conversion From = "pascal" To = "cm mercury" Formula = "x/1.33322e3" />
+    <Conversion From = "cm mercury" To = "pascal" Formula = "x*1.33322e3" />
+    <Conversion From = "pascal" To = "cm mercury" Formula = "x/1.33322e3" />
 
- <Conversion From = "cm water" To = "pascal" Formula = "x*98.0638" />
- <Conversion From = "pascal" To = "cm water" Formula = "x/98.0638" />
+    <Conversion From = "cm water" To = "pascal" Formula = "x*98.0638" />
+    <Conversion From = "pascal" To = "cm water" Formula = "x/98.0638" />
 
- <Conversion From = "foot mercury" To = "pascal" Formula = "x*40.63666e3" />
- <Conversion From = "pascal" To = "foot mercury" Formula = "x/40.63666e3" />
+    <Conversion From = "foot mercury" To = "pascal" Formula = "x*40.63666e3" />
+    <Conversion From = "pascal" To = "foot mercury" Formula = "x/40.63666e3" />
 
- <Conversion From = "foot water" To = "pascal" Formula = "x*2.98898e3" />
- <Conversion From = "pascal" To = "foot water" Formula = "x/2.98898e3" />
+    <Conversion From = "foot water" To = "pascal" Formula = "x*2.98898e3" />
+    <Conversion From = "pascal" To = "foot water" Formula = "x/2.98898e3" />
 
- <Conversion From = "inch mercury" To = "pascal" Formula = "x*3.386389e3" />
- <Conversion From = "pascal" To = "inch mercury" Formula = "x/3.386389e3" />
+    <Conversion From = "inch mercury" To = "pascal" Formula = "x*3.386389e3" />
+    <Conversion From = "pascal" To = "inch mercury" Formula = "x/3.386389e3" />
 
- <Conversion From = "inch water" To = "pascal" Formula = "x*249.082" />
- <Conversion From = "pascal" To = "inch water" Formula = "x/249.082" />
+    <Conversion From = "inch water" To = "pascal" Formula = "x*249.082" />
+    <Conversion From = "pascal" To = "inch water" Formula = "x/249.082" />
 
- <Conversion From = "kg/mm^2" To = "pascal" Formula = "x*9.80665e6" />
- <Conversion From = "pascal" To = "kg/mm^2" Formula = "x/9.80665e6" />
+    <Conversion From = "kg/mm^2" To = "pascal" Formula = "x*9.80665e6" />
+    <Conversion From = "pascal" To = "kg/mm^2" Formula = "x/9.80665e6" />
 
- <Conversion From = "kip/inch^2" To = "pascal" Formula = "x*6.894757e6" />
- <Conversion From = "pascal" To = "kip/inch^2" Formula = "x/6.894757e6" />
+    <Conversion From = "kip/inch^2" To = "pascal" Formula = "x*6.894757e6" />
+    <Conversion From = "pascal" To = "kip/inch^2" Formula = "x/6.894757e6" />
 
- <Conversion From = "mm mercury" To = "pascal" Formula = "x*133.3224" />
- <Conversion From = "pascal" To = "mm mercury" Formula = "x/133.3224" />
+    <Conversion From = "mm mercury" To = "pascal" Formula = "x*133.3224" />
+    <Conversion From = "pascal" To = "mm mercury" Formula = "x/133.3224" />
 
- <Conversion From = "pound/foot^2" To = "pascal" Formula = "x*47.88026" />
- <Conversion From = "pascal" To = "pound/foot^2" Formula = "x/47.88026" />
+    <Conversion From = "pound/foot^2" To = "pascal" Formula = "x*47.88026" />
+    <Conversion From = "pascal" To = "pound/foot^2" Formula = "x/47.88026" />
 
- <Conversion From = "pound/inch^2" To = "pascal" Formula = "x*6.894757e3" />
- <Conversion From = "pascal" To = "pound/inch^2" Formula = "x/6.894757e3" />
+    <Conversion From = "pound/inch^2" To = "pascal" Formula = "x*6.894757e3" />
+    <Conversion From = "pascal" To = "pound/inch^2" Formula = "x/6.894757e3" />
 
- <Conversion From = "torr" To = "pascal" Formula = "x*133.3224" />
- <Conversion From = "pascal" To = "torr" Formula = "x/133.3224" />
+    <Conversion From = "torr" To = "pascal" Formula = "x*133.3224" />
+    <Conversion From = "pascal" To = "torr" Formula = "x/133.3224" />
 
-<!-- Torque ================================================================ -->
- <Conversion From = "foot-pound" To = "newton-meter" Formula = "x*1.3558179483314004" />
- <Conversion From = "pound-foot" To = "newton-meter" Formula = "x*1.3558179483314004" />
- <Conversion From = "newton-meter" To = "foot-pound" Formula = "x/1.3558179483314004" />
- <Conversion From = "newton-meter" To = "pound-foot" Formula = "x/1.3558179483314004" />
+  <!-- Torque ================================================================ -->
+    <Conversion From = "foot-pound" To = "newton-meter" Formula = "x*1.3558179483314004" />
+    <Conversion From = "pound-foot" To = "newton-meter" Formula = "x*1.3558179483314004" />
+    <Conversion From = "newton-meter" To = "foot-pound" Formula = "x/1.3558179483314004" />
+    <Conversion From = "newton-meter" To = "pound-foot" Formula = "x/1.3558179483314004" />
 
- <Conversion From = "inch-pound" To = "newton-meter" Formula = "x*0.1129848290276167" />
- <Conversion From = "pound-inch" To = "newton-meter" Formula = "x*0.1129848290276167" />
- <Conversion From = "newton-meter" To = "inch-pound" Formula = "x/0.1129848290276167" />
- <Conversion From = "newton-meter" To = "pound-inch" Formula = "x/0.1129848290276167" />
+    <Conversion From = "inch-pound" To = "newton-meter" Formula = "x*0.1129848290276167" />
+    <Conversion From = "pound-inch" To = "newton-meter" Formula = "x*0.1129848290276167" />
+    <Conversion From = "newton-meter" To = "inch-pound" Formula = "x/0.1129848290276167" />
+    <Conversion From = "newton-meter" To = "pound-inch" Formula = "x/0.1129848290276167" />
 
-<!-- Energy ================================================================ -->
- <Conversion From = "barrel of oil" To = "joule" Formula = "x*6.12e9" />
- <Conversion From = "joule" To = "barrel of oil" Formula = "x/6.12e9" />
+  <!-- Energy ================================================================ -->
+    <Conversion From = "barrel of oil" To = "joule" Formula = "x*6.12e9" />
+    <Conversion From = "joule" To = "barrel of oil" Formula = "x/6.12e9" />
 
- <Conversion From = "BTU" To = "joule" Formula = "x*1.0545e3" />
- <Conversion From = "joule" To = "BTU" Formula = "x/1.0545e3" />
+    <Conversion From = "BTU" To = "joule" Formula = "x*1.0545e3" />
+    <Conversion From = "joule" To = "BTU" Formula = "x/1.0545e3" />
 
- <Conversion From = "calorie" To = "joule" Formula = "x*4.1868" />
- <Conversion From = "joule" To = "calorie" Formula = "x/4.1868" />
+    <Conversion From = "calorie" To = "joule" Formula = "x*4.1868" />
+    <Conversion From = "joule" To = "calorie" Formula = "x/4.1868" />
 
- <Conversion From = "Celsius" To = "joule" Formula = "x*1.899100534716e3" />
- <Conversion From = "joule" To = "Celsius" Formula = "x/1.899100534716e3" />
+    <Conversion From = "Celsius" To = "joule" Formula = "x*1.899100534716e3" />
+    <Conversion From = "joule" To = "Celsius" Formula = "x/1.899100534716e3" />
 
- <Conversion From = "electronvolt" To = "joule" Formula = "x*1.60217733e-19" />
- <Conversion From = "joule" To = "electronvolt" Formula = "x/1.60217733e-19" />
+    <Conversion From = "electronvolt" To = "joule" Formula = "x*1.60217733e-19" />
+    <Conversion From = "joule" To = "electronvolt" Formula = "x/1.60217733e-19" />
 
- <Conversion From = "erg" To = "joule" Formula = "x*1e-7" />
- <Conversion From = "joule" To = "erg" Formula = "x/1e-7" />
+    <Conversion From = "erg" To = "joule" Formula = "x*1e-7" />
+    <Conversion From = "joule" To = "erg" Formula = "x/1e-7" />
 
- <Conversion From = "atomic unit" To = "joule" Formula = "x*4.359744e-18" />
- <Conversion From = "hartree"     To = "joule" Formula = "x*4.359744e-18" />
- <Conversion From = "joule" To = "atomic unit" Formula = "x/4.359744e-18" />
- <Conversion From = "joule" To = "hartree"     Formula = "x/4.359744e-18" />
+    <Conversion From = "atomic unit" To = "joule" Formula = "x*4.359744e-18" />
+    <Conversion From = "hartree"     To = "joule" Formula = "x*4.359744e-18" />
+    <Conversion From = "joule" To = "atomic unit" Formula = "x/4.359744e-18" />
+    <Conversion From = "joule" To = "hartree"     Formula = "x/4.359744e-18" />
 
- <Conversion From = "horsepower-hour" To = "joule" Formula = "x*746*3600" />
- <Conversion From = "joule" To = "horsepower-hour" Formula = "x/746/3600" />
+    <Conversion From = "horsepower-hour" To = "joule" Formula = "x*746*3600" />
+    <Conversion From = "joule" To = "horsepower-hour" Formula = "x/746/3600" />
 
- <Conversion From = "kilowatt-hour" To = "joule" Formula = "x*3.6e6" />
- <Conversion From = "joule" To = "kilowatt-hour" Formula = "x/3.6e6" />
+    <Conversion From = "kilowatt-hour" To = "joule" Formula = "x*3.6e6" />
+    <Conversion From = "joule" To = "kilowatt-hour" Formula = "x/3.6e6" />
 
- <Conversion From = "quad" To = "joule" Formula = "x*1.05505585262e18" />
- <Conversion From = "joule" To = "quad" Formula = "x/1.05505585262e18" />
+    <Conversion From = "quad" To = "joule" Formula = "x*1.05505585262e18" />
+    <Conversion From = "joule" To = "quad" Formula = "x/1.05505585262e18" />
 
- <Conversion From = "rydberg" To = "joule" Formula = "x*2.179872e-18" />
- <Conversion From = "joule" To = "rydberg" Formula = "x/2.179872e-18" />
+    <Conversion From = "rydberg" To = "joule" Formula = "x*2.179872e-18" />
+    <Conversion From = "joule" To = "rydberg" Formula = "x/2.179872e-18" />
 
- <Conversion From = "therm" To = "joule" Formula = "x*105.505585262e6" />
- <Conversion From = "joule" To = "therm" Formula = "x/105.505585262e6" />
+    <Conversion From = "therm" To = "joule" Formula = "x*105.505585262e6" />
+    <Conversion From = "joule" To = "therm" Formula = "x/105.505585262e6" />
 
- <Conversion From = "thermie" To = "joule" Formula = "x*4.1868e6" />
- <Conversion From = "joule" To = "thermie" Formula = "x/4.1868e6" />
+    <Conversion From = "thermie" To = "joule" Formula = "x*4.1868e6" />
+    <Conversion From = "joule" To = "thermie" Formula = "x/4.1868e6" />
 
- <Conversion From = "ton of coal" To = "joule" Formula = "x*29.3076e9" />
- <Conversion From = "joule" To = "ton of coal" Formula = "x/29.3076e9" />
+    <Conversion From = "ton of coal" To = "joule" Formula = "x*29.3076e9" />
+    <Conversion From = "joule" To = "ton of coal" Formula = "x/29.3076e9" />
 
- <Conversion From = "ton of oil" To = "joule" Formula = "x*41.868e9" />
- <Conversion From = "joule" To = "ton of oil" Formula = "x/41.868e9" />
+    <Conversion From = "ton of oil" To = "joule" Formula = "x*41.868e9" />
+    <Conversion From = "joule" To = "ton of oil" Formula = "x/41.868e9" />
 
- <Conversion From = "ton of TNT" To = "joule" Formula = "x*4.184e9" />
- <Conversion From = "joule" To = "ton of TNT" Formula = "x/4.184e9" />
+    <Conversion From = "ton of TNT" To = "joule" Formula = "x*4.184e9" />
+    <Conversion From = "joule" To = "ton of TNT" Formula = "x/4.184e9" />
 
-<!-- Power ================================================================= -->
- <Conversion From = "BTU/hour" To = "watt" Formula = "x*0.293071" />
- <Conversion From = "watt" To = "BTU/hour" Formula = "x/0.293071" />
+  <!-- Power ================================================================= -->
+    <Conversion From = "BTU/hour" To = "watt" Formula = "x*0.293071" />
+    <Conversion From = "watt" To = "BTU/hour" Formula = "x/0.293071" />
 
- <Conversion From = "BTU/minute" To = "watt" Formula = "x*17.584264" />
- <Conversion From = "watt" To = "BTU/minute" Formula = "x/17.584264" />
+    <Conversion From = "BTU/minute" To = "watt" Formula = "x*17.584264" />
+    <Conversion From = "watt" To = "BTU/minute" Formula = "x/17.584264" />
 
- <Conversion From = "BTU/second" To = "watt" Formula = "x*1.05505585262e3" />
- <Conversion From = "watt" To = "BTU/second" Formula = "x/1.05505585262e3" />
+    <Conversion From = "BTU/second" To = "watt" Formula = "x*1.05505585262e3" />
+    <Conversion From = "watt" To = "BTU/second" Formula = "x/1.05505585262e3" />
 
- <Conversion From = "horsepower" To = "watt" Formula = "x*746" />
- <Conversion From = "watt" To = "horsepower" Formula = "x/746" />
+    <Conversion From = "horsepower" To = "watt" Formula = "x*746" />
+    <Conversion From = "watt" To = "horsepower" Formula = "x/746" />
 
- <Conversion From = "lusec" To = "watt" Formula = "x*1.333e-4" />
- <Conversion From = "watt" To = "lusec" Formula = "x/1.333e-4" />
+    <Conversion From = "lusec" To = "watt" Formula = "x*1.333e-4" />
+    <Conversion From = "watt" To = "lusec" Formula = "x/1.333e-4" />
 
- <Conversion From = "poncelet" To = "watt" Formula = "x*980.665" />
- <Conversion From = "watt" To = "poncelet" Formula = "x/980.665" />
+    <Conversion From = "poncelet" To = "watt" Formula = "x*980.665" />
+    <Conversion From = "watt" To = "poncelet" Formula = "x/980.665" />
 
-<!-- Electric Charge ======================================================= -->
- <Conversion From = "absoulomb" To = "coulomb" Formula = "x*10" />
- <Conversion From = "coulomb" To = "abcoulomb" Formula = "x/10" />
+  <!-- Electric Charge ======================================================= -->
+    <Conversion From = "absoulomb" To = "coulomb" Formula = "x*10" />
+    <Conversion From = "coulomb" To = "abcoulomb" Formula = "x/10" />
 
- <Conversion From = "atomic unit" To = "coulomb" Formula = "x*1.602176462e-19" />
- <Conversion From = "coulomb" To = "atomic unit" Formula = "x/1.602176462e-19" />
+    <Conversion From = "atomic unit" To = "coulomb" Formula = "x*1.602176462e-19" />
+    <Conversion From = "coulomb" To = "atomic unit" Formula = "x/1.602176462e-19" />
 
- <Conversion From = "faraday" To = "coulomb" Formula = "x*96.4853383" />
- <Conversion From = "coulomb" To = "faraday" Formula = "x/96.4853383" />
+    <Conversion From = "faraday" To = "coulomb" Formula = "x*96.4853383" />
+    <Conversion From = "coulomb" To = "faraday" Formula = "x/96.4853383" />
 
- <Conversion From = "franklin" To = "coulomb" Formula = "x*3.335641e10" />
- <Conversion From = "coulomb" To = "franklin" Formula = "x/3.335641e10" />
+    <Conversion From = "franklin" To = "coulomb" Formula = "x*3.335641e10" />
+    <Conversion From = "coulomb" To = "franklin" Formula = "x/3.335641e10" />
 
-<!-- Magnetic Flux ========================================================= -->
- <Conversion From = "maxwell" To = "weber" Formula = "x*1e-8" />
- <Conversion From = "weber" To = "maxwell" Formula = "x/1e-8" />
+  <!-- Magnetic Flux ========================================================= -->
+    <Conversion From = "maxwell" To = "weber" Formula = "x*1e-8" />
+    <Conversion From = "weber" To = "maxwell" Formula = "x/1e-8" />
 
-<!-- Magnetic Flux Density ================================================= -->
- <Conversion From = "gauss" To = "tesla" Formula = "x*1e-4" />
- <Conversion From = "tesla" To = "gauss" Formula = "x/1e-4" />
+  <!-- Magnetic Flux Density ================================================= -->
+    <Conversion From = "gauss" To = "tesla" Formula = "x*1e-4" />
+    <Conversion From = "tesla" To = "gauss" Formula = "x/1e-4" />
 
-<!-- Temperature =========================================================== -->
- <Conversion From = "degree Celsius" To = "kelvin" Formula = "x+273.15" />
- <Conversion From = "kelvin" To = "degree Celsius" Formula = "x-273.15" />
+  <!-- Temperature =========================================================== -->
+    <Conversion From = "degree Celsius" To = "kelvin" Formula = "x+273.15" />
+    <Conversion From = "kelvin" To = "degree Celsius" Formula = "x-273.15" />
 
- <Conversion From = "degree Delisle" To = "kelvin" Formula = "373.15-x*2/3" />
- <Conversion From = "kelvin" To = "degree Delisle" Formula = "(373.15-x)*3/2" />
+    <Conversion From = "degree Delisle" To = "kelvin" Formula = "373.15-x*2/3" />
+    <Conversion From = "kelvin" To = "degree Delisle" Formula = "(373.15-x)*3/2" />
 
- <Conversion From = "degree Fahrenheit" To = "kelvin" Formula = "(x+459.67)*5/9" />
- <Conversion From = "kelvin" To = "degree Fahrenheit" Formula = "x*9/5-459.67" />
+    <Conversion From = "degree Fahrenheit" To = "kelvin" Formula = "(x+459.67)*5/9" />
+    <Conversion From = "kelvin" To = "degree Fahrenheit" Formula = "x*9/5-459.67" />
 
- <Conversion From = "degree Newton" To = "kelvin" Formula = "x*100/33+273.15" />
- <Conversion From = "kelvin" To = "degree Newton" Formula = "(x-273.15)*33/100" />
+    <Conversion From = "degree Newton" To = "kelvin" Formula = "x*100/33+273.15" />
+    <Conversion From = "kelvin" To = "degree Newton" Formula = "(x-273.15)*33/100" />
 
- <Conversion From = "degree Rankine" To = "kelvin" Formula = "x*5/9" />
- <Conversion From = "kelvin" To = "degree Rankine" Formula = "x*9/5" />
+    <Conversion From = "degree Rankine" To = "kelvin" Formula = "x*5/9" />
+    <Conversion From = "kelvin" To = "degree Rankine" Formula = "x*9/5" />
 
- <Conversion From = "degree Reaumur" To = "kelvin" Formula = "x*5/4+273.15" />
- <Conversion From = "kelvin" To = "degree Reaumur" Formula = "(x-273.15)*4/5" />
+    <Conversion From = "degree Reaumur" To = "kelvin" Formula = "x*5/4+273.15" />
+    <Conversion From = "kelvin" To = "degree Reaumur" Formula = "(x-273.15)*4/5" />
 
- <Conversion From = "degree Romer" To = "kelvin" Formula = "(x-7.5)*40/21+273.15" />
- <Conversion From = "kelvin" To = "degree Romer" Formula = "(x-273.15)*21/40+7.5" />
+    <Conversion From = "degree Romer" To = "kelvin" Formula = "(x-7.5)*40/21+273.15" />
+    <Conversion From = "kelvin" To = "degree Romer" Formula = "(x-273.15)*21/40+7.5" />
 
- <Conversion From = "Gas Mark" To = "kelvin" Formula = "x*125/9+422.038" />
- <Conversion From = "kelvin" To = "Gas Mark" Formula = "(x-422.038)*9/125" />
+    <Conversion From = "Gas Mark" To = "kelvin" Formula = "x*125/9+422.038" />
+    <Conversion From = "kelvin" To = "Gas Mark" Formula = "(x-422.038)*9/125" />
 
- <Conversion From = "Gas Mark" To = "degree Celsius" Formula = "(x*25+300-32)*5/9" />
- <Conversion From = "degree Celsius" To = "Gas Mark" Formula = "(x*9/5+32-300)/25" />
+    <Conversion From = "Gas Mark" To = "degree Celsius" Formula = "(x*25+300-32)*5/9" />
+    <Conversion From = "degree Celsius" To = "Gas Mark" Formula = "(x*9/5+32-300)/25" />
 
- <Conversion From = "Gas Mark" To = "degree Fahrenheit" Formula = "x*25+300" />
- <Conversion From = "degree Fahrenheit" To = "Gas Mark" Formula = "(x-300)/25" />
+    <Conversion From = "Gas Mark" To = "degree Fahrenheit" Formula = "x*25+300" />
+    <Conversion From = "degree Fahrenheit" To = "Gas Mark" Formula = "(x-300)/25" />
 
- <Conversion From = "degree Celsius" To = "degree Fahrenheit" Formula = "x*9/5+32" />
- <Conversion From = "degree Fahrenheit" To = "degree Celsius" Formula = "(x-32)*5/9" />
+    <Conversion From = "degree Celsius" To = "degree Fahrenheit" Formula = "x*9/5+32" />
+    <Conversion From = "degree Fahrenheit" To = "degree Celsius" Formula = "(x-32)*5/9" />
 
-<!-- Radiation ============================================================= -->
- <Conversion From = "curie" To = "bacquerel" Formula = "x*3.7e10" />
- <Conversion From = "bacquerel" To = "curie" Formula = "x/3.7e10" />
+  <!-- Radiation ============================================================= -->
+    <Conversion From = "curie" To = "bacquerel" Formula = "x*3.7e10" />
+    <Conversion From = "bacquerel" To = "curie" Formula = "x/3.7e10" />
 
- <Conversion From = "rutherford" To = "bacquerel" Formula = "x*1e-6" />
- <Conversion From = "bacquerel" To = "rutherford" Formula = "x/1e-6" />
+    <Conversion From = "rutherford" To = "bacquerel" Formula = "x*1e-6" />
+    <Conversion From = "bacquerel" To = "rutherford" Formula = "x/1e-6" />
 </Engineering_Calculator_Conversions> 
+
