@@ -33,8 +33,8 @@ Headers = *.h           \
           Resources/*.h
 #-------------------------------------------------------------------------------
 
-.PHONY:    clean all
-.PRECIOUS: $(Objects)
+.PHONY: clean all
+.SECONDARY:
 
 all: bin/EngCalc.exe
 
