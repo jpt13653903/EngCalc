@@ -25,36 +25,43 @@ MENU::MENU(){
   Handle = CreatePopupMenu();
 
   // Create the menu items
-  AppendMenu(Handle, MF_STRING, IDM_DEGREES      , L"Degrees\tCtrl+G");
-  AppendMenu(Handle, MF_STRING, IDM_RADIANS      , L"Radians\tCtrl+R");
+  AppendMenu(Handle, MF_STRING, IDM_DEGREES       , L"Degrees\tCtrl G");
+  AppendMenu(Handle, MF_STRING, IDM_RADIANS       , L"Radians\tCtrl R");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_DECIMAL      , L"Decimal\tCtrl+D");
-  AppendMenu(Handle, MF_STRING, IDM_HEX          , L"Hex\tCtrl+H");
-  AppendMenu(Handle, MF_STRING, IDM_BINARY       , L"Binary\tCtrl+B");
+  AppendMenu(Handle, MF_STRING, IDM_DECIMAL       , L"Decimal\tCtrl D");
+  AppendMenu(Handle, MF_STRING, IDM_HEX           , L"Hex\tCtrl H");
+  AppendMenu(Handle, MF_STRING, IDM_BINARY        , L"Binary\tCtrl B");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_NORMAL       , L"Normal");
-  AppendMenu(Handle, MF_STRING, IDM_ENGINEERING  , L"Engineering");
-  AppendMenu(Handle, MF_STRING, IDM_GROUP_DIGITS , L"Group Digits\tCtrl+S");
+  AppendMenu(Handle, MF_STRING, IDM_NORMAL        , L"Normal");
+  AppendMenu(Handle, MF_STRING, IDM_ENGINEERING   , L"Engineering");
+  AppendMenu(Handle, MF_STRING, IDM_GROUP_DIGITS  , L"Group Digits\tCtrl S");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_ALWAYS_ON_TOP, L"Always on top\tCtrl+T");
-  AppendMenu(Handle, MF_STRING, IDM_CONVERTER    , L"Converter\tCtrl+Z");
+  AppendMenu(Handle, MF_STRING, IDM_INCREASE_DIGITS, L"Increase Digits\tCtrl +");
+  AppendMenu(Handle, MF_STRING, IDM_DECREASE_DIGITS, L"Decrease Digits\tCtrl -");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_MINIMIZE     , L"Minimize\tCtrl+M");
-  AppendMenu(Handle, MF_STRING, IDM_EXIT         , L"Exit\tCtrl+Q");
+  AppendMenu(Handle, MF_STRING, IDM_DOT_DECIMALS  , L"Dot Decimals\tCtrl .");
+  AppendMenu(Handle, MF_STRING, IDM_COMMA_DECIMALS, L"Comma Decimals\tCtrl ,");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_MANUAL       , L"Online Manual");
-  AppendMenu(Handle, MF_STRING, IDM_ABOUT        , L"About");
+  AppendMenu(Handle, MF_STRING, IDM_ALWAYS_ON_TOP , L"Always on top\tCtrl T");
+  AppendMenu(Handle, MF_STRING, IDM_CONVERTER     , L"Converter\tCtrl Z");
+  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
+  AppendMenu(Handle, MF_STRING, IDM_MINIMIZE      , L"Minimize\tCtrl M");
+  AppendMenu(Handle, MF_STRING, IDM_EXIT          , L"Exit\tCtrl Q");
+  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
+  AppendMenu(Handle, MF_STRING, IDM_MANUAL        , L"Online Manual");
+  AppendMenu(Handle, MF_STRING, IDM_ABOUT         , L"About");
 
   // Set the default states;
-  SetRadians    (true);
-  SetConverter  (true);
-  SetAlwaysOnTop(true);
-  SetEngineering(true);
-  SetGroupDigits(true);
-  SetFormat     (Decimal);
+  SetRadians      (true);
+  SetConverter    (true);
+  SetAlwaysOnTop  (true);
+  SetEngineering  (true);
+  SetGroupDigits  (true);
+  SetDecimalFormat('.');
+  SetFormat       (Decimal);
 
   // Create the keyboard shortcuts
-  ACCEL Accelerators[10];
+  ACCEL Accelerators[16];
 
   int j = 0;
 
@@ -81,6 +88,30 @@ MENU::MENU(){
   Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
   Accelerators[j  ].key   = 'S';
   Accelerators[j++].cmd   = IDM_GROUP_DIGITS;
+
+  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+  Accelerators[j  ].key   = VK_OEM_PLUS;
+  Accelerators[j++].cmd   = IDM_INCREASE_DIGITS;
+
+  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+  Accelerators[j  ].key   = VK_ADD;
+  Accelerators[j++].cmd   = IDM_INCREASE_DIGITS;
+
+  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+  Accelerators[j  ].key   = VK_OEM_MINUS;
+  Accelerators[j++].cmd   = IDM_DECREASE_DIGITS;
+
+  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+  Accelerators[j  ].key   = VK_SUBTRACT;
+  Accelerators[j++].cmd   = IDM_DECREASE_DIGITS;
+
+  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+  Accelerators[j  ].key   = VK_OEM_PERIOD;
+  Accelerators[j++].cmd   = IDM_DOT_DECIMALS;
+
+  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+  Accelerators[j  ].key   = VK_OEM_COMMA;
+  Accelerators[j++].cmd   = IDM_COMMA_DECIMALS;
 
   Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
   Accelerators[j  ].key   = 'T';
@@ -134,8 +165,8 @@ void MENU::SetConverter(bool Value){
 
   MenuInfo.dwTypeData = new wchar_t[32];
 
-  if(Value) wcscpy(MenuInfo.dwTypeData, L"Calculator\tCtrl+Z");
-  else      wcscpy(MenuInfo.dwTypeData, L"Converter\tCtrl+Z" );
+  if(Value) wcscpy(MenuInfo.dwTypeData, L"Calculator\tCtrl Z");
+  else      wcscpy(MenuInfo.dwTypeData, L"Converter\tCtrl Z" );
 
   SetMenuItemInfo(Handle, IDM_CONVERTER, 0, &MenuInfo);
 
@@ -187,6 +218,31 @@ void MENU::SetGroupDigits(bool Value){
   SetMenuItemInfo(Handle, IDM_GROUP_DIGITS, 0, &MenuInfo);
 
   GroupDigits = Value;
+}
+//------------------------------------------------------------------------------
+
+void MENU::SetDecimalFormat(char Value){
+  MENUITEMINFO MenuInfo;
+  MenuInfo.cbSize = sizeof(MENUITEMINFO);
+  MenuInfo.fMask  = MIIM_STATE;
+  MenuInfo.fState = MFS_UNCHECKED;
+
+  SetMenuItemInfo(Handle, IDM_DOT_DECIMALS  , 0, &MenuInfo);
+  SetMenuItemInfo(Handle, IDM_COMMA_DECIMALS, 0, &MenuInfo);
+
+  MenuInfo.fState = MFS_CHECKED;
+  switch(Value){
+    case '.':
+      SetMenuItemInfo(Handle, IDM_DOT_DECIMALS, 0, &MenuInfo);
+      break;
+
+    case ',':
+    default:
+      SetMenuItemInfo(Handle, IDM_COMMA_DECIMALS, 0, &MenuInfo);
+      break;
+  }
+
+  DecimalFormat = Value;
 }
 //------------------------------------------------------------------------------
 
@@ -242,6 +298,11 @@ bool MENU::GetEngineering(){
 
 bool MENU::GetGroupDigits(){
   return GroupDigits;
+}
+//------------------------------------------------------------------------------
+
+char MENU::GetDecimalFormat(){
+  return DecimalFormat;
 }
 //------------------------------------------------------------------------------
 

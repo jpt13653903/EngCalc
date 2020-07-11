@@ -44,21 +44,18 @@ void COMBO_BOX::Clear(){
 //------------------------------------------------------------------------------
 
 void COMBO_BOX::AddItem(const char* Item){
-  UNICODE_STRING Codec;
-  Codec = Item;
-
-  ComboBox_AddString(Handle, Codec.UTF16());
+  ComboBox_AddString(Handle, (wchar_t*)(UTF_Converter.UTF16(Item).c_str()));
   if(!ItemCount) ComboBox_SetCurSel(Handle, 0);
   ItemCount++;
 }
 //------------------------------------------------------------------------------
 
-void COMBO_BOX::GetItem(UNICODE_STRING* Item){
+void COMBO_BOX::GetItem(std::string* Item){
   int      Length = ComboBox_GetTextLength(Handle);
   wchar_t* Text   = new wchar_t[Length+1];
 
   ComboBox_GetText(Handle, Text, Length+1);
-  *Item = (char16*)Text;
+  *Item = UTF_Converter.UTF8((char16_t*)Text);
 
   delete[] Text;
 }

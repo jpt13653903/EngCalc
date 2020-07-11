@@ -21,6 +21,9 @@
 #include "main.h"
 //------------------------------------------------------------------------------
 
+using namespace std;
+//------------------------------------------------------------------------------
+
 int   MonitorCount = 0;
 int   MonitorIndex = 0;
 RECT* Monitors;
@@ -86,9 +89,9 @@ void MoveWindow(int X, int Y){
 //------------------------------------------------------------------------------
 
 struct CONVERSION{
-  UNICODE_STRING FromUnit;
-  UNICODE_STRING ToUnit;
-  UNICODE_STRING Formula;
+  string FromUnit;
+  string ToUnit;
+  string Formula;
 };
 //------------------------------------------------------------------------------
 
@@ -96,18 +99,28 @@ static int CONVERSION_Compare(void* Left, void* Right){
   CONVERSION* left  = (CONVERSION*)Left;
   CONVERSION* right = (CONVERSION*)Right;
 
-  int Result;
+  u32string LeftString;
+  u32string RightString;
 
-  Result = left->FromUnit.CompareNoCase(right->FromUnit);
-  if(Result) return Result;
+  LeftString  = UTF_Converter.UpperCase(UTF_Converter.UTF32(left ->FromUnit));
+  RightString = UTF_Converter.UpperCase(UTF_Converter.UTF32(right->FromUnit));
 
-  Result = left->FromUnit.Compare(right->FromUnit);
-  if(Result) return Result;
+  if(LeftString < RightString) return -1;
+  if(LeftString > RightString) return  1;
 
-  Result = left->ToUnit.CompareNoCase(right->ToUnit);
-  if(Result) return Result;
+  if(left->FromUnit < right->FromUnit) return -1;
+  if(left->FromUnit > right->FromUnit) return  1;
 
-  return left->ToUnit.Compare(right->ToUnit);
+  LeftString  = UTF_Converter.UpperCase(UTF_Converter.UTF32(left ->ToUnit));
+  RightString = UTF_Converter.UpperCase(UTF_Converter.UTF32(right->ToUnit));
+
+  if(LeftString < RightString) return -1;
+  if(LeftString > RightString) return  1;
+
+  if(left->ToUnit < right->ToUnit) return -1;
+  if(left->ToUnit > right->ToUnit) return  1;
+
+  return 0;
 }
 //------------------------------------------------------------------------------
 
@@ -115,12 +128,19 @@ static int CONVERSION_Compare_FromUnit(void* Left, void* Right){
   CONVERSION* left  = (CONVERSION*)Left;
   CONVERSION* right = (CONVERSION*)Right;
 
-  int Result;
+  u32string LeftString;
+  u32string RightString;
 
-  Result = left->FromUnit.CompareNoCase(right->FromUnit);
-  if(Result) return Result;
+  LeftString  = UTF_Converter.UpperCase(UTF_Converter.UTF32(left ->FromUnit));
+  RightString = UTF_Converter.UpperCase(UTF_Converter.UTF32(right->FromUnit));
 
-  return left->FromUnit.Compare(right->FromUnit);
+  if(LeftString < RightString) return -1;
+  if(LeftString > RightString) return  1;
+
+  if(left->FromUnit < right->FromUnit) return -1;
+  if(left->FromUnit > right->FromUnit) return  1;
+
+  return 0;
 }
 //------------------------------------------------------------------------------
 
@@ -139,16 +159,16 @@ void OnFromUnitClick(){
   while(Conversion){
     if(Key.FromUnit != Conversion->FromUnit) break;
 
-    ToUnit->AddItem(Conversion->ToUnit.UTF8());
+    ToUnit->AddItem(Conversion->ToUnit.c_str());
     Conversion = (CONVERSION*)Conversions.Next();
   }
 }
 //------------------------------------------------------------------------------
 
 void LoadConversions(){
-  UNICODE_STRING s;
-  CONVERSION*    Conversion;
-  XML            xml;
+  string      s;
+  CONVERSION* Conversion;
+  XML         xml;
 
   // Read Converter.xml
   if(!xml.Load("..\\Converter.xml")) return;
@@ -161,9 +181,9 @@ void LoadConversions(){
     xml.ReadAttribute(Entity, "To"     , &Conversion->ToUnit  );
     xml.ReadAttribute(Entity, "Formula", &Conversion->Formula );
     if(
-      Conversion->FromUnit.Length32() &&
-      Conversion->ToUnit  .Length32() &&
-      Conversion->Formula .Length32()
+      Conversion->FromUnit.length() &&
+      Conversion->ToUnit  .length() &&
+      Conversion->Formula .length()
     ){
       Conversions.Insert(Conversion);
     }else{
@@ -177,7 +197,7 @@ void LoadConversions(){
   Conversion = (CONVERSION*)Conversions.First();
   while(Conversion){
     if(s != Conversion->FromUnit){
-      FromUnit->AddItem(Conversion->FromUnit.UTF8());
+      FromUnit->AddItem(Conversion->FromUnit.c_str());
       s = Conversion->FromUnit;
     }
     Conversion = (CONVERSION*)Conversions.Next();
@@ -187,7 +207,7 @@ void LoadConversions(){
 }
 //------------------------------------------------------------------------------
 
-bool Invalid(long double d, UNICODE_STRING* s){
+bool Invalid(long double d, string& s){
   unsigned* p;
 
   // See the "Intel Architecture Software Developer's Manual,
@@ -195,10 +215,10 @@ bool Invalid(long double d, UNICODE_STRING* s){
   p = (unsigned*)&d;
   if(((p[2] & 0x7FFF) == 0x7FFF) && (p[1] & 0x80000000)){
     if(p[2] & 0x8000){
-      if(p[1] == 0x80000000) *s = "-Infinity";
-      else                   *s = "Not a number";
+      if(p[1] == 0x80000000) s = "-Infinity";
+      else                   s = "Not a number";
     }else{
-      *s = "Infinite";
+      s = "Infinite";
     }
     return true;
   }
@@ -206,9 +226,7 @@ bool Invalid(long double d, UNICODE_STRING* s){
 }
 //------------------------------------------------------------------------------
 
-// These do not use the UNICODE_STRING::Set functions
-// because a custom format is desired
-void ToHex(long double d, UNICODE_STRING* s){
+void ToHex(long double d, string& s){
   int  exp, places;
   char c;
   bool spaces = Menu->GetGroupDigits();
@@ -216,15 +234,15 @@ void ToHex(long double d, UNICODE_STRING* s){
   if(Invalid(d, s)) return;
 
   if(d == 0.0){
-    *s = "0";
+    s = "0";
     return;
   }
 
   if(d < 0.0){
-    *s = "-0x";
+    s = "-0x";
     d *= -1.0;
   }else{
-    *s = "0x";
+    s = "0x";
   }
 
   exp = 0;
@@ -238,15 +256,15 @@ void ToHex(long double d, UNICODE_STRING* s){
     if(exp < 0 && d == 0.0) return;
 
     if(exp == -1){
-      *s += '.';
+      s += Menu->GetDecimalFormat();
     }else{
-      if(spaces && places && ((exp+1) % 4 == 0)) *s += ' ';
+      if(spaces && places && ((exp+1) % 4 == 0)) s += ' ';
     }
 
     c = floorl(d);
 
-    if(c <= 9) *s += (char)(c + '0');
-    else       *s += (char)(c + 'A' - 10);
+    if(c <= 9) s += (char)(c + '0');
+    else       s += (char)(c + 'A' - 10);
 
     d -= c;
     d *= 16.0;
@@ -257,7 +275,7 @@ void ToHex(long double d, UNICODE_STRING* s){
 }
 //------------------------------------------------------------------------------
 
-void ToBinary(long double d, UNICODE_STRING* s){
+void ToBinary(long double d, string& s){
   int  exp, places;
   char c;
   bool spaces = Menu->GetGroupDigits();
@@ -265,15 +283,15 @@ void ToBinary(long double d, UNICODE_STRING* s){
   if(Invalid(d, s)) return;
 
   if(d == 0.0){
-    *s = "0";
+    s = "0";
     return;
   }
 
   if(d < 0.0){
-    *s = "-0b";
+    s = "-0b";
     d *= -1.0;
   }else{
-    *s = "0b";
+    s = "0b";
   }
 
   exp = 0;
@@ -287,14 +305,14 @@ void ToBinary(long double d, UNICODE_STRING* s){
     if(exp < 0 && d == 0.0) return;
 
     if(exp == -1){
-      *s += '.';
+      s += Menu->GetDecimalFormat();
     }else{
-      if(spaces && places && ((exp+1) % 4 == 0)) *s += ' ';
+      if(spaces && places && ((exp+1) % 4 == 0)) s += ' ';
     }
 
     c = floorl(d);
 
-    *s += (char)(c + '0');
+    s += (char)(c + '0');
 
     d -= c;
     d *= 2.0;
@@ -305,18 +323,18 @@ void ToBinary(long double d, UNICODE_STRING* s){
 }
 //------------------------------------------------------------------------------
 
-void ToDecimal(long double d, UNICODE_STRING* s){
-  int  j, exp, Exponent;
+void ToDecimal(long double d, string& s){
+  int  exp, Exponent;
   bool spaces = Menu->GetGroupDigits();
 
   if(Invalid(d, s)) return;
 
   if(d == 0.0){
-    *s = "0";
+    s = "0";
     return;
   }
 
-  *s = "";
+  s = "";
   bool Sign = false;
   if(d < 0.0){
     d *= -1.0;
@@ -354,14 +372,13 @@ void ToDecimal(long double d, UNICODE_STRING* s){
     exp++;
   }
 
-  // Use 17 significant figures (limit of long double is about 19 figures)
-  d    = roundl(d*powl(10.0, 17));
-  exp -= 17;
+  d    = roundl(d*powl(10.0, Digits-1));
+  exp -= Digits-1;
 
   // Add trailing zeroes
-  for(j = 0; j < exp; j++){
-    if(spaces && j % 3 == 0) *s += ' ';
-    *s += '0';
+  for(int n = 0; n < exp; n++){
+    if(spaces && n % 3 == 0) s += ' ';
+    s += '0';
   }
 
   // Remove zeros after decimal point
@@ -372,46 +389,47 @@ void ToDecimal(long double d, UNICODE_STRING* s){
   }
 
   while(d > 0.0 || exp <= 0){
-    if     (exp     == 0 && s->Length32()) *s += '.';
-    else if(exp % 3 == 0 && spaces       ) *s += ' ';
+    if     (exp     == 0 && s.length()) s += Menu->GetDecimalFormat();
+    else if(exp % 3 == 0 && spaces    ) s += ' ';
 
-    *s += (char)(fmodl(d, 10.0) + '0');
+    s += (char)(fmodl(d, 10.0) + '0');
     d = floorl(d / 10.0);
     exp++;
   }
 
-  if(Sign) *s += '-';
+  if(Sign) s += '-';
 
   // Reverse
-  int     Length_32 = s->Length32();
+  u32string Data_32 = UTF_Converter.UTF32(s);
+  int     Length_32 = Data_32.length();
   int l = Length_32 / 2;
-  char32* Data_32   = s->UTF32   ();
-  char32  c;
+  char32_t c;
 
-  for(j = 0; j < l; j++){
-    c = Data_32[j];
-    Data_32[j] = Data_32[Length_32-j-1];
-    Data_32[Length_32-j-1] = c;
+  for(int n = 0; n < l; n++){
+    c = Data_32[n];
+    Data_32[n] = Data_32[Length_32-n-1];
+    Data_32[Length_32-n-1] = c;
   }
+  s = UTF_Converter.UTF8(Data_32);
 
   if(Exponent){
-    if(spaces) *s += ' ';
-    *s += 'e';
-    *s += Exponent;
+    if(spaces) s += ' ';
+    s += 'e';
+    s += to_string(Exponent);
   }
 }
 //------------------------------------------------------------------------------
 
 void Calculate(){
-  UNICODE_STRING s, formula;
+  string s, formula;
 
   Formula->GetText(&formula);
-  if(!formula.Length32()){
+  if(formula.empty()){
     Result->SetText("");
     return;
   }
 
-  long double result = Calc.Calculate(formula.UTF8());
+  long double result = Calc.Calculate(formula.c_str());
   if(Menu->GetConverter()){
     CONVERSION  Key;
     CONVERSION* Conversion;
@@ -420,23 +438,23 @@ void Calculate(){
 
     Conversion = (CONVERSION*)Conversions.Find(&Key);
     if(!Conversion) result = 0.0;
-    else result = Calc.Calculate(Conversion->Formula.UTF8(), "x", result);
+    else result = Calc.Calculate(Conversion->Formula.c_str(), "x", result);
   }
 
   switch(Menu->GetFormat()){
     case MENU::Binary:
-      ToBinary(result, &s);
+      ToBinary(result, s);
       break;
 
     case MENU::Hexadecimal:
-      ToHex(result, &s);
+      ToHex(result, s);
       break;
 
     default:
-      ToDecimal(result, &s);
+      ToDecimal(result, s);
       break;
   }
-  Result->SetText(s.UTF8());
+  Result->SetText(s.c_str());
 }
 //------------------------------------------------------------------------------
 
@@ -444,7 +462,7 @@ void OnAboutClick(){
   wchar_t Message[0x1000];
   wsprintf(Message,
     L"Engineering Calculator, Version %d.%d\n"
-    L"Built on "__DATE__" at "__TIME__"\n"
+    L"Built on " __DATE__ " at " __TIME__ "\n"
     L"\n"
     L"Copyright (C) John-Philip Taylor\n"
     L"jpt13653903@gmail.com\n"
@@ -482,7 +500,7 @@ LRESULT CALLBACK WindowProcedure(
   static int X, Y;
 
   RECT   Rect;
-  UNICODE_STRING s;
+  string s;
 
   switch(Message){
     case WM_CLOSE:
@@ -586,6 +604,26 @@ LRESULT CALLBACK WindowProcedure(
             Calculate();
             break;
 
+          case IDM_INCREASE_DIGITS:
+            if(Digits < 18) Digits++;
+            Calculate();
+            break;
+
+          case IDM_DECREASE_DIGITS:
+            if(Digits > 3) Digits--;
+            Calculate();
+            break;
+
+          case IDM_DOT_DECIMALS:
+            Menu->SetDecimalFormat('.');
+            Calculate();
+            break;
+
+          case IDM_COMMA_DECIMALS:
+            Menu->SetDecimalFormat(',');
+            Calculate();
+            break;
+
           case IDM_ALWAYS_ON_TOP:
             LONG Style;
             Style = GetWindowLong(Window, GWL_EXSTYLE);
@@ -636,7 +674,7 @@ LRESULT CALLBACK WindowProcedure(
             }
             SetWindowPos(Window, 0, Rect.left, Rect.top, MainWidth, 21, 0);
             Result ->GetText(&s);
-            Formula->SetText( s.UTF8());
+            Formula->SetText( s.c_str());
             Calculate();
             break;
 
@@ -671,7 +709,8 @@ LRESULT CALLBACK WindowProcedure(
 //------------------------------------------------------------------------------
 
 static HICON LoadIconSmall(WORD Icon){
-  int    size = GetSystemMetrics(SM_CXSMICON);
+  int size = GetSystemMetrics(SM_CXSMICON);
+
   return (HICON)LoadImage(
     Instance,
     MAKEINTRESOURCE(Icon),
@@ -682,19 +721,22 @@ static HICON LoadIconSmall(WORD Icon){
 }
 //------------------------------------------------------------------------------
 
-void ComplexArgument(UNICODE_STRING* Arg){
-  int     j;
-  char32* A = Arg->UTF32();
+void ComplexArgument(string& Arg){
+  // Arg is already in upper-case
 
-  if(Arg->Length32() > 10 && A[10] == '='){
-    A[10] = 0;
-    if(!Arg->CompareNoCase("rightspace")){
-      RightSpace = 0;
-      for(j = 11; A[j] >= '0' && A[j] <= '9'; j++){
-        RightSpace = 10*RightSpace + A[j]-'0';
-      }
+  if(!Arg.compare(0, 11, "RIGHTSPACE=")){
+    RightSpace = 0;
+    for(int n = 11; Arg[n] >= '0' && Arg[n] <= '9'; n++){
+      RightSpace = 10*RightSpace + Arg[n]-'0';
     }
-    A[10] = '=';
+
+  }else if(!Arg.compare(0, 7, "DIGITS=")){
+    Digits = 0;
+    for(int n = 7; Arg[n] >= '0' && Arg[n] <= '9'; n++){
+      Digits = 10*Digits + Arg[n]-'0';
+    }
+    if(Digits <  3) Digits =  3;
+    if(Digits > 18) Digits = 18;
   }
 }
 //------------------------------------------------------------------------------
@@ -729,24 +771,26 @@ int WINAPI WinMain(
   }
 
   // Get the command-line
-  int            ArgC;
-  UNICODE_STRING Arg;
-  wchar_t**      ArgV = CommandLineToArgvW(FullCommandLine, &ArgC);
+  int       ArgC;
+  string    Arg;
+  wchar_t** ArgV = CommandLineToArgvW(FullCommandLine, &ArgC);
 
-  bool Calculator = false;
-  bool Normal     = false;
-  bool NotOnTop   = false;
-  bool Degrees    = false;
+  bool Calculator    = false;
+  bool Normal        = false;
+  bool NotOnTop      = false;
+  bool Degrees       = false;
+  bool CommaDecimals = false;
 
   // Process the command-line
   if(ArgV){
-    for(int j = 1; j < ArgC; j++){
-      Arg = (char16*)ArgV[j];
-      if     (!Arg.CompareNoCase("calculator")) Calculator = true;
-      else if(!Arg.CompareNoCase("normal"    )) Normal     = true;
-      else if(!Arg.CompareNoCase("not-on-top")) NotOnTop   = true;
-      else if(!Arg.CompareNoCase("degrees"   )) Degrees    = true;
-      else ComplexArgument(&Arg);
+    for(int n = 1; n < ArgC; n++){
+      Arg = UTF_Converter.UpperCase(UTF_Converter.UTF8((char16_t*)(ArgV[n])));
+      if     (Arg == "CALCULATOR"   ) Calculator    = true;
+      else if(Arg == "NORMAL"       ) Normal        = true;
+      else if(Arg == "NOT-ON-TOP"   ) NotOnTop      = true;
+      else if(Arg == "DEGREES"      ) Degrees       = true;
+      else if(Arg == "COMMADECIMALS") CommaDecimals = true;
+      else ComplexArgument(Arg);
     }
     LocalFree(ArgV);
   }
@@ -816,10 +860,11 @@ int WINAPI WinMain(
   ToUnit   = new COMBO_BOX(590, 150);
   Menu     = new MENU;
 
-  if(Calculator) PostMessage(Window, WM_COMMAND, IDM_CONVERTER    , 0);
-  if(Normal    ) PostMessage(Window, WM_COMMAND, IDM_NORMAL       , 0);
-  if(NotOnTop  ) PostMessage(Window, WM_COMMAND, IDM_ALWAYS_ON_TOP, 0);
-  if(Degrees   ) PostMessage(Window, WM_COMMAND, IDM_DEGREES      , 0);
+  if(Calculator   ) PostMessage(Window, WM_COMMAND, IDM_CONVERTER     , 0);
+  if(Normal       ) PostMessage(Window, WM_COMMAND, IDM_NORMAL        , 0);
+  if(NotOnTop     ) PostMessage(Window, WM_COMMAND, IDM_ALWAYS_ON_TOP , 0);
+  if(Degrees      ) PostMessage(Window, WM_COMMAND, IDM_DEGREES       , 0);
+  if(CommaDecimals) PostMessage(Window, WM_COMMAND, IDM_COMMA_DECIMALS, 0);
 
   // Show the window
   ShowWindow(Window, SW_SHOW);

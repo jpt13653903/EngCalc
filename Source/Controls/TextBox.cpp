@@ -35,19 +35,16 @@ TEXT_BOX::~TEXT_BOX(){
 //------------------------------------------------------------------------------
 
 void TEXT_BOX::SetText(const char* String){
-  UNICODE_STRING Codec;
-  Codec = String;
-
-  Edit_SetText(Handle, (wchar_t*)Codec.UTF16());
+  Edit_SetText(Handle, (wchar_t*)(UTF_Converter.UTF16(String).c_str()));
 }
 //------------------------------------------------------------------------------
 
-void TEXT_BOX::GetText(UNICODE_STRING* String){
+void TEXT_BOX::GetText(std::string* String){
   int      Length = Edit_GetTextLength(Handle);
   wchar_t* Text   = new wchar_t[Length+1];
 
   Edit_GetText(Handle, Text, Length+1);
-  *String = (char16*)Text;
+  *String = UTF_Converter.UTF8((char16_t*)Text);
 
   delete[] Text;
 }

@@ -23,7 +23,7 @@
 //------------------------------------------------------------------------------
 
 #include "Control.h"
-#include "UnicodeString.h"
+#include "UTF_Converter.h"
 //------------------------------------------------------------------------------
 
 class TEXT_BOX: public CONTROL{
@@ -31,8 +31,8 @@ class TEXT_BOX: public CONTROL{
     TEXT_BOX(int Left, int Width, bool ReadOnly = false);
    ~TEXT_BOX();
 
-  void SetText(const char*     String);
-  void GetText(UNICODE_STRING* String);
+  void SetText(const char*  String);
+  void GetText(std::string* String);
 };
 //------------------------------------------------------------------------------
 

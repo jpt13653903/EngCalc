@@ -11,15 +11,18 @@ Engineering Calculator is a lightweight, yet handy math expression evaluation an
 Unzip [the archive](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download) to you favourite folder and run "bin\\EngCalc.exe".
 
 ### 2.1 Command-line Options
+
 Some of the default options can be changed by creating a short-cut and adding command-line options. Some of these options toggle, as opposed to set, so use them only once.
 
-Option       | Action
--------------|-------
-Calculator   | Start in Calculator mode, as opposed to converter mode
-Normal       | Start with Normal number format, instead of Engineering
-Not-on-top   | Start with "Always on top" disabled
-Degrees      | Start with Degrees instead of Radians
-RightSpace=X | Change the start-up position by specifying the distance from the right of the screen (X is some integer value, in pixels)
+Option        | Action
+------        | ------
+Calculator    | Start in Calculator mode, as opposed to converter mode
+Normal        | Start with Normal number format, instead of Engineering
+Not-on-top    | Start with "Always on top" disabled
+Degrees       | Start with Degrees instead of Radians
+CommaDecimals | Start with comma-style decimal separator
+RightSpace=X  | Change the start-up position by specifying the distance from the right of the screen (X is some integer value, in pixels)
+Digits=X      | Change the start-up number of decimal significant figures (X is some integer value in the range 3 to 18)
 
 As an example, you could create a short-cut that runs "bin\\EngCalc.exe calculator normal not-on-top rightspace=200", which will start Engineering Calculator in calculator mode, with normal form answers, not always on top and 200 pixels from the right of the screen.
 

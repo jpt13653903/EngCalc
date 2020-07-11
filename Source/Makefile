@@ -11,7 +11,7 @@ Libraries  = -lgdi32 -luser32 -lkernel32 -lcomctl32
 LibInclude = 
 #-------------------------------------------------------------------------------
 
-Version = -DMAJOR_VERSION=1 -DMINOR_VERSION=7
+Version = -DMAJOR_VERSION=1 -DMINOR_VERSION=8
 
 Objects = obj/Global.o                       \
           obj/Controls/ComboBox.o            \
@@ -23,7 +23,7 @@ Objects = obj/Global.o                       \
           obj/Tools/Cpp/FileWrapper.o        \
           obj/Tools/Cpp/General.o            \
           obj/Tools/Cpp/LLRBTree.o           \
-          obj/Tools/Cpp/UnicodeString.o      \
+          obj/Tools/Cpp/UTF_Converter.o      \
           obj/Tools/Cpp/XML.o                \
           obj/Resources/Resources.res
 

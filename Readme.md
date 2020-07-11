@@ -4,9 +4,14 @@ A lightweight, yet handy math expression evaluation and unit conversion utility 
 
 ## Installation Instructions
 
-1. Download [EngCalc - 1.7.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
+1. Download [EngCalc - 1.8.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
 1. Unzip the archive to your favourite folder
 1. Run `bin\EngCalc.exe`
+
+## Changes from Version 1.7
+
+- Added option to output using comma-based decimal point
+- Added a feature to change the number of significant figures
 
 ## Changes from Version 1.6
 

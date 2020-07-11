@@ -25,33 +25,40 @@
 #include "Global.h"
 //------------------------------------------------------------------------------
 
-#define IDM_DEGREES        0
-#define IDM_RADIANS        1
-#define IDM_DECIMAL        2
-#define IDM_HEX            3
-#define IDM_BINARY         4
-#define IDM_NORMAL         5
-#define IDM_ENGINEERING    6
-#define IDM_GROUP_DIGITS   7
-#define IDM_ALWAYS_ON_TOP  8
-#define IDM_CONVERTER      9
-#define IDM_MINIMIZE      10
-#define IDM_EXIT          11
-#define IDM_MANUAL        12
-#define IDM_ABOUT         13
+enum MENU_Enum{
+  IDM_DEGREES,
+  IDM_RADIANS,
+  IDM_DECIMAL,
+  IDM_HEX,
+  IDM_BINARY,
+  IDM_NORMAL,
+  IDM_ENGINEERING,
+  IDM_GROUP_DIGITS,
+  IDM_INCREASE_DIGITS,
+  IDM_DECREASE_DIGITS,
+  IDM_DOT_DECIMALS,
+  IDM_COMMA_DECIMALS,
+  IDM_ALWAYS_ON_TOP,
+  IDM_CONVERTER,
+  IDM_MINIMIZE,
+  IDM_EXIT,
+  IDM_MANUAL,
+  IDM_ABOUT
+};
 //------------------------------------------------------------------------------
 
 class MENU{
   public:
-    enum FORMAT{Decimal, Hexadecimal, Binary};
+    enum FORMAT {Decimal, Hexadecimal, Binary};
 
   private:
-    bool   Radians;
-    bool   Converter;
-    bool   AlwaysOnTop;
-    bool   Engineering;
-    bool   GroupDigits;
-    FORMAT Format;
+    bool    Radians;
+    bool    Converter;
+    bool    AlwaysOnTop;
+    bool    Engineering;
+    bool    GroupDigits;
+    char    DecimalFormat;
+    FORMAT  Format;
 
   public:
     HMENU  Handle;
@@ -60,19 +67,21 @@ class MENU{
     MENU();
    ~MENU();
 
-    void SetRadians    (bool   Value);
-    void SetConverter  (bool   Value);
-    void SetAlwaysOnTop(bool   Value);
-    void SetEngineering(bool   Value);
-    void SetGroupDigits(bool   Value);
-    void SetFormat     (FORMAT Value);
+    void SetRadians      (bool   Value);
+    void SetConverter    (bool   Value);
+    void SetAlwaysOnTop  (bool   Value);
+    void SetEngineering  (bool   Value);
+    void SetGroupDigits  (bool   Value);
+    void SetDecimalFormat(char   Value);
+    void SetFormat       (FORMAT Value);
 
-    bool   GetRadians    ();
-    bool   GetConverter  ();
-    bool   GetAlwaysOnTop();
-    bool   GetEngineering();
-    bool   GetGroupDigits();
-    FORMAT GetFormat     ();
+    bool   GetRadians      ();
+    bool   GetConverter    ();
+    bool   GetAlwaysOnTop  ();
+    bool   GetEngineering  ();
+    bool   GetGroupDigits  ();
+    char   GetDecimalFormat();
+    FORMAT GetFormat       ();
 
     void Show();
 };

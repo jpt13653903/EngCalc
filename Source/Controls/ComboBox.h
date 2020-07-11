@@ -23,7 +23,7 @@
 //------------------------------------------------------------------------------
 
 #include "Control.h"
-#include "UnicodeString.h"
+#include "UTF_Converter.h"
 //------------------------------------------------------------------------------
 
 class COMBO_BOX: public CONTROL{
@@ -35,9 +35,8 @@ class COMBO_BOX: public CONTROL{
    ~COMBO_BOX();
 
     void Clear  ();
-    void AddItem(const char* Item);
-
-    void GetItem(UNICODE_STRING* Item);
+    void AddItem(const char*  Item);
+    void GetItem(std::string* Item);
 };
 //------------------------------------------------------------------------------
 
