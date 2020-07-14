@@ -1,5 +1,5 @@
 CC      = g++
-Options = -Wall -fexceptions -O2 -mwindows
+Options = -std=c++11 -Wall -fexceptions -O2 -mwindows
 #-------------------------------------------------------------------------------
 
 Includes = -I../Source \
