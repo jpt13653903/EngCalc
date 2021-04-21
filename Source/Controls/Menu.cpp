@@ -45,7 +45,6 @@ MENU::MENU(){
   AppendMenu(Handle, MF_STRING, IDM_DOT_DECIMALS   , L"Dot Decimals\tCtrl .");
   AppendMenu(Handle, MF_STRING, IDM_COMMA_DECIMALS , L"Comma Decimals\tCtrl ,");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
   AppendMenu(Handle, MF_STRING, IDM_ALWAYS_ON_TOP  , L"Always on top\tCtrl T");
   AppendMenu(Handle, MF_STRING, IDM_CONVERTER      , L"Converter\tCtrl Z");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
