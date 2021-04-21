@@ -4,9 +4,13 @@ A lightweight, yet handy math expression evaluation and unit conversion utility 
 
 ## Installation Instructions
 
-1. Download [EngCalc - 1.8.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
+1. Download [EngCalc - 1.9.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
 1. Unzip the archive to your favourite folder
 1. Run `bin\EngCalc.exe`
+
+## Changes from Version 1.8
+
+- Added "feet & inches" and "deg, min, sec" display modes
 
 ## Changes from Version 1.7
 

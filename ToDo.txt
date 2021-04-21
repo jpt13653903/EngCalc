@@ -8,4 +8,7 @@ Future Version Ideas:
 - Resize
   - Both in width and height.
   - Resizing the input and output separately?
+- From Steve S. (see "Meters to Feet and Fractional Inches " discussion on SourceForge)
+  - Formula = "fix(x/0.3048)", "ft.,", "(x/0.3048 - fix(x/0.3048))*12", "in.",
+    to get "32 ft., 9.7 in."
 

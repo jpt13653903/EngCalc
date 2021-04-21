@@ -342,28 +342,34 @@ void ToDecimal(long double d, string& s){
   }
 
   Exponent = 0;
-  if(Menu->GetEngineering()){
-    while(d >= 1e3){
-      d /= 1e3;
-      Exponent += 3;
-    }
-    while(d < 1.0){
-      d *= 1e3;
-      Exponent -= 3;
-    }
+  switch(Menu->GetDisplayMode()){
+    case MENU::DISPLAY_MODE::Normal:
+      if(d > 1e6){
+        while(d >= 10.0){
+          d /= 10.0;
+          Exponent++;
+        }
+      }else if(d < 1e-6){
+        while(d < 1.0){
+          d *= 10.0;
+          Exponent--;
+        }
+      }
+      break;
 
-  }else{
-    if(d > 1e6){
-      while(d >= 10.0){
-        d /= 10.0;
-        Exponent++;
+    case MENU::DISPLAY_MODE::Engineering:
+      while(d >= 1e3){
+        d /= 1e3;
+        Exponent += 3;
       }
-    }else if(d < 1e-6){
       while(d < 1.0){
-        d *= 10.0;
-        Exponent--;
+        d *= 1e3;
+        Exponent -= 3;
       }
-    }
+      break;
+
+    default: // Feet & Inches or Deg, Min & Sec
+      break;
   }
 
   exp = 0;
@@ -420,6 +426,25 @@ void ToDecimal(long double d, string& s){
 }
 //------------------------------------------------------------------------------
 
+void GetString(long double d, string& s){
+  switch(Menu->GetFormat()){
+    case MENU::FORMAT::Binary:
+      ToBinary(d, s);
+      break;
+
+    case MENU::FORMAT::Hexadecimal:
+      ToHex(d, s);
+      break;
+
+    default:
+      ToDecimal(d, s);
+      break;
+  }
+  // Remove trailing spaces...
+  while(s.length() && s[s.length()-1] == ' ') s.resize(s.length()-1);
+}
+//------------------------------------------------------------------------------
+
 void Calculate(){
   string s, formula;
 
@@ -441,18 +466,34 @@ void Calculate(){
     else result = Calc.Calculate(Conversion->Formula.c_str(), "x", result);
   }
 
-  switch(Menu->GetFormat()){
-    case MENU::Binary:
-      ToBinary(result, s);
+  switch(Menu->GetDisplayMode()){
+    case MENU::DISPLAY_MODE::FeetInches:{
+      long double i, f; // integer and fraction parts
+      string temp;
+      f = modfl(result, &i);
+      GetString(i, temp);
+      s += temp + "' ";
+      GetString(12*f, temp);
+      s += temp + '"';
       break;
+    }
 
-    case MENU::Hexadecimal:
-      ToHex(result, s);
+    case MENU::DISPLAY_MODE::DegMinSec:{
+      long double i, f; // integer and fraction parts
+      string temp;
+      f = modfl(result, &i);
+      GetString(i, temp);
+      s += temp + "° ";
+      f = modfl(60*f, &i);
+      GetString(i, temp);
+      s += temp + "' ";
+      GetString(60*f, temp);
+      s += temp + '"';
       break;
+    }
 
     default:
-      ToDecimal(result, s);
-      break;
+      GetString(result, s);
   }
   Result->SetText(s.c_str());
 }
@@ -575,27 +616,37 @@ LRESULT CALLBACK WindowProcedure(
             break;
 
           case IDM_DECIMAL:
-            Menu->SetFormat(MENU::Decimal);
+            Menu->SetFormat(MENU::FORMAT::Decimal);
             Calculate();
             break;
 
           case IDM_HEX:
-            Menu->SetFormat(MENU::Hexadecimal);
+            Menu->SetFormat(MENU::FORMAT::Hexadecimal);
             Calculate();
             break;
 
           case IDM_BINARY:
-            Menu->SetFormat(MENU::Binary);
+            Menu->SetFormat(MENU::FORMAT::Binary);
             Calculate();
             break;
 
           case IDM_NORMAL:
-            Menu->SetEngineering(false);
+            Menu->SetDisplayMode(MENU::DISPLAY_MODE::Normal);
             Calculate();
             break;
 
           case IDM_ENGINEERING:
-            Menu->SetEngineering(true);
+            Menu->SetDisplayMode(MENU::DISPLAY_MODE::Engineering);
+            Calculate();
+            break;
+
+          case IDM_FEET_INCHES:
+            Menu->SetDisplayMode(MENU::DISPLAY_MODE::FeetInches);
+            Calculate();
+            break;
+
+          case IDM_DEG_MIN_SEC:
+            Menu->SetDisplayMode(MENU::DISPLAY_MODE::DegMinSec);
             Calculate();
             break;
 

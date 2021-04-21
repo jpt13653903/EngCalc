@@ -33,6 +33,8 @@ enum MENU_Enum{
   IDM_BINARY,
   IDM_NORMAL,
   IDM_ENGINEERING,
+  IDM_FEET_INCHES,
+  IDM_DEG_MIN_SEC,
   IDM_GROUP_DIGITS,
   IDM_INCREASE_DIGITS,
   IDM_DECREASE_DIGITS,
@@ -49,16 +51,23 @@ enum MENU_Enum{
 
 class MENU{
   public:
-    enum FORMAT {Decimal, Hexadecimal, Binary};
+    enum class FORMAT {Decimal, Hexadecimal, Binary};
+
+    enum class DISPLAY_MODE{
+      Normal      = IDM_NORMAL,
+      Engineering = IDM_ENGINEERING,
+      FeetInches  = IDM_FEET_INCHES,
+      DegMinSec   = IDM_DEG_MIN_SEC
+    };
 
   private:
-    bool    Radians;
-    bool    Converter;
-    bool    AlwaysOnTop;
-    bool    Engineering;
-    bool    GroupDigits;
-    char    DecimalFormat;
-    FORMAT  Format;
+    bool         Radians;
+    bool         Converter;
+    bool         AlwaysOnTop;
+    DISPLAY_MODE DisplayMode;
+    bool         GroupDigits;
+    char         DecimalFormat;
+    FORMAT       Format;
 
   public:
     HMENU  Handle;
@@ -67,21 +76,21 @@ class MENU{
     MENU();
    ~MENU();
 
-    void SetRadians      (bool   Value);
-    void SetConverter    (bool   Value);
-    void SetAlwaysOnTop  (bool   Value);
-    void SetEngineering  (bool   Value);
-    void SetGroupDigits  (bool   Value);
-    void SetDecimalFormat(char   Value);
-    void SetFormat       (FORMAT Value);
+    void SetRadians      (bool         Value);
+    void SetConverter    (bool         Value);
+    void SetAlwaysOnTop  (bool         Value);
+    void SetDisplayMode  (DISPLAY_MODE Value);
+    void SetGroupDigits  (bool         Value);
+    void SetDecimalFormat(char         Value);
+    void SetFormat       (FORMAT       Value);
 
-    bool   GetRadians      ();
-    bool   GetConverter    ();
-    bool   GetAlwaysOnTop  ();
-    bool   GetEngineering  ();
-    bool   GetGroupDigits  ();
-    char   GetDecimalFormat();
-    FORMAT GetFormat       ();
+    bool         GetRadians      ();
+    bool         GetConverter    ();
+    bool         GetAlwaysOnTop  ();
+    DISPLAY_MODE GetDisplayMode  ();
+    bool         GetGroupDigits  ();
+    char         GetDecimalFormat();
+    FORMAT       GetFormat       ();
 
     void Show();
 };

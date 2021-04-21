@@ -11,7 +11,7 @@ Libraries  = -lgdi32 -luser32 -lkernel32 -lcomctl32
 LibInclude = 
 #-------------------------------------------------------------------------------
 
-Version = -DMAJOR_VERSION=1 -DMINOR_VERSION=8
+Version = -DMAJOR_VERSION=1 -DMINOR_VERSION=9
 
 Objects = obj/Global.o                       \
           obj/Controls/ComboBox.o            \

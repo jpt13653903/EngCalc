@@ -25,40 +25,44 @@ MENU::MENU(){
   Handle = CreatePopupMenu();
 
   // Create the menu items
-  AppendMenu(Handle, MF_STRING, IDM_DEGREES       , L"Degrees\tCtrl G");
-  AppendMenu(Handle, MF_STRING, IDM_RADIANS       , L"Radians\tCtrl R");
+  AppendMenu(Handle, MF_STRING, IDM_DEGREES        , L"Degrees\tCtrl G");
+  AppendMenu(Handle, MF_STRING, IDM_RADIANS        , L"Radians\tCtrl R");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_DECIMAL       , L"Decimal\tCtrl D");
-  AppendMenu(Handle, MF_STRING, IDM_HEX           , L"Hex\tCtrl H");
-  AppendMenu(Handle, MF_STRING, IDM_BINARY        , L"Binary\tCtrl B");
+  AppendMenu(Handle, MF_STRING, IDM_DECIMAL        , L"Decimal\tCtrl D");
+  AppendMenu(Handle, MF_STRING, IDM_HEX            , L"Hex\tCtrl H");
+  AppendMenu(Handle, MF_STRING, IDM_BINARY         , L"Binary\tCtrl B");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_NORMAL        , L"Normal");
-  AppendMenu(Handle, MF_STRING, IDM_ENGINEERING   , L"Engineering");
-  AppendMenu(Handle, MF_STRING, IDM_GROUP_DIGITS  , L"Group Digits\tCtrl S");
+  AppendMenu(Handle, MF_STRING, IDM_NORMAL         , L"Normal");
+  AppendMenu(Handle, MF_STRING, IDM_ENGINEERING    , L"Engineering");
+  AppendMenu(Handle, MF_STRING, IDM_FEET_INCHES    , L"Feet && Inches");
+  AppendMenu(Handle, MF_STRING, IDM_DEG_MIN_SEC    , L"Deg, Min && Sec");
+  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
+  AppendMenu(Handle, MF_STRING, IDM_GROUP_DIGITS   , L"Group Digits\tCtrl S");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
   AppendMenu(Handle, MF_STRING, IDM_INCREASE_DIGITS, L"Increase Digits\tCtrl +");
   AppendMenu(Handle, MF_STRING, IDM_DECREASE_DIGITS, L"Decrease Digits\tCtrl -");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_DOT_DECIMALS  , L"Dot Decimals\tCtrl .");
-  AppendMenu(Handle, MF_STRING, IDM_COMMA_DECIMALS, L"Comma Decimals\tCtrl ,");
+  AppendMenu(Handle, MF_STRING, IDM_DOT_DECIMALS   , L"Dot Decimals\tCtrl .");
+  AppendMenu(Handle, MF_STRING, IDM_COMMA_DECIMALS , L"Comma Decimals\tCtrl ,");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_ALWAYS_ON_TOP , L"Always on top\tCtrl T");
-  AppendMenu(Handle, MF_STRING, IDM_CONVERTER     , L"Converter\tCtrl Z");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_MINIMIZE      , L"Minimize\tCtrl M");
-  AppendMenu(Handle, MF_STRING, IDM_EXIT          , L"Exit\tCtrl Q");
+  AppendMenu(Handle, MF_STRING, IDM_ALWAYS_ON_TOP  , L"Always on top\tCtrl T");
+  AppendMenu(Handle, MF_STRING, IDM_CONVERTER      , L"Converter\tCtrl Z");
   AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_MANUAL        , L"Online Manual");
-  AppendMenu(Handle, MF_STRING, IDM_ABOUT         , L"About");
+  AppendMenu(Handle, MF_STRING, IDM_MINIMIZE       , L"Minimize\tCtrl M");
+  AppendMenu(Handle, MF_STRING, IDM_EXIT           , L"Exit\tCtrl Q");
+  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
+  AppendMenu(Handle, MF_STRING, IDM_MANUAL         , L"Online Manual");
+  AppendMenu(Handle, MF_STRING, IDM_ABOUT          , L"About");
 
   // Set the default states;
   SetRadians      (true);
   SetConverter    (true);
   SetAlwaysOnTop  (true);
-  SetEngineering  (true);
+  SetDisplayMode  (DISPLAY_MODE::Engineering);
   SetGroupDigits  (true);
   SetDecimalFormat('.');
-  SetFormat       (Decimal);
+  SetFormat       (FORMAT::Decimal);
 
   // Create the keyboard shortcuts
   ACCEL Accelerators[16];
@@ -190,7 +194,7 @@ void MENU::SetAlwaysOnTop(bool Value){
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetEngineering(bool Value){
+void MENU::SetDisplayMode(DISPLAY_MODE Value){
   MENUITEMINFO MenuInfo;
   MenuInfo.cbSize = sizeof(MENUITEMINFO);
   MenuInfo.fMask  = MIIM_STATE;
@@ -198,12 +202,13 @@ void MENU::SetEngineering(bool Value){
 
   SetMenuItemInfo(Handle, IDM_NORMAL     , 0, &MenuInfo);
   SetMenuItemInfo(Handle, IDM_ENGINEERING, 0, &MenuInfo);
+  SetMenuItemInfo(Handle, IDM_FEET_INCHES, 0, &MenuInfo);
+  SetMenuItemInfo(Handle, IDM_DEG_MIN_SEC, 0, &MenuInfo);
 
   MenuInfo.fState = MFS_CHECKED;
-  if(Value) SetMenuItemInfo(Handle, IDM_ENGINEERING, 0, &MenuInfo);
-  else      SetMenuItemInfo(Handle, IDM_NORMAL     , 0, &MenuInfo);
+  SetMenuItemInfo(Handle, (int)Value, 0, &MenuInfo);
 
-  Engineering = Value;
+  DisplayMode = Value;
 }
 //------------------------------------------------------------------------------
 
@@ -258,15 +263,15 @@ void MENU::SetFormat(FORMAT Value){
 
   MenuInfo.fState = MFS_CHECKED;
   switch(Value){
-    case Binary:
+    case FORMAT::Binary:
       SetMenuItemInfo(Handle, IDM_BINARY, 0, &MenuInfo);
       break;
 
-    case Hexadecimal:
+    case FORMAT::Hexadecimal:
       SetMenuItemInfo(Handle, IDM_HEX, 0, &MenuInfo);
       break;
 
-    case Decimal:
+    case FORMAT::Decimal:
     default:
       SetMenuItemInfo(Handle, IDM_DECIMAL, 0, &MenuInfo);
       break;
@@ -291,8 +296,8 @@ bool MENU::GetAlwaysOnTop(){
 }
 //------------------------------------------------------------------------------
 
-bool MENU::GetEngineering(){
-  return Engineering;
+MENU::DISPLAY_MODE MENU::GetDisplayMode(){
+  return DisplayMode;
 }
 //------------------------------------------------------------------------------
 
