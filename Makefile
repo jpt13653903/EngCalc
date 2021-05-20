@@ -1,9 +1,9 @@
 .PHONY: clean all
 
 all:
-	make -C Source all
+	$(MAKE) -C Source all
 
 clean:
-	make -C Source clean
+	$(MAKE) -C Source clean
 #-------------------------------------------------------------------------------
 
