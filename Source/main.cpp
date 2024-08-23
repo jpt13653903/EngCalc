@@ -748,6 +748,9 @@ LRESULT CALLBACK WindowProcedure(
           case IDM_ABOUT:
             OnAboutClick();
             break;
+
+          default:
+            break;
         }
       }
       break;

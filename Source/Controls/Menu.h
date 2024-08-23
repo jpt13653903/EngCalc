@@ -26,7 +26,7 @@
 //------------------------------------------------------------------------------
 
 enum MENU_Enum{
-  IDM_DEGREES,
+  IDM_DEGREES = 10, // Skip the Enter (1) and Escape (2) constants
   IDM_RADIANS,
   IDM_DECIMAL,
   IDM_HEX,
