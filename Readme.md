@@ -4,9 +4,14 @@ A lightweight, yet handy math expression evaluation and unit conversion utility 
 
 ## Installation Instructions
 
-1. Download [EngCalc - 1.9.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
+1. Download [EngCalc - 1.10.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
 1. Unzip the archive to your favourite folder
 1. Run `bin\EngCalc.exe`
+
+## Changes from Version 1.9
+
+- Fixed a bug where "Enter" and "Escape" keys
+  would change to "Radians" and "Decimal", respectively
 
 ## Changes from Version 1.8
 
