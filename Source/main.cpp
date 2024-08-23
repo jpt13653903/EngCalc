@@ -509,7 +509,7 @@ void OnAboutClick(){
     L"jpt13653903@gmail.com\n"
     L"\n"
     L"Developed using:\n"
-    L"- MinGW (tdm-1) 4.8.1 <http://tdm-gcc.tdragon.net/>\n"
+    L"- MinGW (tdm64-1) 10.3.0 <http://tdm-gcc.tdragon.net/>\n"
     L"\n"
     L"This program is free software: you can redistribute it\n"
     L"and/or modify it under the terms of the GNU General\n"
