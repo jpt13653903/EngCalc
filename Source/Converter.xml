@@ -408,31 +408,31 @@
   <!-- Angle ================================================================= -->
     <Conversion From = "angular mil" To = "radian" Formula = "x*2*pi/6400" />
     <Conversion From = "radian" To = "angular mil" Formula = "x/2/pi*6400" />
-    
+
     <Conversion From = "arcminute" To = "radian" Formula = "x*pi/180/60" />
     <Conversion From = "radian" To = "arcminute" Formula = "x/pi*180*60" />
-    
+
     <Conversion From = "arcsecond" To = "radian" Formula = "x*pi/180/3600" />
     <Conversion From = "radian" To = "arcsecond" Formula = "x/pi*180*3600" />
-    
+
     <Conversion From = "degree" To = "radian" Formula = "x*pi/180" />
     <Conversion From = "radian" To = "degree" Formula = "x/pi*180" />
-    
+
     <Conversion From = "gradian" To = "radian" Formula = "x*pi/200" />
     <Conversion From = "radian" To = "gradian" Formula = "x/pi*200" />
-    
+
     <Conversion From = "octant" To = "radian" Formula = "x*pi/4" />
     <Conversion From = "radian" To = "octant" Formula = "x/pi*4" />
-    
+
     <Conversion From = "quadrant" To = "radian" Formula = "x*pi/2" />
     <Conversion From = "radian" To = "quadrant" Formula = "x/pi*2" />
-    
+
     <Conversion From = "sextant" To = "radian" Formula = "x*pi/3" />
     <Conversion From = "radian" To = "sextant" Formula = "x/pi*3" />
-    
+
     <Conversion From = "sign" To = "radian" Formula = "x*pi/6" />
     <Conversion From = "radian" To = "sign" Formula = "x/pi*6" />
-    
+
   <!-- Mass ================================================================== -->
     <Conversion From = "atomic unit" To = "kilogram" Formula = "x*1.66053873e-27" />
     <Conversion From = "atomic mass" To = "kilogram" Formula = "x*1.66053873e-27" />
@@ -667,7 +667,7 @@
 
   <!-- Pressure ============================================================== -->
     <Conversion From = "atmosphere" To = "pascal" Formula = "x*101325" />
-    <Conversion From = "pascal" To = "atmosphere" Formula = "x/" />
+    <Conversion From = "pascal" To = "atmosphere" Formula = "x/101325" />
 
     <Conversion From = "bar" To = "pascal" Formula = "x*1e5" />
     <Conversion From = "pascal" To = "bar" Formula = "x/1e5" />
@@ -853,5 +853,5 @@
 
     <Conversion From = "rutherford" To = "bacquerel" Formula = "x*1e-6" />
     <Conversion From = "bacquerel" To = "rutherford" Formula = "x/1e-6" />
-</Engineering_Calculator_Conversions> 
+</Engineering_Calculator_Conversions>
 
