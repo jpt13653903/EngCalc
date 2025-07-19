@@ -4,9 +4,14 @@ A lightweight, yet handy math expression evaluation and unit conversion utility 
 
 ## Installation Instructions
 
-1. Download [EngCalc - 1.10.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
+1. Download [EngCalc - 1.11.zip](https://sourceforge.net/projects/alwaysontopcalc/files/latest/download)
 1. Unzip the archive to your favourite folder
 1. Run `bin\EngCalc.exe`
+
+## Changes from Version 1.10
+
+- Fixed the Pascal to Atmosphere conversion
+- Added the `\cAir` constant
 
 ## Changes from Version 1.9
 

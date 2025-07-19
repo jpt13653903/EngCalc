@@ -142,6 +142,7 @@ Constant  | Meaning
 e         |  Natural base
 pi        |  &pi;
 \\c       |  Speed of light
+\\cAir    |  Speed of light in air
 \\G       |  Gravitational constant
 \\g       |  Gravitational acceleration of the earth
 \\me      |  Electron mass
@@ -164,7 +165,7 @@ pi        |  &pi;
 \\mil     |  1 mil (25.4 micron)
 
 If you'd like to have more constants, [post a suggestion](https://sourceforge.net/p/alwaysontopcalc/discussion/create_topic) in the "General Discussion" forum.
- 
+
 ## 5. Future Version Ideas
 
 If you have any ideas, please do not hesitate to [post them](https://sourceforge.net/p/alwaysontopcalc/discussion/create_topic) on the discussions page.
