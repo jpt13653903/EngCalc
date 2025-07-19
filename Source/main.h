@@ -28,21 +28,21 @@
 #include "FileWrapper.h"
 //------------------------------------------------------------------------------
 
-int MainWidth;
-int RightSpace = 140;
-int Digits     = 18;
+int mainWidth;
+int rightSpace = 140;
+int digits     = 18;
 //------------------------------------------------------------------------------
 
-MENU     * Menu;
-LABEL    * Label;
-TEXT_BOX * Formula;
-TEXT_BOX * Result;
-COMBO_BOX* FromUnit;
-COMBO_BOX* ToUnit;
+Menu    * menu;
+Label   * label;
+TextBox * formulaBox;
+TextBox * resultBox;
+ComboBox* fromUnitBox;
+ComboBox* toUnitBox;
 //------------------------------------------------------------------------------
 
-LLRB_TREE  Conversions;
-CALCULATOR Calc;
+LLRBTree   conversions;
+Calculator calc;
 //------------------------------------------------------------------------------
 
 #define NotifyMessage WM_APP

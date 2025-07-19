@@ -26,17 +26,17 @@
 #include "UTF_Converter.h"
 //------------------------------------------------------------------------------
 
-class COMBO_BOX: public CONTROL{
-  private:
-    int ItemCount;
+class ComboBox: public Control{
+    private:
+        int itemCount;
 
-  public:
-    COMBO_BOX(int Left, int Width);
-   ~COMBO_BOX();
+    public:
+        ComboBox(int left, int width);
+       ~ComboBox();
 
-    void Clear  ();
-    void AddItem(const char*  Item);
-    void GetItem(std::string* Item);
+        void clear  ();
+        void addItem(const char*  item);
+        void getItem(std::string* item);
 };
 //------------------------------------------------------------------------------
 

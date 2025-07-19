@@ -21,31 +21,34 @@
 #include "TextBox.h"
 //------------------------------------------------------------------------------
 
-TEXT_BOX::TEXT_BOX(
-  int Left, int Width, bool ReadOnly
-): CONTROL(
-  L"EDIT", WS_BORDER | WS_TABSTOP | ES_AUTOHSCROLL, Left, 0, Width, 21
+TextBox::TextBox(
+    int left, int width, bool readOnly
+): Control(
+    L"EDIT", WS_BORDER | WS_TABSTOP | ES_AUTOHSCROLL, left, 0, width, 21
 ){
-  if(ReadOnly) SendMessage(Handle, EM_SETREADONLY, 1, 0);
+    if(readOnly) SendMessage(handle, EM_SETREADONLY, 1, 0);
 }
 //------------------------------------------------------------------------------
 
-TEXT_BOX::~TEXT_BOX(){
+TextBox::~TextBox()
+{
 }
 //------------------------------------------------------------------------------
 
-void TEXT_BOX::SetText(const char* String){
-  Edit_SetText(Handle, (wchar_t*)(UTF_Converter.UTF16(String).c_str()));
+void TextBox::setText(const char* string)
+{
+    Edit_SetText(handle, (wchar_t*)(utfConverter.toUtf16(string).c_str()));
 }
 //------------------------------------------------------------------------------
 
-void TEXT_BOX::GetText(std::string* String){
-  int      Length = Edit_GetTextLength(Handle);
-  wchar_t* Text   = new wchar_t[Length+1];
+void TextBox::getText(std::string* string)
+{
+    int      length = Edit_GetTextLength(handle);
+    wchar_t* text   = new wchar_t[length+1];
 
-  Edit_GetText(Handle, Text, Length+1);
-  *String = UTF_Converter.UTF8((char16_t*)Text);
+    Edit_GetText(handle, text, length+1);
+    *string = utfConverter.toUtf8((char16_t*)text);
 
-  delete[] Text;
+    delete[] text;
 }
 //------------------------------------------------------------------------------

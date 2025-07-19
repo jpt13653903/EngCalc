@@ -21,42 +21,46 @@
 #include "ComboBox.h"
 //------------------------------------------------------------------------------
 
-COMBO_BOX::COMBO_BOX(
-  int Left, int Width
-): CONTROL(
-  L"COMBOBOX",
-  WS_BORDER | WS_TABSTOP | WS_VSCROLL | CBS_AUTOHSCROLL | CBS_DROPDOWNLIST,
-  Left, -1,
-  Width, 400
+ComboBox::ComboBox(
+    int left, int width
+): Control(
+    L"COMBOBOX",
+    WS_BORDER | WS_TABSTOP | WS_VSCROLL | CBS_AUTOHSCROLL | CBS_DROPDOWNLIST,
+    left, -1,
+    width, 400
 ){
-  ItemCount = 0;
+    itemCount = 0;
 }
 //------------------------------------------------------------------------------
 
-COMBO_BOX::~COMBO_BOX(){
+ComboBox::~ComboBox()
+{
 }
 //------------------------------------------------------------------------------
 
-void COMBO_BOX::Clear(){
-  ComboBox_ResetContent(Handle);
-  ItemCount = 0;
+void ComboBox::clear()
+{
+    ComboBox_ResetContent(handle);
+    itemCount = 0;
 }
 //------------------------------------------------------------------------------
 
-void COMBO_BOX::AddItem(const char* Item){
-  ComboBox_AddString(Handle, (wchar_t*)(UTF_Converter.UTF16(Item).c_str()));
-  if(!ItemCount) ComboBox_SetCurSel(Handle, 0);
-  ItemCount++;
+void ComboBox::addItem(const char* item)
+{
+    ComboBox_AddString(handle, (wchar_t*)(utfConverter.toUtf16(item).c_str()));
+    if(!itemCount) ComboBox_SetCurSel(handle, 0);
+    itemCount++;
 }
 //------------------------------------------------------------------------------
 
-void COMBO_BOX::GetItem(std::string* Item){
-  int      Length = ComboBox_GetTextLength(Handle);
-  wchar_t* Text   = new wchar_t[Length+1];
+void ComboBox::getItem(std::string* item)
+{
+    int      length = ComboBox_GetTextLength(handle);
+    wchar_t* text   = new wchar_t[length+1];
 
-  ComboBox_GetText(Handle, Text, Length+1);
-  *Item = UTF_Converter.UTF8((char16_t*)Text);
+    ComboBox_GetText(handle, text, length+1);
+    *item = utfConverter.toUtf8((char16_t*)text);
 
-  delete[] Text;
+    delete[] text;
 }
 //------------------------------------------------------------------------------

@@ -25,21 +25,21 @@
 #include "Global.h"
 //------------------------------------------------------------------------------
 
-class CONTROL{
-  public:
-    HWND Handle;
+class Control{
+    public:
+        HWND handle;
 
-    CONTROL(
-      const wchar_t* Class, DWORD Style,
-      int            Left , int   Top,
-      int            Width, int   Height
-    );
-   ~CONTROL();
+        Control(
+            const wchar_t* windowClass, DWORD windowStyle,
+            int left , int top,
+            int width, int height
+        );
+       ~Control();
 
-    void SetFocus();
-    void SetLeft (int Left);
-    void Hide    ();
-    void Show    ();
+        void setFocus();
+        void setLeft (int left);
+        void hide    ();
+        void show    ();
 };
 //------------------------------------------------------------------------------
 

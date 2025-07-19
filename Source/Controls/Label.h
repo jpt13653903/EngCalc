@@ -25,10 +25,10 @@
 #include "Control.h"
 //------------------------------------------------------------------------------
 
-class LABEL: public CONTROL{
-  public:
-    LABEL(int Left, int Width, const wchar_t* Caption);
-   ~LABEL();
+class Label: public Control{
+    public:
+        Label(int left, int width, const wchar_t* caption);
+       ~Label();
 };
 //------------------------------------------------------------------------------
 

@@ -26,9 +26,9 @@
 //------------------------------------------------------------------------------
 
 // Global handles
-extern HWND      Window;
-extern HFONT     Font;
-extern HINSTANCE Instance;
+extern HWND      window;
+extern HFONT     font;
+extern HINSTANCE instance;
 //------------------------------------------------------------------------------
 
 #endif

@@ -21,310 +21,327 @@
 #include "Menu.h"
 //------------------------------------------------------------------------------
 
-MENU::MENU(){
-  Handle = CreatePopupMenu();
+Menu::Menu()
+{
+    handle = CreatePopupMenu();
 
-  // Create the menu items
-  AppendMenu(Handle, MF_STRING, IDM_DEGREES        , L"Degrees\tCtrl G");
-  AppendMenu(Handle, MF_STRING, IDM_RADIANS        , L"Radians\tCtrl R");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_DECIMAL        , L"Decimal\tCtrl D");
-  AppendMenu(Handle, MF_STRING, IDM_HEX            , L"Hex\tCtrl H");
-  AppendMenu(Handle, MF_STRING, IDM_BINARY         , L"Binary\tCtrl B");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_NORMAL         , L"Normal");
-  AppendMenu(Handle, MF_STRING, IDM_ENGINEERING    , L"Engineering");
-  AppendMenu(Handle, MF_STRING, IDM_FEET_INCHES    , L"Feet && Inches");
-  AppendMenu(Handle, MF_STRING, IDM_DEG_MIN_SEC    , L"Deg, Min && Sec");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_GROUP_DIGITS   , L"Group Digits\tCtrl S");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_INCREASE_DIGITS, L"Increase Digits\tCtrl +");
-  AppendMenu(Handle, MF_STRING, IDM_DECREASE_DIGITS, L"Decrease Digits\tCtrl -");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_DOT_DECIMALS   , L"Dot Decimals\tCtrl .");
-  AppendMenu(Handle, MF_STRING, IDM_COMMA_DECIMALS , L"Comma Decimals\tCtrl ,");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_ALWAYS_ON_TOP  , L"Always on top\tCtrl T");
-  AppendMenu(Handle, MF_STRING, IDM_CONVERTER      , L"Converter\tCtrl Z");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_MINIMIZE       , L"Minimize\tCtrl M");
-  AppendMenu(Handle, MF_STRING, IDM_EXIT           , L"Exit\tCtrl Q");
-  AppendMenu(Handle, MF_SEPARATOR, 0, 0);
-  AppendMenu(Handle, MF_STRING, IDM_MANUAL         , L"Online Manual");
-  AppendMenu(Handle, MF_STRING, IDM_ABOUT          , L"About");
+    // Create the menu items
+    AppendMenu(handle, MF_STRING, IDM_DEGREES        , L"Degrees\tCtrl G");
+    AppendMenu(handle, MF_STRING, IDM_RADIANS        , L"Radians\tCtrl R");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_DECIMAL        , L"Decimal\tCtrl D");
+    AppendMenu(handle, MF_STRING, IDM_HEX            , L"Hex\tCtrl H");
+    AppendMenu(handle, MF_STRING, IDM_BINARY         , L"Binary\tCtrl B");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_NORMAL         , L"Normal");
+    AppendMenu(handle, MF_STRING, IDM_ENGINEERING    , L"Engineering");
+    AppendMenu(handle, MF_STRING, IDM_FEET_INCHES    , L"Feet && Inches");
+    AppendMenu(handle, MF_STRING, IDM_DEG_MIN_SEC    , L"Deg, Min && Sec");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_GROUP_DIGITS   , L"Group Digits\tCtrl S");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_INCREASE_DIGITS, L"Increase Digits\tCtrl +");
+    AppendMenu(handle, MF_STRING, IDM_DECREASE_DIGITS, L"Decrease Digits\tCtrl -");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_DOT_DECIMALS   , L"Dot Decimals\tCtrl .");
+    AppendMenu(handle, MF_STRING, IDM_COMMA_DECIMALS , L"Comma Decimals\tCtrl ,");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_ALWAYS_ON_TOP  , L"Always on top\tCtrl T");
+    AppendMenu(handle, MF_STRING, IDM_CONVERTER      , L"Converter\tCtrl Z");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_MINIMIZE       , L"Minimize\tCtrl M");
+    AppendMenu(handle, MF_STRING, IDM_EXIT           , L"Exit\tCtrl Q");
+    AppendMenu(handle, MF_SEPARATOR, 0, 0);
+    AppendMenu(handle, MF_STRING, IDM_MANUAL         , L"Online Manual");
+    AppendMenu(handle, MF_STRING, IDM_ABOUT          , L"About");
 
-  // Set the default states;
-  SetRadians      (true);
-  SetConverter    (true);
-  SetAlwaysOnTop  (true);
-  SetDisplayMode  (DISPLAY_MODE::Engineering);
-  SetGroupDigits  (true);
-  SetDecimalFormat('.');
-  SetFormat       (FORMAT::Decimal);
+    // set the default states;
+    setRadians      (true);
+    setConverter    (true);
+    setAlwaysOnTop  (true);
+    setDisplayMode  (DisplayMode::Engineering);
+    setGroupDigits  (true);
+    setDecimalFormat('.');
+    setFormat       (Format::Decimal);
 
-  // Create the keyboard shortcuts
-  ACCEL Accelerators[16];
+    // Create the keyboard shortcuts
+    ACCEL accelerators[16];
 
-  int j = 0;
+    int j = 0;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'G';
-  Accelerators[j++].cmd   = IDM_DEGREES;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'G';
+    accelerators[j++].cmd   = IDM_DEGREES;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'R';
-  Accelerators[j++].cmd   = IDM_RADIANS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'R';
+    accelerators[j++].cmd   = IDM_RADIANS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'D';
-  Accelerators[j++].cmd   = IDM_DECIMAL;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'D';
+    accelerators[j++].cmd   = IDM_DECIMAL;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'H';
-  Accelerators[j++].cmd   = IDM_HEX;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'H';
+    accelerators[j++].cmd   = IDM_HEX;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'B';
-  Accelerators[j++].cmd   = IDM_BINARY;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'B';
+    accelerators[j++].cmd   = IDM_BINARY;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'S';
-  Accelerators[j++].cmd   = IDM_GROUP_DIGITS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'S';
+    accelerators[j++].cmd   = IDM_GROUP_DIGITS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = VK_OEM_PLUS;
-  Accelerators[j++].cmd   = IDM_INCREASE_DIGITS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = VK_OEM_PLUS;
+    accelerators[j++].cmd   = IDM_INCREASE_DIGITS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = VK_ADD;
-  Accelerators[j++].cmd   = IDM_INCREASE_DIGITS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = VK_ADD;
+    accelerators[j++].cmd   = IDM_INCREASE_DIGITS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = VK_OEM_MINUS;
-  Accelerators[j++].cmd   = IDM_DECREASE_DIGITS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = VK_OEM_MINUS;
+    accelerators[j++].cmd   = IDM_DECREASE_DIGITS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = VK_SUBTRACT;
-  Accelerators[j++].cmd   = IDM_DECREASE_DIGITS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = VK_SUBTRACT;
+    accelerators[j++].cmd   = IDM_DECREASE_DIGITS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = VK_OEM_PERIOD;
-  Accelerators[j++].cmd   = IDM_DOT_DECIMALS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = VK_OEM_PERIOD;
+    accelerators[j++].cmd   = IDM_DOT_DECIMALS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = VK_OEM_COMMA;
-  Accelerators[j++].cmd   = IDM_COMMA_DECIMALS;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = VK_OEM_COMMA;
+    accelerators[j++].cmd   = IDM_COMMA_DECIMALS;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'T';
-  Accelerators[j++].cmd   = IDM_ALWAYS_ON_TOP;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'T';
+    accelerators[j++].cmd   = IDM_ALWAYS_ON_TOP;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'Z';
-  Accelerators[j++].cmd   = IDM_CONVERTER;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'Z';
+    accelerators[j++].cmd   = IDM_CONVERTER;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'M';
-  Accelerators[j++].cmd   = IDM_MINIMIZE;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'M';
+    accelerators[j++].cmd   = IDM_MINIMIZE;
 
-  Accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
-  Accelerators[j  ].key   = 'Q';
-  Accelerators[j++].cmd   = IDM_EXIT;
+    accelerators[j  ].fVirt = FCONTROL | FVIRTKEY;
+    accelerators[j  ].key   = 'Q';
+    accelerators[j++].cmd   = IDM_EXIT;
 
-  AcceleratorTable = CreateAcceleratorTable(Accelerators, j);
+    acceleratorTable = CreateAcceleratorTable(accelerators, j);
 }
 //------------------------------------------------------------------------------
 
-MENU::~MENU(){
-  DestroyAcceleratorTable(AcceleratorTable);
-  DestroyMenu            (Handle);
+Menu::~Menu()
+{
+    DestroyAcceleratorTable(acceleratorTable);
+    DestroyMenu            (handle);
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetRadians(bool Value){
-  MENUITEMINFO MenuInfo;
-  MenuInfo.cbSize = sizeof(MENUITEMINFO);
-  MenuInfo.fMask  = MIIM_STATE;
-  MenuInfo.fState = MFS_UNCHECKED;
+void Menu::setRadians(bool value)
+{
+    MENUITEMINFO menuInfo;
+    menuInfo.cbSize = sizeof(MENUITEMINFO);
+    menuInfo.fMask  = MIIM_STATE;
+    menuInfo.fState = MFS_UNCHECKED;
 
-  SetMenuItemInfo(Handle, IDM_RADIANS, 0, &MenuInfo);
-  SetMenuItemInfo(Handle, IDM_DEGREES, 0, &MenuInfo);
+    SetMenuItemInfo(handle, IDM_RADIANS, 0, &menuInfo);
+    SetMenuItemInfo(handle, IDM_DEGREES, 0, &menuInfo);
 
-  MenuInfo.fState = MFS_CHECKED;
-  if(Value) SetMenuItemInfo(Handle, IDM_RADIANS, 0, &MenuInfo);
-  else      SetMenuItemInfo(Handle, IDM_DEGREES, 0, &MenuInfo);
+    menuInfo.fState = MFS_CHECKED;
+    if(value) SetMenuItemInfo(handle, IDM_RADIANS, 0, &menuInfo);
+    else      SetMenuItemInfo(handle, IDM_DEGREES, 0, &menuInfo);
 
-  Radians = Value;
+    radians = value;
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetConverter(bool Value){
-  MENUITEMINFO MenuInfo;
-  MenuInfo.cbSize     = sizeof(MENUITEMINFO);
-  MenuInfo.fMask      = MIIM_STRING;
-  MenuInfo.fType      = MFT_STRING;
-  MenuInfo.cch        = 32;
+void Menu::setConverter(bool value)
+{
+    MENUITEMINFO menuInfo;
+    menuInfo.cbSize     = sizeof(MENUITEMINFO);
+    menuInfo.fMask      = MIIM_STRING;
+    menuInfo.fType      = MFT_STRING;
+    menuInfo.cch        = 32;
 
-  MenuInfo.dwTypeData = new wchar_t[32];
+    menuInfo.dwTypeData = new wchar_t[32];
 
-  if(Value) wcscpy(MenuInfo.dwTypeData, L"Calculator\tCtrl Z");
-  else      wcscpy(MenuInfo.dwTypeData, L"Converter\tCtrl Z" );
+    if(value) wcscpy(menuInfo.dwTypeData, L"Calculator\tCtrl Z");
+    else      wcscpy(menuInfo.dwTypeData, L"Converter\tCtrl Z" );
 
-  SetMenuItemInfo(Handle, IDM_CONVERTER, 0, &MenuInfo);
+    SetMenuItemInfo(handle, IDM_CONVERTER, 0, &menuInfo);
 
-  delete[] MenuInfo.dwTypeData;
+    delete[] menuInfo.dwTypeData;
 
-  Converter = Value;
+    converter = value;
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetAlwaysOnTop(bool Value){
-  MENUITEMINFO MenuInfo;
-  MenuInfo.cbSize = sizeof(MENUITEMINFO);
-  MenuInfo.fMask  = MIIM_STATE;
+void Menu::setAlwaysOnTop(bool value)
+{
+    MENUITEMINFO menuInfo;
+    menuInfo.cbSize = sizeof(MENUITEMINFO);
+    menuInfo.fMask  = MIIM_STATE;
 
-  if(Value) MenuInfo.fState = MFS_CHECKED;
-  else      MenuInfo.fState = MFS_UNCHECKED;;
+    if(value) menuInfo.fState = MFS_CHECKED;
+    else      menuInfo.fState = MFS_UNCHECKED;;
 
-  SetMenuItemInfo(Handle, IDM_ALWAYS_ON_TOP, 0, &MenuInfo);
+    SetMenuItemInfo(handle, IDM_ALWAYS_ON_TOP, 0, &menuInfo);
 
-  AlwaysOnTop = Value;
+    alwaysOnTop = value;
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetDisplayMode(DISPLAY_MODE Value){
-  MENUITEMINFO MenuInfo;
-  MenuInfo.cbSize = sizeof(MENUITEMINFO);
-  MenuInfo.fMask  = MIIM_STATE;
-  MenuInfo.fState = MFS_UNCHECKED;
+void Menu::setDisplayMode(DisplayMode value)
+{
+    MENUITEMINFO menuInfo;
+    menuInfo.cbSize = sizeof(MENUITEMINFO);
+    menuInfo.fMask  = MIIM_STATE;
+    menuInfo.fState = MFS_UNCHECKED;
 
-  SetMenuItemInfo(Handle, IDM_NORMAL     , 0, &MenuInfo);
-  SetMenuItemInfo(Handle, IDM_ENGINEERING, 0, &MenuInfo);
-  SetMenuItemInfo(Handle, IDM_FEET_INCHES, 0, &MenuInfo);
-  SetMenuItemInfo(Handle, IDM_DEG_MIN_SEC, 0, &MenuInfo);
+    SetMenuItemInfo(handle, IDM_NORMAL     , 0, &menuInfo);
+    SetMenuItemInfo(handle, IDM_ENGINEERING, 0, &menuInfo);
+    SetMenuItemInfo(handle, IDM_FEET_INCHES, 0, &menuInfo);
+    SetMenuItemInfo(handle, IDM_DEG_MIN_SEC, 0, &menuInfo);
 
-  MenuInfo.fState = MFS_CHECKED;
-  SetMenuItemInfo(Handle, (int)Value, 0, &MenuInfo);
+    menuInfo.fState = MFS_CHECKED;
+    SetMenuItemInfo(handle, (int)value, 0, &menuInfo);
 
-  DisplayMode = Value;
+    displayMode = value;
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetGroupDigits(bool Value){
-  MENUITEMINFO MenuInfo;
-  MenuInfo.cbSize = sizeof(MENUITEMINFO);
-  MenuInfo.fMask  = MIIM_STATE;
+void Menu::setGroupDigits(bool value)
+{
+    MENUITEMINFO menuInfo;
+    menuInfo.cbSize = sizeof(MENUITEMINFO);
+    menuInfo.fMask  = MIIM_STATE;
 
-  if(Value) MenuInfo.fState = MFS_CHECKED;
-  else      MenuInfo.fState = MFS_UNCHECKED;;
+    if(value) menuInfo.fState = MFS_CHECKED;
+    else      menuInfo.fState = MFS_UNCHECKED;;
 
-  SetMenuItemInfo(Handle, IDM_GROUP_DIGITS, 0, &MenuInfo);
+    SetMenuItemInfo(handle, IDM_GROUP_DIGITS, 0, &menuInfo);
 
-  GroupDigits = Value;
+    groupDigits = value;
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetDecimalFormat(char Value){
-  MENUITEMINFO MenuInfo;
-  MenuInfo.cbSize = sizeof(MENUITEMINFO);
-  MenuInfo.fMask  = MIIM_STATE;
-  MenuInfo.fState = MFS_UNCHECKED;
+void Menu::setDecimalFormat(char value)
+{
+    MENUITEMINFO menuInfo;
+    menuInfo.cbSize = sizeof(MENUITEMINFO);
+    menuInfo.fMask  = MIIM_STATE;
+    menuInfo.fState = MFS_UNCHECKED;
 
-  SetMenuItemInfo(Handle, IDM_DOT_DECIMALS  , 0, &MenuInfo);
-  SetMenuItemInfo(Handle, IDM_COMMA_DECIMALS, 0, &MenuInfo);
+    SetMenuItemInfo(handle, IDM_DOT_DECIMALS  , 0, &menuInfo);
+    SetMenuItemInfo(handle, IDM_COMMA_DECIMALS, 0, &menuInfo);
 
-  MenuInfo.fState = MFS_CHECKED;
-  switch(Value){
-    case '.':
-      SetMenuItemInfo(Handle, IDM_DOT_DECIMALS, 0, &MenuInfo);
-      break;
+    menuInfo.fState = MFS_CHECKED;
+    switch(value){
+        case '.':
+            SetMenuItemInfo(handle, IDM_DOT_DECIMALS, 0, &menuInfo);
+            break;
 
-    case ',':
-    default:
-      SetMenuItemInfo(Handle, IDM_COMMA_DECIMALS, 0, &MenuInfo);
-      break;
-  }
+        case ',':
+        default:
+            SetMenuItemInfo(handle, IDM_COMMA_DECIMALS, 0, &menuInfo);
+            break;
+    }
 
-  DecimalFormat = Value;
+    decimalFormat = value;
 }
 //------------------------------------------------------------------------------
 
-void MENU::SetFormat(FORMAT Value){
-  MENUITEMINFO MenuInfo;
-  MenuInfo.cbSize = sizeof(MENUITEMINFO);
-  MenuInfo.fMask  = MIIM_STATE;
-  MenuInfo.fState = MFS_UNCHECKED;
+void Menu::setFormat(Format value)
+{
+    MENUITEMINFO menuInfo;
+    menuInfo.cbSize = sizeof(MENUITEMINFO);
+    menuInfo.fMask  = MIIM_STATE;
+    menuInfo.fState = MFS_UNCHECKED;
 
-  SetMenuItemInfo(Handle, IDM_BINARY , 0, &MenuInfo);
-  SetMenuItemInfo(Handle, IDM_DECIMAL, 0, &MenuInfo);
-  SetMenuItemInfo(Handle, IDM_HEX    , 0, &MenuInfo);
+    SetMenuItemInfo(handle, IDM_BINARY , 0, &menuInfo);
+    SetMenuItemInfo(handle, IDM_DECIMAL, 0, &menuInfo);
+    SetMenuItemInfo(handle, IDM_HEX    , 0, &menuInfo);
 
-  MenuInfo.fState = MFS_CHECKED;
-  switch(Value){
-    case FORMAT::Binary:
-      SetMenuItemInfo(Handle, IDM_BINARY, 0, &MenuInfo);
-      break;
+    menuInfo.fState = MFS_CHECKED;
+    switch(value){
+        case Format::Binary:
+            SetMenuItemInfo(handle, IDM_BINARY, 0, &menuInfo);
+            break;
 
-    case FORMAT::Hexadecimal:
-      SetMenuItemInfo(Handle, IDM_HEX, 0, &MenuInfo);
-      break;
+        case Format::Hexadecimal:
+            SetMenuItemInfo(handle, IDM_HEX, 0, &menuInfo);
+            break;
 
-    case FORMAT::Decimal:
-    default:
-      SetMenuItemInfo(Handle, IDM_DECIMAL, 0, &MenuInfo);
-      break;
-  }
+        case Format::Decimal:
+        default:
+            SetMenuItemInfo(handle, IDM_DECIMAL, 0, &menuInfo);
+            break;
+    }
 
-  Format = Value;
+    format = value;
 }
 //------------------------------------------------------------------------------
 
-bool MENU::GetRadians(){
-  return Radians;
+bool Menu::getRadians()
+{
+    return radians;
 }
 //------------------------------------------------------------------------------
 
-bool MENU::GetConverter(){
-  return Converter;
+bool Menu::getConverter()
+{
+    return converter;
 }
 //------------------------------------------------------------------------------
 
-bool MENU::GetAlwaysOnTop(){
-  return AlwaysOnTop;
+bool Menu::getAlwaysOnTop()
+{
+    return alwaysOnTop;
 }
 //------------------------------------------------------------------------------
 
-MENU::DISPLAY_MODE MENU::GetDisplayMode(){
-  return DisplayMode;
+Menu::DisplayMode Menu::getDisplayMode()
+{
+    return displayMode;
 }
 //------------------------------------------------------------------------------
 
-bool MENU::GetGroupDigits(){
-  return GroupDigits;
+bool Menu::getGroupDigits()
+{
+    return groupDigits;
 }
 //------------------------------------------------------------------------------
 
-char MENU::GetDecimalFormat(){
-  return DecimalFormat;
+char Menu::getDecimalFormat()
+{
+    return decimalFormat;
 }
 //------------------------------------------------------------------------------
 
-MENU::FORMAT MENU::GetFormat(){
-  return Format;
+Menu::Format Menu::getFormat()
+{
+    return format;
 }
 //------------------------------------------------------------------------------
 
-void MENU::Show(){
-  POINT Mouse;
-  GetCursorPos(&Mouse);
-  TrackPopupMenu(
-    Handle,
-    TPM_LEFTALIGN | TPM_TOPALIGN,
-    Mouse.x, Mouse.y,
-    0,
-    Window,
-    0
-  );
+void Menu::show()
+{
+    POINT mouse;
+    GetCursorPos(&mouse);
+    TrackPopupMenu(
+        handle,
+        TPM_LEFTALIGN | TPM_TOPALIGN,
+        mouse.x, mouse.y,
+        0,
+        window,
+        0
+    );
 }
 //------------------------------------------------------------------------------

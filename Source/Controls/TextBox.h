@@ -26,13 +26,13 @@
 #include "UTF_Converter.h"
 //------------------------------------------------------------------------------
 
-class TEXT_BOX: public CONTROL{
-  public:
-    TEXT_BOX(int Left, int Width, bool ReadOnly = false);
-   ~TEXT_BOX();
+class TextBox: public Control{
+    public:
+        TextBox(int left, int width, bool readOnly = false);
+       ~TextBox();
 
-  void SetText(const char*  String);
-  void GetText(std::string* String);
+        void setText(const char*  string);
+        void getText(std::string* string);
 };
 //------------------------------------------------------------------------------
 

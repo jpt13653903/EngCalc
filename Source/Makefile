@@ -1,5 +1,5 @@
 CC      = g++
-Options = -std=c++11 -Wall -fexceptions -O2 -mwindows
+Options = -std=c++17 -Wall -fexceptions -O2 -mwindows
 #-------------------------------------------------------------------------------
 
 Includes = -I../Source \
@@ -11,26 +11,26 @@ Libraries  = -lgdi32 -luser32 -lkernel32 -lcomctl32
 LibInclude =
 #-------------------------------------------------------------------------------
 
-Version = -DMAJOR_VERSION=1 -DMINOR_VERSION=10
+Version = -DMAJOR_VERSION=1 -DMINOR_VERSION=11
 
-Objects = obj/Global.o                       \
-          obj/Controls/ComboBox.o            \
-          obj/Controls/Control.o             \
-          obj/Controls/Label.o               \
-          obj/Controls/Menu.o                \
-          obj/Controls/TextBox.o             \
-          obj/Tools/Cpp/Calculator.o         \
-          obj/Tools/Cpp/FileWrapper.o        \
-          obj/Tools/Cpp/General.o            \
-          obj/Tools/Cpp/LLRBTree.o           \
-          obj/Tools/Cpp/UTF_Converter.o      \
-          obj/Tools/Cpp/XML.o                \
-          obj/Resources/Resources.res
+Objects += obj/Global.o
+Objects += obj/Controls/ComboBox.o
+Objects += obj/Controls/Control.o
+Objects += obj/Controls/Label.o
+Objects += obj/Controls/Menu.o
+Objects += obj/Controls/TextBox.o
+Objects += obj/Tools/Cpp/Calculator.o
+Objects += obj/Tools/Cpp/FileWrapper.o
+Objects += obj/Tools/Cpp/General.o
+Objects += obj/Tools/Cpp/LLRBTree.o
+Objects += obj/Tools/Cpp/UTF_Converter.o
+Objects += obj/Tools/Cpp/XML.o
+Objects += obj/Resources/Resources.res
 
-Headers = *.h           \
-          Controls/*.h  \
-          Tools/Cpp/*.h \
-          Resources/*.h
+Headers += *.h
+Headers += Controls/*.h
+Headers += Tools/Cpp/*.h
+Headers += Resources/*.h
 #-------------------------------------------------------------------------------
 
 .PHONY: clean all

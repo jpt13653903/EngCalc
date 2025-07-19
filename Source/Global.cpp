@@ -17,11 +17,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <http://www.gnu.org/licenses/>
 //==============================================================================
-    
+
 #include "Global.h"
 //------------------------------------------------------------------------------
 
-HWND      Window;
-HFONT     Font;
-HINSTANCE Instance;
+HWND      window;
+HFONT     font;
+HINSTANCE instance;
 //------------------------------------------------------------------------------

@@ -21,15 +21,16 @@
 #include "Label.h"
 //------------------------------------------------------------------------------
 
-LABEL::LABEL(
-  int Left, int Width, const wchar_t* Caption
-): CONTROL(
-  L"STATIC", SS_CENTER, Left, 0, Width, 21
+Label::Label(
+    int left, int width, const wchar_t* caption
+): Control(
+    L"STATIC", SS_CENTER, left, 0, width, 21
 ){
-  SetWindowText(Handle, Caption);
+    SetWindowText(handle, caption);
 }
 //------------------------------------------------------------------------------
 
-LABEL::~LABEL(){
+Label::~Label()
+{
 }
 //------------------------------------------------------------------------------

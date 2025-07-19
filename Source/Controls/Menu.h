@@ -26,73 +26,73 @@
 //------------------------------------------------------------------------------
 
 enum MENU_Enum{
-  IDM_DEGREES = 10, // Skip the Enter (1) and Escape (2) constants
-  IDM_RADIANS,
-  IDM_DECIMAL,
-  IDM_HEX,
-  IDM_BINARY,
-  IDM_NORMAL,
-  IDM_ENGINEERING,
-  IDM_FEET_INCHES,
-  IDM_DEG_MIN_SEC,
-  IDM_GROUP_DIGITS,
-  IDM_INCREASE_DIGITS,
-  IDM_DECREASE_DIGITS,
-  IDM_DOT_DECIMALS,
-  IDM_COMMA_DECIMALS,
-  IDM_ALWAYS_ON_TOP,
-  IDM_CONVERTER,
-  IDM_MINIMIZE,
-  IDM_EXIT,
-  IDM_MANUAL,
-  IDM_ABOUT
+    IDM_DEGREES = 10, // Skip the Enter (1) and Escape (2) constants
+    IDM_RADIANS,
+    IDM_DECIMAL,
+    IDM_HEX,
+    IDM_BINARY,
+    IDM_NORMAL,
+    IDM_ENGINEERING,
+    IDM_FEET_INCHES,
+    IDM_DEG_MIN_SEC,
+    IDM_GROUP_DIGITS,
+    IDM_INCREASE_DIGITS,
+    IDM_DECREASE_DIGITS,
+    IDM_DOT_DECIMALS,
+    IDM_COMMA_DECIMALS,
+    IDM_ALWAYS_ON_TOP,
+    IDM_CONVERTER,
+    IDM_MINIMIZE,
+    IDM_EXIT,
+    IDM_MANUAL,
+    IDM_ABOUT
 };
 //------------------------------------------------------------------------------
 
-class MENU{
-  public:
-    enum class FORMAT {Decimal, Hexadecimal, Binary};
+class Menu{
+    public:
+        enum class Format {Decimal, Hexadecimal, Binary};
 
-    enum class DISPLAY_MODE{
-      Normal      = IDM_NORMAL,
-      Engineering = IDM_ENGINEERING,
-      FeetInches  = IDM_FEET_INCHES,
-      DegMinSec   = IDM_DEG_MIN_SEC
-    };
+        enum class DisplayMode{
+            Normal      = IDM_NORMAL,
+            Engineering = IDM_ENGINEERING,
+            FeetInches  = IDM_FEET_INCHES,
+            DegMinSec   = IDM_DEG_MIN_SEC
+        };
 
-  private:
-    bool         Radians;
-    bool         Converter;
-    bool         AlwaysOnTop;
-    DISPLAY_MODE DisplayMode;
-    bool         GroupDigits;
-    char         DecimalFormat;
-    FORMAT       Format;
+    private:
+        bool        radians;
+        bool        converter;
+        bool        alwaysOnTop;
+        DisplayMode displayMode;
+        bool        groupDigits;
+        char        decimalFormat;
+        Format      format;
 
-  public:
-    HMENU  Handle;
-    HACCEL AcceleratorTable;
+    public:
+        HMENU  handle;
+        HACCEL acceleratorTable;
 
-    MENU();
-   ~MENU();
+        Menu();
+      ~Menu();
 
-    void SetRadians      (bool         Value);
-    void SetConverter    (bool         Value);
-    void SetAlwaysOnTop  (bool         Value);
-    void SetDisplayMode  (DISPLAY_MODE Value);
-    void SetGroupDigits  (bool         Value);
-    void SetDecimalFormat(char         Value);
-    void SetFormat       (FORMAT       Value);
+        void setRadians      (bool        value);
+        void setConverter    (bool        value);
+        void setAlwaysOnTop  (bool        value);
+        void setDisplayMode  (DisplayMode value);
+        void setGroupDigits  (bool        value);
+        void setDecimalFormat(char        value);
+        void setFormat       (Format      value);
 
-    bool         GetRadians      ();
-    bool         GetConverter    ();
-    bool         GetAlwaysOnTop  ();
-    DISPLAY_MODE GetDisplayMode  ();
-    bool         GetGroupDigits  ();
-    char         GetDecimalFormat();
-    FORMAT       GetFormat       ();
+        bool        getRadians      ();
+        bool        getConverter    ();
+        bool        getAlwaysOnTop  ();
+        DisplayMode getDisplayMode  ();
+        bool        getGroupDigits  ();
+        char        getDecimalFormat();
+        Format      getFormat       ();
 
-    void Show();
+        void show();
 };
 //------------------------------------------------------------------------------
 
